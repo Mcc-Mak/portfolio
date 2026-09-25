@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CISSP Mastery - Complete MCQ Bank | All Domains</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 24px 20px;
+      color: #1e2a3e;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: -28px;
+      background: white;
+      border-radius: 28px;
+      padding: 30px 28px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #e2edf2;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin: 0;
+      background: linear-gradient(135deg, #0B3B5F, #1F6392);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .stats {
+      display: flex;
+      gap: 28px;
+      background: #f8fafc;
+      padding: 8px 20px;
+      border-radius: 60px;
+    }
+
+    .stats span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .quiz-card {
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+      margin-bottom: 28px;
+      overflow: hidden;
+      transition: all 0.2s;
+      border: 1px solid #e9f0f5;
+    }
+
+    .quiz-card.submitted-correct {
+      border-left: 5px solid #2e7d32;
+      background: #f1f8e9;
+    }
+
+    .quiz-card.submitted-wrong {
+      border-left: 5px solid #c62828;
+      background: #ffebee;
+    }
+
+    .question-header {
+      padding: 20px 28px 12px 28px;
+      border-bottom: 2px solid #f0f3f8;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .q-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .domain-tag {
+      background: #eef2ff;
+      color: #1e4a76;
+      padding: 4px 12px;
+      border-radius: 24px;
+    }
+
+    .q-type {
+      background: #e6f7ec;
+      color: #2e6b3e;
+      padding: 4px 12px;
+      border-radius: 24px;
+    }
+
+    .question-text {
+      padding: 8px 28px 8px 28px;
+      font-size: 1.18rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .question-text.question-only-mode {
+      color: #c72a0f;
+      font-weight: 600;
+      border-left: 4px solid #c72a0f;
+      background: #fff8f5;
+      margin: 8px 28px;
+      padding: 12px 20px;
+      border-radius: 20px;
+    }
+
+    .options-area {
+      padding: 8px 28px 20px 28px;
+    }
+
+    .option-row {
+      margin: 12px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 16px;
+      background: #fdfdfd;
+      transition: background 0.1s;
+    }
+
+    .option-row:hover {
+      background: #f9fbfd;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: #1f6392;
+      cursor: pointer;
+    }
+
+    input[type="radio"]:disabled,
+    input[type="checkbox"]:disabled {
+      accent-color: #9e9e9e;
+      cursor: not-allowed;
+    }
+
+    label {
+      font-size: 0.98rem;
+      line-height: 1.4;
+      color: #1e293b;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .option-row.disabled-option {
+      opacity: 0.7;
+    }
+
+    .option-row.disabled-option label,
+    .option-row.disabled-option input {
+      cursor: not-allowed;
+    }
+
+    .feedback-area {
+      margin: 0 28px 20px 28px;
+      background: #fef9e3;
+      border-left: 5px solid #e6a017;
+      padding: 14px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #5e3a04;
+      display: none;
+    }
+
+    .feedback-area.show-feedback {
+      display: block;
+    }
+
+    .result-indicator {
+      display: inline-block;
+      margin-left: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .result-correct {
+      background: #2e7d32;
+      color: white;
+    }
+
+    .result-wrong {
+      background: #c62828;
+      color: white;
+    }
+
+    .result-unanswered {
+      background: #ff9800;
+      color: white;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      padding: 8px 28px 28px 28px;
+      flex-wrap: wrap;
+      border-top: 1px solid #ecf3f9;
+      margin-top: 6px;
+    }
+
+    button {
+      background: white;
+      border: 1px solid #cad9ed;
+      padding: 8px 20px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #1f3b4c;
+    }
+
+    button.primary {
+      background: #1f6392;
+      border-color: #1f6392;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    button.primary:hover {
+      background: #0e4a70;
+      transform: translateY(-1px);
+    }
+
+    button.success {
+      background: #2e7d32;
+      border-color: #2e7d32;
+      color: white;
+    }
+
+    button.success:hover {
+      background: #1b5e20;
+    }
+
+    button.warning {
+      background: #ff9800;
+      border-color: #ff9800;
+      color: white;
+    }
+
+    button.warning:hover {
+      background: #f57c00;
+    }
+
+    button:hover {
+      background: #eef3fc;
+    }
+
+    .score-panel {
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      position: sticky;
+      bottom: 16px;
+      margin-top: 24px;
+      border-radius: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid #cbdde9;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .score-display {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .reset-btn {
+      background: #2c3e50;
+      border: none;
+      color: white;
+    }
+
+    .reset-btn:hover {
+      background: #1e2f3f;
+    }
+
+    .submit-panel {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      opacity: 0.7;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 700px) {
+      .question-text {
+        font-size: 1rem;
+      }
+
+      .stats {
+        gap: 12px;
+      }
+
+      .score-panel {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📘 CISSP Mastery · Complete MCQ Bank</h1>
+      <div class="stats">
+        <span>📋 Total: <strong id="totalCount">0</strong></span>
+        <span>✅ Answered: <strong id="answeredCount">0</strong></span>
+        <span id="scoreStatsSpan">⭐ Score: <strong id="scoreValue">0</strong> / <span id="totalPossible">0</span></span>
+      </div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div class="score-panel">
+      <div>🎯 <strong>Your performance</strong></div>
+      <div class="score-display" id="finalScoreMsg">— / —</div>
+      <div class="submit-panel">
+        <button id="submitPaperBtn" class="success">📝 Submit Paper</button>
+        <button id="globalResetBtn" class="reset-btn">⟳ Reset all answers</button>
+      </div>
+    </div>
+    <footer>⚡ Based on CISSP domains 1-8. Red text = Question-only. Select answers, then click "Submit Paper" to see your final score and detailed results.</footer>
+  </div>
+
+  <script>
+    const QUESTIONS_DATA = [];
+
+    function addQ(id, domain, text, optionsArr, correctLetters, type, isQuestionOnly = false, feedbackText = "") {
+      QUESTIONS_DATA.push({
+        id, domain, text, options: optionsArr, correct: correctLetters, type, isQuestionOnly,
+        feedback: feedbackText || (type === "multiple" ? "Multiple correct selections required." : "Review explanation for correct answer.")
+      });
+    }
+
+    function opts(arr) { return arr.map(o => ({ letter: o.letter, text: o.text })); }
+
+    // ========================= DOMAIN 1 =========================
+    addQ(3, "Domain 1", "Most organizations have acceptable use policies (AUP) that define acceptable and unacceptable behavior (e.g., racial and religious discrimination, sexual harassment, nepotism, gifts). While some of these activities may be prohibited under law, that may not be true for all. What document would define such behavior?", opts([{ letter: "A", text: "Organizational code of ethics" }, { letter: "B", text: "A professional code of ethics" }, { letter: "C", text: "A personal code of ethics" }, { letter: "D", text: "A global code of ethics" }]), ["A"], "single", false, "An organizational code of ethics is a policy document approved and supported by the organization's senior management.");
+    addQ(4, "Domain 1", "Applying authenticity to information provides an organization with which of the following?", opts([{ letter: "A", text: "Confidence that the information is genuine" }, { letter: "B", text: "Verification that it has come from a trusted source" }, { letter: "C", text: "Confidence that it is reliable" }, { letter: "D", text: "All the above" }]), ["D"], "single", false, "For an organization to make use of any information that it holds or gathers, the authenticity must be verified.");
+    addQ(7, "Domain 1", "Which of the strategies listed should the CISO choose in the following scenario? A software development company is planning to introduce a cloud-based product that will handle sensitive customer data. The company's strategic objectives include maintaining customer trust, fostering innovation, complying with data protection regulations, and ensuring scalable growth.", opts([{ letter: "A", text: "Use a private cloud infrastructure to ensure the highest level of security for customer data" }, { letter: "B", text: "Leverage a public cloud solution with added security controls to balance security, cost-effectiveness, and scalability" }, { letter: "C", text: "Avoid cloud solutions altogether and keep data on-premises to maintain direct control over security" }, { letter: "D", text: "Focus on rapid product development and market entry, addressing security concerns as they arise post-launch" }]), ["B"], "single", false, "This strategy provides a flexible and scalable cloud solution that is also cost-effective.");
+    addQ(8, "Domain 1", "What do we mean by the term 'security alignment'?", opts([{ letter: "A", text: "Pulling resources together to fit goals and objectives" }, { letter: "B", text: "Designing security to meet legal requirements" }, { letter: "C", text: "Designing security to meet regulatory requirements" }, { letter: "D", text: "All the above" }]), ["D"], "single", false, "An organization should align its security strategies with the business drivers and objectives; this includes legal and regulatory requirements.");
+    addQ(11, "Domain 1", "Which of the following BEST describes the role and characteristics of a security policy in the context of an information security framework review?", opts([{ letter: "A", text: "A detailed, step-by-step instruction set designed to help employees implement specific security measures" }, { letter: "B", text: "A high-level plan that embodies the general beliefs, goals, and objectives of the organization with respect to security" }, { letter: "C", text: "A technical specification that outlines the specific hardware and software solutions to be used for security purposes" }, { letter: "D", text: "A flexible recommendation that suggests best practices for security but does not mandate specific actions" }]), ["B"], "single", false, "A security policy is a high-level document within an organization that sets out the company's approach to security.");
+    addQ(12, "Domain 1", "U.S. government agencies and many of their contractors use the NIST's Risk Management Framework (RMF) as the standard against which audits, and control assessments will be performed. Which NIST Special Publication (SP) details the RMF?", opts([{ letter: "A", text: "800-171" }, { letter: "B", text: "800-53" }, { letter: "C", text: "800-37" }, { letter: "D", text: "None of these" }]), ["B"], "single", false, "NIST SP 800-53 covers Security and Privacy Controls for Information Systems and Organizations.");
+    addQ(15, "Domain 1", "Which of these actions should the CISO prioritize in the following scenario to ensure compliance with PCI-DSS? A medium-sized online retailer processes a significant volume of credit card transactions monthly.", opts([{ letter: "A", text: "Conduct regular vulnerability scans and penetration tests on the network" }, { letter: "B", text: "Implement data encryption for all stored cardholder data" }, { letter: "C", text: "Provide security awareness training to all employees handling cardholder data" }, { letter: "D", text: "Regularly update the company's privacy policy on its website" }]), ["B"], "single", false, "Implementing data encryption for stored cardholder data is a direct requirement of PCI-DSS.");
+    addQ(16, "Domain 1", "What is the contractor's FIRST step to ensure compliance and effective implementation of the recommended security controls? A federal contractor needs to align its security controls with NIST SP 800-53.", opts([{ letter: "A", text: "Procure and install state-of-the-art encryption software across all their systems" }, { letter: "B", text: "Conduct a gap analysis to identify the current state of their security controls compared to NIST SP 800-53" }, { letter: "C", text: "Implement continuous monitoring tools to ensure all systems are consistently monitored" }, { letter: "D", text: "Provide comprehensive training to all employees on federal regulations" }]), ["B"], "single", false, "The first step should be conducting a gap analysis to assess current controls against NIST SP 800-53.");
+    addQ(19, "Domain 1", "Intellectual property (IP) pertains to intangible creations of human creativity. Of the four types of IP protection, which provides the weakest protection, where existence of the protection mechanism is assumed?", opts([{ letter: "A", text: "Patent" }, { letter: "B", text: "Copyright" }, { letter: "C", text: "Trademark" }, { letter: "D", text: "Trade secret" }]), ["B"], "single", false, "The act of taking a photograph or writing a song does not require a formal process to achieve copyright protection.");
+    addQ(20, "Domain 1", "The International Olympic Committee (IOC) has a five-ring symbol. How is this symbol protected?", opts([{ letter: "A", text: "Trademark" }, { letter: "B", text: "Copyright" }, { letter: "C", text: "Trade secret" }, { letter: "D", text: "Patent" }]), ["A"], "single", false, "The logo, like all corporate logos, is a trademark or a mark to trade under.");
+    addQ(23, "Domain 1", "What year did Chile (a member of APEC) introduce a constitutional change that declared data privacy a human right?", opts([{ letter: "A", text: "2016" }, { letter: "B", text: "2018" }, { letter: "C", text: "2019" }, { letter: "D", text: "2020" }]), ["B"], "single", false, "Chile introduced a constitutional change that declared data privacy a human right in 2018.");
+    addQ(24, "Domain 1", "Which of these actions should be the DPO's PRIMARY focus? A software development company has a health tracking app used by individuals in the EU. The app collects physical activity, dietary habits, and location.", opts([{ letter: "A", text: "Implement a mechanism for obtaining explicit consent from EU users for collection and processing of their personal data" }, { letter: "B", text: "Restrict the app's availability in the EU market to avoid GDPR compliance requirements" }, { letter: "C", text: "Ensure the app's data collection practices are in line with India's data protection laws" }, { letter: "D", text: "Establish a physical office in one of the EU member states" }]), ["A"], "single", false, "GDPR requires explicit, informed consent for processing of personal data, especially sensitive data like health information.");
+    addQ(27, "Domain 1", "The right to erasure became EU law in 2018 as a part of GDPR. When an application to be forgotten is made, does the subject have to specify a reason?", opts([{ letter: "A", text: "Yes, always" }, { letter: "B", text: "Yes, sometimes, but it depends on the organization" }, { letter: "C", text: "No" }, { letter: "D", text: "Right to Erasure is not part of GDPR" }]), ["C"], "single", false, "No reason need be given but organizations may not comply if the information affects national security or public interest.");
+    addQ(28, "Domain 1", "Which of these actions is the HIGHEST priority? A US-based tech startup has expanded to serve EU clients and needs to align with the EU-US Data Privacy Framework.", opts([{ letter: "A", text: "Encrypting all data stored on servers in the U.S." }, { letter: "B", text: "Entering into Standard Contractual Clauses (SCCs) with each EU client" }, { letter: "C", text: "Certifying the company under the EU-US Data Privacy Framework to legitimize data transfers" }, { letter: "D", text: "Restricting the physical location of servers to the EU" }]), ["C"], "single", false, "The EU-US Data Privacy Framework is designed to facilitate lawful data transfers between the EU and the U.S.");
+    addQ(31, "Domain 1", "Which amendment under U.S. law provides protection from unreasonable search and seizure?", opts([{ letter: "A", text: "First" }, { letter: "B", text: "Third" }, { letter: "C", text: "Fourth" }, { letter: "D", text: "Sixth" }]), ["C"], "single", false, "The Fourth Amendment under U.S. law provides protection from unreasonable search and seizure.");
+    addQ(32, "Domain 1", "Does the Fourth Amendment guarantee protection against all search and seizure?", opts([{ letter: "A", text: "Yes" }, { letter: "B", text: "No" }, { letter: "C", text: "Not if there is a search warrant in effect" }, { letter: "D", text: "Only unreasonable" }]), ["D"], "single", false, "The Fourth Amendment protects against unreasonable search and seizure.");
+    addQ(39, "Domain 1", "What is a measurement of time of the probability of the occurrence of a risk event?", opts([{ letter: "A", text: "An exposure factor" }, { letter: "B", text: "An exposure window" }, { letter: "C", text: "A risk window" }, { letter: "D", text: "A risk factor" }]), ["B"], "single", false, "Risk exposure can be plotted on a timeline and is used to manage activities.");
+    addQ(40, "Domain 1", "When an organization believes that their products or services, and their way of doing business is unique and that no other experience can compare, what type of risk assessment is commonly used?", opts([{ letter: "A", text: "Qualitative" }, { letter: "B", text: "Quantitative" }, { letter: "C", text: "Either" }, { letter: "D", text: "Both" }]), ["A"], "single", false, "Qualitative risk assessments are subjective and focus on identifying impact against likelihood.");
+    addQ(42, "Domain 1", "What term should the team use to refer to the time period when the probability of risk events is heightened? A retail company is preparing for an upcoming national election.", opts([{ letter: "A", text: "An exposure factor" }, { letter: "B", text: "An exposure window" }, { letter: "C", text: "A risk window" }, { letter: "D", text: "A risk factor" }]), ["B"], "single", false, "The term 'exposure window' describes the time frame when the likelihood of risk events is higher.");
+    addQ(43, "Domain 1", "Which type of risk assessment should the team employ? A software company has launched an innovative product they believe is unparalleled in the market.", opts([{ letter: "A", text: "Qualitative" }, { letter: "B", text: "Quantitative" }, { letter: "C", text: "Either" }, { letter: "D", text: "Both" }]), ["A"], "single", false, "Qualitative risk assessments are subjective and focus on identifying impact against likelihood without extensive numerical data.");
+    addQ(46, "Domain 1", "Which type of security control is PRIMARILY involved in the implementation of new policies and procedures for handling sensitive customer data?", opts([{ letter: "A", text: "Administrative" }, { letter: "B", text: "Logical" }, { letter: "C", text: "Technical" }, { letter: "D", text: "Physical" }]), ["A"], "single", false, "Administrative controls are implemented through policies and procedures.");
+    addQ(47, "Domain 1", "Which security engineering technical management process collects, analyzes, and reports security-related data?", opts([{ letter: "A", text: "Project planning" }, { letter: "B", text: "Decision making" }, { letter: "C", text: "Risk management" }, { letter: "D", text: "Measurement" }]), ["D"], "single", false, "The measurement process collects, analyzes, and reports security-relevant data and information.");
+    addQ(50, "Domain 1", "Which of the following is NOT a methodology used in threat modeling?", opts([{ letter: "A", text: "OCTAVE" }, { letter: "B", text: "TRIKE" }, { letter: "C", text: "STRIDE" }, { letter: "D", text: "Threat-X" }]), ["D"], "single", false, "Threat-X is fictitious and is not a threat modeling methodology.");
+    addQ(51, "Domain 1", "Because it is imperative that the organization applies the same risk-management methodologies to the supply chain, which of the following operations should the organization apply?", opts([{ letter: "A", text: "Governance reviews" }, { letter: "B", text: "Site surveys" }, { letter: "C", text: "Formal security audits" }, { letter: "D", text: "All the above" }]), ["D"], "single", false, "These are all steps or processes that an organization would include in its own risk assessment.");
+    addQ(54, "Domain 1", "What is the key difference between training and awareness?", opts([{ letter: "A", text: "Training is focused on guiding behavior and awareness is focused on building proficiency" }, { letter: "B", text: "Training is focused on building proficiency and awareness is focused on guiding behavior" }, { letter: "C", text: "Training is aimed at everyone whereas awareness is aimed at only a select few" }, { letter: "D", text: "Awareness is aimed at everyone whereas training is aimed at only a select few" }]), ["B"], "single", false, "Awareness programs are more general; training focuses on specific knowledge acquisition to perform a task.");
+    addQ(55, "Domain 1", "What are the key advantages the bank can expect from conducting controlled phishing campaigns?", opts([{ letter: "A", text: "Identifying vulnerable systems" }, { letter: "B", text: "Enhancing employee awareness and preparedness" }, { letter: "C", text: "Improving financial stability" }, { letter: "D", text: "Streamlining IT processes" }]), ["B"], "single", false, "One of the main advantages is enhancing employee awareness and preparedness.");
+    // Question-only (red text) from Domain 1
+    addQ(1, "Domain 1", "The Declaration of Geneva is an example of which of the following?", opts([{ letter: "A", text: "Code of conduct" }, { letter: "B", text: "Code of ethics" }, { letter: "C", text: "Set of legal standards" }, { letter: "D", text: "A global framework" }]), ["B"], "single", true, "The Declaration of Geneva (Physician's Oath) is a modern version of the Hippocratic Oath, making it a code of ethics.");
+    addQ(2, "Domain 1", "What should the CISSP security consultant do to stay in alignment with the ISC2 Code of Ethics? The consultant finds that the client's existing security practices are severely outdated and non-compliant.", opts([{ letter: "A", text: "Advise the client about minimum necessary upgrades to meet compliance" }, { letter: "B", text: "Insist on implementing comprehensive security measures even if it exceeds budget" }, { letter: "C", text: "Report the client's practices to a regulatory body" }, { letter: "D", text: "Educate the client about risks and offer a range of solutions tailored to budget and needs" }]), ["D"], "single", true, "ISC2 Code of Ethics requires advising and educating the client while providing feasible options.");
+    addQ(5, "Domain 1", "GDPR Privacy Principles are drawn from OECD principles. Under GDPR, there are six broad principles. Which is NOT one of those principles?", opts([{ letter: "A", text: "Authenticity" }, { letter: "B", text: "Storage limitation" }, { letter: "C", text: "Purpose limitation" }, { letter: "D", text: "Lawfulness" }]), ["A"], "single", true, "The six GDPR principles are: lawfulness, purpose limitation, data minimization, accuracy, storage limitation, and integrity/confidentiality.");
+    addQ(13, "Domain 1", "Which of the following regulations is NOT related to financial institutions?", opts([{ letter: "A", text: "GLBA" }, { letter: "B", text: "HIPAA" }, { letter: "C", text: "PCI DSS" }, { letter: "D", text: "SOX" }]), ["B"], "single", true, "HIPAA applies to healthcare providers, health plans, and healthcare clearinghouses—not primarily to financial institutions.");
+    addQ(14, "Domain 1", "Which of the following BEST describes ISO/IEC 27001?", opts([{ letter: "A", text: "Guidelines for establishing, implementing, and managing an ISMS" }, { letter: "B", text: "International standard for risk management" }, { letter: "C", text: "Collection of controls with implementation guidance" }, { letter: "D", text: "Guidance on protecting PII in the cloud" }]), ["A"], "single", true, "ISO/IEC 27001 is the internationally recognized standard for Information Security Management Systems (ISMS).");
+    addQ(21, "Domain 1", "What should the organization do to legally use the ISC2 logo in promotional materials for a CISSP preparation course?", opts([{ letter: "A", text: "Use the ISC2 logo freely in an educational context" }, { letter: "B", text: "Modify the ISC2 logo slightly to avoid infringement" }, { letter: "C", text: "Obtain written permission from ISC2 following trademark guidelines" }, { letter: "D", text: "Use a disclaimer stating no affiliation with ISC2" }]), ["C"], "single", true, "The ISC2 logo is a registered trademark; using it without permission constitutes infringement.");
+    addQ(22, "Domain 1", "As of 2024, how many countries are members of the Asia-Pacific Economic Council (APEC)?", opts([{ letter: "A", text: "Four" }, { letter: "B", text: "Eleven" }, { letter: "C", text: "Twenty-one" }, { letter: "D", text: "Twenty-two" }]), ["C"], "single", true, "As of 2024, APEC has 21 member economies.");
+    addQ(29, "Domain 1", "Which of the following is an example of privacy frameworks?", opts([{ letter: "A", text: "GDPR" }, { letter: "B", text: "PMF" }, { letter: "C", text: "OECD" }, { letter: "D", text: "All the above" }]), ["D"], "single", true, "All three are privacy frameworks: GDPR, Privacy Management Frameworks, and OECD Privacy Guidelines.");
+    addQ(30, "Domain 1", "What is meant by data portability?", opts([{ letter: "A", text: "How data is moved within a corporate network" }, { letter: "B", text: "How data is moved between corporations" }, { letter: "C", text: "How data is moved on the internet" }, { letter: "D", text: "The rights of a data subject to move personal data from one controller to another" }]), ["D"], "single", true, "Data portability is a right under GDPR Article 20 granting subjects the right to receive and transmit their data.");
+    addQ(33, "Domain 1", "Which U.S. constitutional amendment is MOST relevant for a warrantless search based on an anonymous tip?", opts([{ letter: "A", text: "1st Amendment - freedom of speech" }, { letter: "B", text: "4th Amendment - unreasonable search and seizure" }, { letter: "C", text: "5th Amendment - self-incrimination" }, { letter: "D", text: "6th Amendment - right to a fair trial" }]), ["B"], "single", true, "The Fourth Amendment protects against unreasonable searches and seizures and requires warrants supported by probable cause.");
+    addQ(41, "Domain 1", "Calculate the ALE: AV-$1250, EF-33% (CPU replacement), ARO-CPU burnout every 9 months. Is the $600 support contract cost-effective?", opts([{ letter: "A", text: "Given ALE assuming single failure: yes" }, { letter: "B", text: "Given ALE assuming single failure: no" }, { letter: "C", text: "Given ALE assuming multiple failures: yes" }, { letter: "D", text: "Given ALE assuming multiple failures: no" }]), ["D"], "single", true, "SLE=$412.50, ARO=1.333, ALE=$550. Contract at $600 is $50 more expensive, so not cost-effective.");
+    addQ(52, "Domain 1", "Supply chain failures can devastate operations. Which is the driving process necessary to ensure a safe and secure supply chain?", opts([{ letter: "A", text: "Identify your suppliers" }, { letter: "B", text: "Identify your supplier's locations" }, { letter: "C", text: "Identify the risks" }, { letter: "D", text: "Identify the need" }]), ["C"], "single", true, "Risk identification is the foundational driving process for supply chain security.");
+    addQ(53, "Domain 1", "What kind of risks should a company implementing a Software Bill of Materials (SBOM) be particularly vigilant about?", opts([{ letter: "A", text: "Financial risks" }, { letter: "B", text: "Compatibility risks" }, { letter: "C", text: "Security vulnerabilities" }, { letter: "D", text: "Operational risks" }]), ["C"], "single", true, "An SBOM's primary purpose is to identify and track security vulnerabilities in software components.");
+
+    // ========================= DOMAIN 2 =========================
+    addQ(58, "Domain 2", "Which of the following addresses an organization's ability to use its own information reliably and confidently, knowing that it is free from interference by others?", opts([{ letter: "A", text: "Information classification" }, { letter: "B", text: "Information management" }, { letter: "C", text: "Information categorization" }, { letter: "D", text: "Information ownership" }]), ["A"], "single", false, "Information classification addresses the impact or loss if confidentiality, availability, or integrity is compromised.");
+    addQ(59, "Domain 2", "What is the purpose of marking and labeling in the context of asset security management?", opts([{ letter: "A", text: "Marking is external identification, labeling embeds security attributes internally" }, { letter: "B", text: "Marking involves education, labeling is secure disposal" }, { letter: "C", text: "Marking is physical destruction, labeling is external communication" }, { letter: "D", text: "They are synonymous terms" }]), ["A"], "single", false, "Marking involves placing human-readable information on assets, while labeling embeds security attributes internally.");
+    addQ(62, "Domain 2", "Which of the following BEST exemplifies an intangible asset?", opts([{ letter: "A", text: "A company vehicle" }, { letter: "B", text: "Brand reputation" }, { letter: "C", text: "An office building" }, { letter: "D", text: "Manufacturing equipment" }]), ["B"], "single", false, "Brand reputation is an intangible asset representing value derived from market perception.");
+    addQ(63, "Domain 2", "Which of the following assets is not traditionally considered tangible?", opts([{ letter: "A", text: "A router" }, { letter: "B", text: "Corporate offices" }, { letter: "C", text: "Software" }, { letter: "D", text: "A laptop" }]), ["C"], "single", false, "Software is not considered tangible in a traditional sense; it cannot be touched even though it can be copied.");
+    addQ(66, "Domain 2", "Who is responsible for the data content, context, and the associated business rules?", opts([{ letter: "A", text: "The data owner" }, { letter: "B", text: "The data controller" }, { letter: "C", text: "The data custodian" }, { letter: "D", text: "The data steward" }]), ["D"], "single", false, "The data steward is responsible for data content, context, and associated business rules.");
+    addQ(67, "Domain 2", "Which action distinguishes the data processor role from other data management roles?", opts([{ letter: "A", text: "Processing data based on proper controls" }, { letter: "B", text: "Determining value of data and access policies" }, { letter: "C", text: "Responsibility for data content and business rules" }, { letter: "D", text: "Accountability for protecting data while in custody" }]), ["D"], "single", false, "A data processor processes data on behalf of the controller; accountability remains with the controller.");
+    addQ(70, "Domain 2", "Which approach BEST aligns with proper data retention practices and regulatory compliance? An international consulting firm handles sensitive client data.", opts([{ letter: "A", text: "Retaining all client data indefinitely" }, { letter: "B", text: "Applying longest known retention period for all data types" }, { letter: "C", text: "Documenting a records schedule specifying retention period for each information type" }, { letter: "D", text: "Deleting all client records after a single standard period" }]), ["C"], "single", false, "Documenting a records schedule ensures compliance with laws and helps manage data efficiently.");
+    addQ(73, "Domain 2", "Which form of data destruction reduces the chances of the recovery of data remanence?", opts([{ letter: "A", text: "Clearing" }, { letter: "B", text: "Purging" }, { letter: "C", text: "Formatting" }, { letter: "D", text: "Destruction" }]), ["B"], "single", false, "Purging reduces the chances of recovery of data remanence.");
+    addQ(74, "Domain 2", "For how long can financial records be retained?", opts([{ letter: "A", text: "For as long as the organization wants to keep them" }, { letter: "B", text: "The longest of all organizational policies" }, { letter: "C", text: "There is no preset period" }, { letter: "D", text: "Defined by jurisdiction and/or regulatory requirements" }]), ["D"], "single", false, "The retention period is defined by jurisdiction and/or regulatory requirements.");
+    addQ(78, "Domain 2", "A baseline that requires strong passwords, strong encryption, watermarks, and real-time monitoring would be an example of what classification level?", opts([{ letter: "A", text: "Low" }, { letter: "B", text: "Medium" }, { letter: "C", text: "Moderate" }, { letter: "D", text: "High" }]), ["D"], "single", false, "Baselines should be developed for each classification and provide the minimum level of security required.");
+    addQ(79, "Domain 2", "Which is an example of third-party baseline catalogs that can guide organizations in producing their baseline requirements?", opts([{ letter: "A", text: "International and national standards organizations" }, { letter: "B", text: "Industry sector standards or recommendations" }, { letter: "C", text: "Other companies with similar business objectives" }, { letter: "D", text: "All the above" }]), ["D"], "single", false, "All of these are possible sources of information for creating a baseline catalog.");
+    addQ(82, "Domain 2", "A Virtual Private Network (VPN) uses what form of encryption to protect data in transmission?", opts([{ letter: "A", text: "Symmetric" }, { letter: "B", text: "Asymmetric" }, { letter: "C", text: "Link" }, { letter: "D", text: "End-to-end" }]), ["D"], "single", false, "In end-to-end encryption, data is encrypted at the start by the sender and decrypted by the receiver.");
+    addQ(83, "Domain 2", "Which statement accurately describes link encryption and its potential impact on data security?", opts([{ letter: "A", text: "Encrypts only content, leaving routing info unencrypted" }, { letter: "B", text: "Packet encrypted at source, remains encrypted to final destination" }, { letter: "C", text: "Encrypts both data and routing info, requiring decryption/re-encryption at each node" }, { letter: "D", text: "Less effective than end-to-end for traffic confidentiality" }]), ["C"], "single", false, "Link encryption encrypts all data within a packet, including routing information, requiring decryption and re-encryption at each node.");
+    // Question-only from Domain 2
+    addQ(60, "Domain 2", "Network and systems security is what type of asset?", opts([{ letter: "A", text: "Hardware" }, { letter: "B", text: "Software" }, { letter: "C", text: "Information" }, { letter: "D", text: "Firmware" }]), ["B"], "single", true, "Network and systems security refers to software-based protections and configurations.");
+    addQ(61, "Domain 2", "How is a customer database categorized (in terms of asset classification)?", opts([{ letter: "A", text: "Hardware" }, { letter: "B", text: "Software" }, { letter: "C", text: "Information" }, { letter: "D", text: "Firmware" }]), ["C"], "single", true, "A customer database contains customer information and is classified as an information asset.");
+    addQ(71, "Domain 2", "Which of the following should be considered a source of data remanence?", opts([{ letter: "A", text: "CPU registers" }, { letter: "B", text: "RAM" }, { letter: "C", text: "Solid State Drives (SSDs)" }, { letter: "D", text: "All the above" }]), ["D"], "single", true, "All listed components can exhibit data remanence after deletion or erasure.");
+    addQ(72, "Domain 2", "Which action is MOST effective to mitigate risks associated with data remanence?", opts([{ letter: "A", text: "Regularly updating antivirus software" }, { letter: "B", text: "Frequent password changes" }, { letter: "C", text: "Using data wiping techniques that overwrite storage media multiple times" }, { letter: "D", text: "Restricting access based on user roles" }]), ["C"], "single", true, "Secure data wiping techniques that overwrite media multiple times mitigate data remanence.");
+    addQ(81, "Domain 2", "Generally speaking, who or what provides link encryption?", opts([{ letter: "A", text: "Users" }, { letter: "B", text: "Certain software" }, { letter: "C", text: "Service providers" }, { letter: "D", text: "The organization" }]), ["C"], "single", true, "Link encryption is typically provided by service providers at the physical or data link layer.");
+    addQ(84, "Domain 2", "Which form of encryption does a VPN typically use to protect data in transmission?", opts([{ letter: "A", text: "Symmetric encryption" }, { letter: "B", text: "Asymmetric encryption" }, { letter: "C", text: "Link encryption" }, { letter: "D", text: "End-to-end encryption" }]), ["D"], "single", true, "A VPN creates an encrypted tunnel providing end-to-end encryption between sender and receiver.");
+
+    // ========================= DOMAIN 3 =========================
+    addQ(85, "Domain 3", "Granting users only the permissions required to carry out a task(s) is known as what?", opts([{ letter: "A", text: "Need to know" }, { letter: "B", text: "Separation of duties" }, { letter: "C", text: "Defense in depth" }, { letter: "D", text: "Least privilege" }]), ["D"], "single", false, "Least privilege is granting the minimum permissions necessary for an explicit job function.");
+    addQ(86, "Domain 3", "The original defense-in-depth model defined all but which of the following as a layer of defense?", opts([{ letter: "A", text: "Data" }, { letter: "B", text: "Software" }, { letter: "C", text: "Application" }, { letter: "D", text: "Host" }]), ["B"], "single", false, "The other controls defined are internal network, perimeter, physical, and policies; software is synonymous with application.");
+    addQ(89, "Domain 3", "Which security engineering technical process provides security-related system data and information?", opts([{ letter: "A", text: "Business and mission analysis" }, { letter: "B", text: "System requirements definition" }, { letter: "C", text: "Design definition process" }, { letter: "D", text: "System analysis process" }]), ["D"], "single", false, "The system analysis process evaluates system data, performance, and security properties, providing security-related system data and information for decision-making.");
+    addQ(90, "Domain 3", "Which security-engineering enabling process defines security requirements used to assess personnel qualification and training?", opts([{ letter: "A", text: "Portfolio management" }, { letter: "B", text: "Human resource management (HRM)" }, { letter: "C", text: "Quality management" }, { letter: "D", text: "Knowledge management" }]), ["B"], "single", false, "Human resources management and IAM provisioning should work collaboratively on these requirements.");
+    addQ(93, "Domain 3", "Industrial Control Systems (ICS) use ruggedized controllers with specialized components for real-time control. Which components are these?", opts([{ letter: "A", text: "Programmable Logic Controllers (PLC)" }, { letter: "B", text: "SCADA" }, { letter: "C", text: "Distributed Control Systems (DCS)" }, { letter: "D", text: "None of these" }]), ["A"], "single", false, "PLCs use specialized hardware, firmware, and software for real-time control and monitoring.");
+    addQ(94, "Domain 3", "Which ICS component should an engineering team select for a wind farm project requiring robust real-time control in harsh environments?", opts([{ letter: "A", text: "PLC" }, { letter: "B", text: "SCADA" }, { letter: "C", text: "DCS" }, { letter: "D", text: "Remote Terminal Unit (RTU)" }]), ["A"], "single", false, "PLCs are ideal for controlling individual machines and are ruggedized for harsh environments.");
+    addQ(98, "Domain 3", "What encryption system, invented in 1882 by Frank Miller, is unbreakable?", opts([{ letter: "A", text: "The one-time pad" }, { letter: "B", text: "The Scytale Cipher" }, { letter: "C", text: "The ROT13 Cipher" }, { letter: "D", text: "The Vigenere Cipher" }]), ["A"], "single", false, "The one-time pad relies on a set of keys, one per sheet, with sender and recipient having matching pads.");
+    addQ(99, "Domain 3", "Asymmetric algorithms are known as trapdoor functions. What is a trapdoor function?", opts([{ letter: "A", text: "A potential weakness" }, { letter: "B", text: "A calculation easy in one direction but infeasible in reverse" }, { letter: "C", text: "A calculation easy in two directions" }, { letter: "D", text: "A maintenance backdoor for developers" }]), ["B"], "single", false, "Multiplying numbers is easy; finding factors of a large product is difficult without the trapdoor.");
+    addQ(103, "Domain 3", "What encryption should an online banking platform use for secure web-based transactions?", opts([{ letter: "A", text: "Symmetric key encryption" }, { letter: "B", text: "Digital signatures" }, { letter: "C", text: "Transport Layer Security (TLS)" }, { letter: "D", text: "One-time pad encryption" }]), ["C"], "single", false, "TLS is a cryptographic protocol designed for secure communication over a computer network.");
+    addQ(104, "Domain 3", "What feature allows authorized individuals to decrypt messages without the usual key under specific circumstances?", opts([{ letter: "A", text: "A symmetric key system" }, { letter: "B", text: "A trapdoor function" }, { letter: "C", text: "A hashing algorithm" }, { letter: "D", text: "A public-key infrastructure (PKI)" }]), ["B"], "single", false, "A trapdoor function allows easy computation in one direction but difficult reverse without special information.");
+    addQ(106, "Domain 3", "Which mathematical concept allows easy key computation in one direction but difficult inverse computation without specific knowledge?", opts([{ letter: "A", text: "Hash functions" }, { letter: "B", text: "Elliptic curve cryptography" }, { letter: "C", text: "Trapdoor functions" }, { letter: "D", text: "Symmetric encryption algorithms" }]), ["C"], "single", false, "Trapdoor functions, especially those involving discrete logarithms, are ideal for secure key exchanges.");
+    addQ(107, "Domain 3", "Which cryptographic operation is typically the fastest for processing plaintext input?", opts([{ letter: "A", text: "Asymmetric encryption using RSA 2048" }, { letter: "B", text: "Symmetric encryption with 128-bit key" }, { letter: "C", text: "Hashing using SHA-3" }, { letter: "D", text: "Asymmetric encryption using ECC 512-bit" }]), ["C"], "single", false, "Hashing does not process a key and is one-way, making it the fastest option.");
+    addQ(110, "Domain 3", "Which key should be used in a PKI operation to ensure proof of origin when transmitting a message?", opts([{ letter: "A", text: "The sender's public key" }, { letter: "B", text: "The sender's private key" }, { letter: "C", text: "The recipient's public key" }, { letter: "D", text: "The recipient's private key" }]), ["B"], "single", false, "Using the sender's private key provides assurance of origin to anyone with the sender's public key.");
+    addQ(111, "Domain 3", "What function does the Registration Authority (RA) serve in a Public Key Infrastructure (PKI)?", opts([{ letter: "A", text: "Creates and signs certificates" }, { letter: "B", text: "Tracks certificate revocations" }, { letter: "C", text: "Validates identification information from certificate requestors" }, { letter: "D", text: "Collects information for certificate inclusion" }]), ["C"], "single", false, "The RA verifies requestor information before the CA signs the certificate.");
+    addQ(112, "Domain 3", "Which asymmetric cryptographic system provides confidentiality and nonrepudiation?", opts([{ letter: "A", text: "RSA" }, { letter: "B", text: "Diffie-Hellman" }, { letter: "C", text: "Blowfish" }, { letter: "D", text: "AES" }]), ["A"], "single", false, "RSA offers integrity, confidentiality, and digital signing capabilities.");
+    addQ(115, "Domain 3", "Which cryptographic method is MOST effective for ensuring messages maintain integrity from sender to receiver?", opts([{ letter: "A", text: "AES symmetric encryption" }, { letter: "B", text: "HMAC with SHA-256" }, { letter: "C", text: "TLS" }, { letter: "D", text: "ECC key generation" }]), ["B"], "single", false, "HMAC with a secure hashing algorithm verifies both integrity and authenticity of a message.");
+    addQ(116, "Domain 3", "In which cryptanalytical technique does the attacker have access to decryption software and attempts to decrypt ciphertext to discover the key?", opts([{ letter: "A", text: "Known ciphertext attack" }, { letter: "B", text: "Ciphertext-only attack" }, { letter: "C", text: "Chosen ciphertext attack" }, { letter: "D", text: "Known plaintext attack" }]), ["C"], "single", false, "The goal is to find the relationship between ciphertext and plaintext to discover the key.");
+    addQ(119, "Domain 3", "The Uptime Institute's Tiered Classification System consists of four tiers. Which tier requires a concurrently maintainable site infrastructure?", opts([{ letter: "A", text: "Tier I" }, { letter: "B", text: "Tier II" }, { letter: "C", text: "Tier III" }, { letter: "D", text: "Tier IV" }]), ["C"], "single", false, "Tier III requires a concurrently maintainable site infrastructure.");
+    addQ(120, "Domain 3", "Which set of controls BEST meets the needs of a client who wants to prevent as many threats to site security as possible?", opts([{ letter: "A", text: "CCTV, RFID access, VESA fire detection" }, { letter: "B", text: "Personnel screening, RFID access, perimeter fencing" }, { letter: "C", text: "Glass-break sensors, CCTV, monitored alarm service" }, { letter: "D", text: "Personnel screening, CCTV, UPS protection" }]), ["B"], "single", false, "All controls in this response are preventative in nature.");
+    // Question-only from Domain 3
+    addQ(91, "Domain 3", "Which security model focuses on the movement of information throughout a system?", opts([{ letter: "A", text: "State machine model" }, { letter: "B", text: "Information flow model" }, { letter: "C", text: "Noninterference model" }, { letter: "D", text: "Ring model" }]), ["B"], "single", true, "The Information Flow Model directly controls the flow of information between subjects and objects.");
+    addQ(92, "Domain 3", "Kerckhoffs's Principal asserts that a cryptographic system will remain secure even if everything about it is public except which?", opts([{ letter: "A", text: "The algorithm" }, { letter: "B", text: "The process" }, { letter: "C", text: "The key" }, { letter: "D", text: "If everything is known, the system cannot be secure" }]), ["C"], "single", true, "Kerckhoffs's Principle: only the key must remain secret; the algorithm should be public.");
+    addQ(95, "Domain 3", "All the following are defined in ISO/IEC 17788 except which? (Cloud service categories)", opts([{ letter: "A", text: "Communications as a Service (CaaS)" }, { letter: "B", text: "Compute as a Service (CompaaS)" }, { letter: "C", text: "Network as a Service (NaaS)" }, { letter: "D", text: "Data Storage as a Service (DSaaS)" }]), ["B"], "single", true, "Compute as a Service is not a standard category defined in ISO/IEC 17788.");
+    addQ(105, "Domain 3", "Which technique is BEST for a spy to communicate covertly without arousing suspicion in a monitored environment?", opts([{ letter: "A", text: "Public-key cryptography" }, { letter: "B", text: "Steganography" }, { letter: "C", text: "VPN" }, { letter: "D", text: "AES" }]), ["B"], "single", true, "Steganography hides messages within non-suspicious carriers to conceal their existence.");
+    addQ(113, "Domain 3", "What is HAVAL?", opts([{ letter: "A", text: "128-bit message integrity checker" }, { letter: "B", text: "160-bit message integrity checker" }, { letter: "C", text: "Variable length output message integrity checker" }, { letter: "D", text: "A symmetrical encryption algorithm" }]), ["C"], "single", true, "HAVAL (Hash of Variable Length) produces hash outputs of variable lengths: 128, 160, 192, 224, or 256 bits.");
+    addQ(114, "Domain 3", "Which BEST describes a digital signature?", opts([{ letter: "A", text: "Symmetric encrypted plaintext encrypted with sender's private key" }, { letter: "B", text: "Symmetric encrypted plaintext encrypted with recipient's public key" }, { letter: "C", text: "Hash digest encrypted with recipient's public key" }, { letter: "D", text: "Hash digest encrypted with sender's private key" }]), ["D"], "single", true, "A digital signature is a hash digest of a message encrypted with the sender's private key.");
+    addQ(117, "Domain 3", "Which attacker method exploited Kerberos without compromising passwords or decrypting tickets?", opts([{ letter: "A", text: "Pass the Ticket attack" }, { letter: "B", text: "Pass the Hash attack" }, { letter: "C", text: "Replay attack" }, { letter: "D", text: "Man-in-the-middle attack" }]), ["A"], "single", true, "Pass the Ticket extracts valid Kerberos tickets and reuses them to impersonate users.");
+
+    // ========================= DOMAIN 4 =========================
+    addQ(124, "Domain 4", "As of 2024, there are how many public, root Domain Name Servers (DNS)?", opts([{ letter: "A", text: "13" }, { letter: "B", text: "50" }, { letter: "C", text: "500" }, { letter: "D", text: "1 million" }]), ["A"], "single", false, "DNS maintains a directory of zones with a hierarchical root represented by an administrative dot.");
+    addQ(125, "Domain 4", "Lightweight Directory Access Protocol (LDAP) attributes include all but one of the following?", opts([{ letter: "A", text: "Distinguished Name (DN)" }, { letter: "B", text: "Real Distinguished Name (RDN)" }, { letter: "C", text: "Common Name (CN)" }, { letter: "D", text: "Organizational Unit (OU)" }]), ["B"], "single", false, "RDN is Relative Distinguished Name; Real Distinguished Name is not a correct term.");
+    addQ(127, "Domain 4", "Which event is MOST likely causing intermittent access issues? Users report issues with LDAP authentication after deployment; complaints are not universal.", opts([{ letter: "A", text: "LDAP server experiencing sporadic downtime" }, { letter: "B", text: "Misconfiguration in user access privileges" }, { letter: "C", text: "Network congestion causing LDAP delays" }, { letter: "D", text: "Incorrect or outdated LDAP client configurations" }]), ["D"], "single", false, "Incorrect or outdated LDAP client configurations explain why only some users have issues.");
+    addQ(130, "Domain 4", "What protocol is used to manage multicast groups?", opts([{ letter: "A", text: "ICMP" }, { letter: "B", text: "TCP" }, { letter: "C", text: "IGMP" }, { letter: "D", text: "UDP" }]), ["C"], "single", false, "Internet Group Management Protocol (IGMP) creates and manages multicast groups.");
+    addQ(131, "Domain 4", "DORA describes the four steps to obtain an IP address. Which is not one of those steps?", opts([{ letter: "A", text: "Discover" }, { letter: "B", text: "Offer" }, { letter: "C", text: "Reply" }, { letter: "D", text: "Acknowledge" }]), ["C"], "single", false, "There is no Reply step; it is Request (DHCPREQUEST).");
+    addQ(134, "Domain 4", "What is the BEST solution for a legacy ICS using weak encryption that the vendor won't upgrade?", opts([{ letter: "A", text: "IPSec presentation layer, tunnel mode" }, { letter: "B", text: "IPSec network layer, tunnel mode" }, { letter: "C", text: "IPSec presentation layer, transport mode" }, { letter: "D", text: "IPSec network layer, transport mode" }]), ["D"], "single", false, "IPSec works at network layer; transport mode is appropriate for securing local network segment traffic.");
+    addQ(135, "Domain 4", "What information does a Layer 2 switch use to decide to filter or forward?", opts([{ letter: "A", text: "MAC address" }, { letter: "B", text: "IP address" }, { letter: "C", text: "Both" }, { letter: "D", text: "Neither" }]), ["A"], "single", false, "MAC address is the physical address used for Layer 2 switching decisions.");
+    addQ(138, "Domain 4", "Which type of fiber allows for data transmission of up to 80km (50 miles)?", opts([{ letter: "A", text: "Single mode" }, { letter: "B", text: "Multimode" }, { letter: "C", text: "Plastic optical" }, { letter: "D", text: "Unachievable distance" }]), ["A"], "single", false, "Single mode has a small diameter core that decreases light reflections within the cable.");
+    addQ(139, "Domain 4", "Which network topology provides a second ring for failover?", opts([{ letter: "A", text: "Ring" }, { letter: "B", text: "Fiber Distributed Data Interface (FDDI)" }, { letter: "C", text: "Tree" }, { letter: "D", text: "PAN" }]), ["B"], "single", false, "An FDDI network utilizes two rings that pass traffic in opposite directions.");
+    addQ(142, "Domain 4", "Which generation of cellular networking introduced support for Long Term Evolution (LTE) with speeds up to 100 Mbps?", opts([{ letter: "A", text: "2G" }, { letter: "B", text: "3G" }, { letter: "C", text: "4G" }, { letter: "D", text: "5G" }]), ["C"], "single", false, "LTE combines core network improvements with a new radio interface, increasing transmission speeds.");
+    addQ(143, "Domain 4", "In software-defined networking (SDN), what happens at the control plane?", opts([{ letter: "A", text: "Business applications are managed" }, { letter: "B", text: "Node functionality is managed" }, { letter: "C", text: "Network elements can be found" }, { letter: "D", text: "None of these" }]), ["B"], "single", false, "The control plane controls network functionality and programmability via southbound interfaces.");
+    addQ(144, "Domain 4", "What are the principal benefits of software defined networking (SDN)? (Select all that apply)", opts([{ letter: "A", text: "Better optimize network for individual applications" }, { letter: "B", text: "Reduces management cost" }, { letter: "C", text: "Creates more efficient layer 2 routing policies" }, { letter: "D", text: "Decouples management plane from infrastructure plane" }]), ["A", "B", "D"], "multiple", false, "SDN allows granular control, centralizes management, and decouples planes.");
+    // Question-only from Domain 4
+    addQ(126, "Domain 4", "Which issue is MOST likely causing intermittent external website access failures? Users receive 'website cannot be found' messages.", opts([{ letter: "A", text: "Web server is down" }, { letter: "B", text: "Malfunctioning switch" }, { letter: "C", text: "DNS server intermittently failing" }, { letter: "D", text: "DHCP issues" }]), ["C"], "single", true, "The symptom 'website cannot be found' indicates DNS resolution failure.");
+    addQ(133, "Domain 4", "Internet Key Exchange (IKE) uses which mechanism to securely exchange symmetric keys for AH or ESP?", opts([{ letter: "A", text: "RC4" }, { letter: "B", text: "Diffie-Hellman (DH)" }, { letter: "C", text: "AES" }, { letter: "D", text: "ElGamal" }]), ["B"], "single", true, "IKE uses Diffie-Hellman to securely establish shared symmetric keys over an insecure channel.");
+    addQ(136, "Domain 4", "Which layer of the OSI model provides reliable delivery of a datagram packet?", opts([{ letter: "A", text: "Application" }, { letter: "B", text: "Session" }, { letter: "C", text: "Transport" }, { letter: "D", text: "Network" }]), ["C"], "single", true, "The Transport Layer (Layer 4) is responsible for reliable delivery including segmentation and retransmission.");
+    addQ(145, "Domain 4", "A firewall rule blocks port 50 to 100. Which service will be blocked?", opts([{ letter: "A", text: "SMTP" }, { letter: "B", text: "DNS" }, { letter: "C", text: "POP3" }, { letter: "D", text: "IMAP" }]), ["B"], "single", true, "DNS uses port 53 (UDP/TCP), which falls within the 50-100 blocked range.");
+
+    // ========================= DOMAIN 5 =========================
+    addQ(146, "Domain 5", "Access control systems must first be able to identify which of the following?", opts([{ letter: "A", text: "People and objects" }, { letter: "B", text: "Systems and data" }, { letter: "C", text: "Subjects and data" }, { letter: "D", text: "Subjects and objects" }]), ["D"], "single", false, "Subjects are entities wanting access; objects are information assets or system resources.");
+    addQ(147, "Domain 5", "Which access control system can authorize/deny individual user ability and assign different privileges based on role?", opts([{ letter: "A", text: "Logical" }, { letter: "B", text: "Physical" }, { letter: "C", text: "Mandatory" }, { letter: "D", text: "Discretionary" }]), ["A"], "single", false, "These are characteristics of a logical access control system per FICAM.");
+    addQ(150, "Domain 5", "Within IAM, triple A (AAA) includes authentication, accounting, and what?", opts([{ letter: "A", text: "Access" }, { letter: "B", text: "Authorization" }, { letter: "C", text: "Acceptance" }, { letter: "D", text: "Acceptability" }]), ["B"], "single", false, "Authorization provides access to permitted resources after authentication.");
+    addQ(151, "Domain 5", "Multifactor authentication (MFA) uses which of the following?", opts([{ letter: "A", text: "A password" }, { letter: "B", text: "A token" }, { letter: "C", text: "A physical characteristic" }, { letter: "D", text: "Two or more pieces of different types of evidence" }]), ["D"], "single", false, "Using a password and biometrics is an example of MFA.");
+    addQ(154, "Domain 5", "Which AAA aspect is MOST likely causing 'Access denied' for a user who recently had their role changed?", opts([{ letter: "A", text: "Authentication - incorrect credentials" }, { letter: "B", text: "Authorization - mismatch between new role and permissions" }, { letter: "C", text: "Accounting - logging issues" }, { letter: "D", text: "Authentication - credentials not recognized after role change" }]), ["B"], "single", false, "The role change likely changed access permissions; 'Access denied' indicates authorization issue.");
+    addQ(155, "Domain 5", "When different organizations need to share common information, what solutions might be sought?", opts([{ letter: "A", text: "Federated identity management (FIM)" }, { letter: "B", text: "Credential management" }, { letter: "C", text: "A cloud" }, { letter: "D", text: "Shared identity stores" }]), ["A"], "single", false, "FIM allows users to log in by authenticating against one system in the federation.");
+    addQ(158, "Domain 5", "Which directory services are a cut-down version of the X.500 directory access protocol?", opts([{ letter: "A", text: "Active Directory (AD)" }, { letter: "B", text: "Novell Directory Service (NDS)" }, { letter: "C", text: "Lightweight Directory Access Protocol (LDAP)" }, { letter: "D", text: "X.509" }]), ["C"], "single", false, "LDAP is a lightweight version of X.500 directory access protocol.");
+    addQ(159, "Domain 5", "What function does a credential management system perform?", opts([{ letter: "A", text: "Repository for user/computer accounts" }, { letter: "B", text: "Binding between an authenticator and an identifier" }, { letter: "C", text: "Creating user accounts" }, { letter: "D", text: "Creating machine accounts" }]), ["B"], "single", false, "Credential management systems issue and manage credentials that bind authenticators to identifiers.");
+    addQ(162, "Domain 5", "What Kerberos component is responsible for creating and issuing access tokens to authenticated users?", opts([{ letter: "A", text: "Ticket Granting Ticket (TGT)" }, { letter: "B", text: "Key Distribution Center (KDC)" }, { letter: "C", text: "TGS" }, { letter: "D", text: "Active Directory (AD)" }]), ["C"], "single", false, "TGS creates and issues service tickets based on receiving a valid TGT.");
+    addQ(163, "Domain 5", "Which of the following is an example of an identity store?", opts([{ letter: "A", text: "Kerberos" }, { letter: "B", text: "LDAP" }, { letter: "C", text: "All the above" }, { letter: "D", text: "X.500" }]), ["C"], "single", false, "All options are identity stores; LDAP is a lightweight version of X.500.");
+    addQ(164, "Domain 5", "Which SAML component defines how attributes, authentication, and authorization are exchanged?", opts([{ letter: "A", text: "Profiles" }, { letter: "B", text: "Protocols" }, { letter: "C", text: "Bindings" }, { letter: "D", text: "Assertions" }]), ["D"], "single", false, "SAML Assertions contain user authorization status; the three types are authentication, attribute, and authorization.");
+    addQ(167, "Domain 5", "Which attack best describes exploiting Kerberos by creating a TGT with elevated privileges?", opts([{ letter: "A", text: "Cross-Site Scripting (XSS)" }, { letter: "B", text: "Brute-force password attack" }, { letter: "C", text: "Golden Ticket attack" }, { letter: "D", text: "DDoS attack on Kerberos server" }]), ["C"], "single", false, "Golden Ticket attacks compromise a KDC account and create TGTs with extensive privileges.");
+    // Question-only from Domain 5
+    addQ(152, "Domain 5", "What is the Crossover Error Rate (CER)?", opts([{ letter: "A", text: "More false acceptances than rejections" }, { letter: "B", text: "More rejections than acceptances" }, { letter: "C", text: "False acceptances and rejections are in balance" }, { letter: "D", text: "Any process where FAR equals FRR" }]), ["C"], "single", true, "CER (Equal Error Rate) is where False Acceptance Rate equals False Rejection Rate in biometrics.");
+    addQ(153, "Domain 5", "Which identity management approach provides near real-time account creation for temporary external consultants?", opts([{ letter: "A", text: "Pre-staging" }, { letter: "B", text: "Just-in-time" }, { letter: "C", text: "Self-provisioning" }, { letter: "D", text: "Credential management" }]), ["B"], "single", true, "Just-in-time provisioning creates accounts at the moment they are needed.");
+    addQ(156, "Domain 5", "Federated identity management uses SAML and which other standard?", opts([{ letter: "A", text: "Kerberos" }, { letter: "B", text: "OpenID Connect" }, { letter: "C", text: "OAuth" }, { letter: "D", text: "PAP" }]), ["B"], "single", true, "The two primary standards are SAML (human-readable) and OpenID Connect (machine-readable).");
+    addQ(165, "Domain 5", "What does a user present to request a service ticket in Kerberos?", opts([{ letter: "A", text: "BGT" }, { letter: "B", text: "KGT" }, { letter: "C", text: "TGT" }, { letter: "D", text: "JWT" }]), ["C"], "single", true, "The user presents the Ticket Granting Ticket (TGT) to request a service ticket.");
+    addQ(166, "Domain 5", "Which protocols are associated with SAML? Select all that apply.", opts([{ letter: "A", text: "XML" }, { letter: "B", text: "JSON" }, { letter: "C", text: "HTTP" }, { letter: "D", text: "SOAP" }]), ["A", "C", "D"], "multiple", true, "SAML is XML-based and uses SOAP and HTTP bindings; JSON is used by OpenID Connect.");
+
+    // ========================= DOMAIN 6 =========================
+    addQ(170, "Domain 6", "Which activity is MOST critical for SOC2 Type II compliance to demonstrate processing integrity?", opts([{ letter: "A", text: "Frequent penetration tests" }, { letter: "B", text: "Reviewing data retention policies" }, { letter: "C", text: "Implementing and reviewing detailed logs of all system processing activities" }, { letter: "D", text: "Annual data protection training" }]), ["C"], "single", false, "Processing integrity requires logs showing processing is complete, valid, accurate, timely, and authorized.");
+    addQ(173, "Domain 6", "What report would a potential client need to understand that developers remain properly compensated to support security-as-a-service?", opts([{ letter: "A", text: "SOC 2 Type II" }, { letter: "B", text: "SOC 2 Type I" }, { letter: "C", text: "SOC 1 Type II" }, { letter: "D", text: "SOC 1 Type I" }]), ["C"], "single", false, "SOC 1 Type II reflects effectiveness of internal controls over financial reporting (ICFR).");
+    addQ(174, "Domain 6", "Which is NOT one of the four steps carried out during an internal assessment?", opts([{ letter: "A", text: "Chartering" }, { letter: "B", text: "Testing" }, { letter: "C", text: "Reporting" }, { letter: "D", text: "Correction" }]), ["D"], "single", false, "Remediation activities proceed after the internal assessment, not as a step of the assessment.");
+    addQ(178, "Domain 6", "SOC 2 defines five Trust Services Criteria. Which is NOT included?", opts([{ letter: "A", text: "Security" }, { letter: "B", text: "Authentication" }, { letter: "C", text: "Privacy" }, { letter: "D", text: "Process integrity" }]), ["B"], "single", false, "The five criteria are Security, Availability, Confidentiality, Privacy, and Processing Integrity.");
+    addQ(179, "Domain 6", "Which scenario BEST illustrates penetration testing versus vulnerability assessment?", opts([{ letter: "A", text: "Scanning network for known vulnerabilities" }, { letter: "B", text: "Ethical hackers simulate attack to exploit weaknesses" }, { letter: "C", text: "Regular updates and patching" }, { letter: "D", text: "Automated monitoring for unusual activity" }]), ["B"], "single", false, "Penetration testing actively attempts to exploit vulnerabilities to understand real-world effectiveness.");
+    addQ(182, "Domain 6", "Tests are generally categorized as compliance tests or ______ tests.", opts([{ letter: "A", text: "Substantive" }, { letter: "B", text: "Substantial" }, { letter: "C", text: "Informative" }, { letter: "D", text: "General" }]), ["A"], "single", false, "Substantive tests evaluate proper operation; compliance tests determine if controls exist and operate properly.");
+    addQ(183, "Domain 6", "Which publication includes management review activities: exemptions, previous reviews, ongoing metrics, audit results, security objectives met?", opts([{ letter: "A", text: "ISO/IEC 27001" }, { letter: "B", text: "NIST" }, { letter: "C", text: "ITIL" }, { letter: "D", text: "All the above" }]), ["D"], "single", false, "All these frameworks include periodic management reviews to ensure security processes function as intended.");
+    // Question-only from Domain 6
+    addQ(175, "Domain 6", "If testing plans include both internal and external testing, in what order should tests be performed?", opts([{ letter: "A", text: "Internal testing first" }, { letter: "B", text: "Based on cost/benefit analysis" }, { letter: "C", text: "External testing always first" }, { letter: "D", text: "Simultaneously" }]), ["A"], "single", true, "There is no mandatory order; the sequence depends on specific goals, risk profile, and resources.");
+    addQ(176, "Domain 6", "Which testing informs an organization of vulnerabilities exploitable by a bad actor with little or no system information?", opts([{ letter: "A", text: "Internal" }, { letter: "B", text: "Horizontal" }, { letter: "C", text: "External" }, { letter: "D", text: "White box" }]), ["C"], "single", true, "External testing simulates an attacker from outside with little to no inside knowledge.");
+    addQ(177, "Domain 6", "Which audit type evaluates against compliance requirements performed by individuals outside the organization?", opts([{ letter: "A", text: "Formal" }, { letter: "B", text: "Informal" }, { letter: "C", text: "Semiformal" }, { letter: "D", text: "Either formal or informal" }]), ["A"], "single", true, "External audits against compliance requirements are formal audits with structured methodologies.");
+    addQ(184, "Domain 6", "Which can be likened to peering into the future?", opts([{ letter: "A", text: "KPIs" }, { letter: "B", text: "KRIs" }, { letter: "C", text: "Log files" }, { letter: "D", text: "Assessment programs" }]), ["B"], "single", true, "Key Risk Indicators (KRIs) are forward-looking metrics that provide early warning signals.");
+    addQ(185, "Domain 6", "What is a POA&M?", opts([{ letter: "A", text: "Plan of Activities and Mediation" }, { letter: "B", text: "Process of Actions and Methods" }, { letter: "C", text: "Principle of Activities and Milestones" }, { letter: "D", text: "Plan of Action and Milestones" }]), ["D"], "single", true, "POA&M stands for Plan of Action and Milestones, a management tool for security remediation.");
+    addQ(186, "Domain 6", "Which activity is not part of the chartering process during internal assessment?", opts([{ letter: "A", text: "Management's commitment" }, { letter: "B", text: "Scoping the assessment" }, { letter: "C", text: "Tailoring the solutions" }, { letter: "D", text: "Risk assessment" }]), ["C"], "single", true, "Tailoring solutions occurs in the remediation phase after assessment findings are known.");
+    addQ(187, "Domain 6", "What document should a project manager develop to guide remediation under US government security standards?", opts([{ letter: "A", text: "Plan of Activities and Mediation" }, { letter: "B", text: "Process of Actions and Methods" }, { letter: "C", text: "Principle of Activities and Milestones" }, { letter: "D", text: "Plan of Action and Milestones" }]), ["D"], "single", true, "Under NIST RMF and FedRAMP, the formal document is the POA&M (Plan of Action and Milestones).");
+
+    // ========================= DOMAIN 7 =========================
+    addQ(191, "Domain 7", "Forensic investigation principle excludes which of the following?", opts([{ letter: "A", text: "Ethical walls compartmentalizing investigation" }, { letter: "B", text: "Legal nondisclosure requirements" }, { letter: "C", text: "Evidence handling and scene control" }, { letter: "D", text: "Suspending rights of individuals during investigation" }]), ["D"], "single", false, "In most jurisdictions, anyone suspected is presumed innocent; individual rights must be protected.");
+    addQ(192, "Domain 7", "Which action does NOT maintain forensic investigation integrity?", opts([{ letter: "A", text: "Strict access controls to investigation data" }, { letter: "B", text: "Company-wide email informing all employees about ongoing investigation" }, { letter: "C", text: "Compliance with laws for evidence admissibility" }, { letter: "D", text: "Suspending employee rights without proper authorization" }]), ["D"], "single", false, "Violating employee rights can compromise the investigation and lead to legal repercussions.");
+    addQ(195, "Domain 7", "Which item should be included in digital artifacts for corporate espionage investigation?", opts([{ letter: "A", text: "General IT policies manual" }, { letter: "B", text: "Timestamps of file modifications on suspect's computer" }, { letter: "C", text: "Financial performance reports" }, { letter: "D", text: "Personal opinions about suspected individual" }]), ["B"], "single", false, "Timestamps provide insights into when files were accessed or altered, critical for timeline establishment.");
+    addQ(196, "Domain 7", "What network-attached device monitors and automatically mitigates incidents when malicious activity is detected?", opts([{ letter: "A", text: "Hub" }, { letter: "B", text: "IDS" }, { letter: "C", text: "Concentrator" }, { letter: "D", text: "IPS" }]), ["D"], "single", false, "Intrusion Prevention Systems (IPS) monitor, log, alert, and take further action.");
+    addQ(199, "Domain 7", "How do indicators differ from precursors for continuity of operations?", opts([{ letter: "A", text: "Precursors suggest possible incident; indicators signal incident in progress" }, { letter: "B", text: "Indicators suggest possible incident; precursors signal ongoing" }, { letter: "C", text: "No difference" }, { letter: "D", text: "Precursors used in DR, indicators in IR" }]), ["A"], "single", false, "Political tension may be a precursor to violence; alarm activation indicates a break-in.");
+    addQ(200, "Domain 7", "What is threat intelligence?", opts([{ letter: "A", text: "Structured process of identifying organizational threats" }, { letter: "B", text: "Structured process to manage risk" }, { letter: "C", text: "Structured process to measure business impact" }, { letter: "D", text: "All the above" }]), ["A"], "single", false, "Threat intelligence feeds into risk management and business impact analysis.");
+    addQ(203, "Domain 7", "Which ISO standard addresses assuring suitability and adequacy of incident investigation methods?", opts([{ letter: "A", text: "ISO/IEC 27037" }, { letter: "B", text: "ISO/IEC 27041" }, { letter: "C", text: "ISO/IEC 27042" }, { letter: "D", text: "ISO/IEC 27043" }]), ["B"], "single", false, "ISO/IEC 27041 addresses suitability and adequacy of incident investigation methods.");
+    addQ(204, "Domain 7", "During which NIST forensic cycle phase should forensic readiness be addressed?", opts([{ letter: "A", text: "Collection" }, { letter: "B", text: "Examination" }, { letter: "C", text: "Analysis" }, { letter: "D", text: "Reporting" }]), ["A"], "single", false, "During collection, the incident response team secures the scene and identifies evidence sources.");
+    addQ(206, "Domain 7", "Which action best aligns with the NIST forensic cycle for insider data access investigation?", opts([{ letter: "A", text: "Disconnect computer, clone drive, examine cloned drive" }, { letter: "B", text: "Conduct interviews, selectively collect data based on insights" }, { letter: "C", text: "Implement monitoring, retrospectively analyze traffic" }, { letter: "D", text: "Predefined protocol: secure, collect, examine, analyze, document" }]), ["D"], "single", false, "This follows preparation, collection, examination, analysis, and structured documentation.");
+    addQ(210, "Domain 7", "Which detection mechanism looks for known attack patterns in IDS/IPS systems?", opts([{ letter: "A", text: "Pattern matching" }, { letter: "B", text: "Signature matching" }, { letter: "C", text: "Deviation" }, { letter: "D", text: "Heuristics" }]), ["B"], "single", false, "Signature matching looks for known attack patterns.");
+    addQ(211, "Domain 7", "What do two individuals with Level 3 clearance NOT have regarding each other's projects?", opts([{ letter: "A", text: "Least privilege" }, { letter: "B", text: "Need to know" }, { letter: "C", text: "Level of clearance" }, { letter: "D", text: "All the above" }]), ["B"], "single", false, "Need to know requires job description relevance; clearance level alone is not sufficient.");
+    addQ(214, "Domain 7", "Which approach aligns BEST with the 3-2-1 backup strategy?", opts([{ letter: "A", text: "Local server + external hard drive + cloud storage" }, { letter: "B", text: "Three copies in local data center" }, { letter: "C", text: "Cloud two copies + local server" }, { letter: "D", text: "Two tapes on-site + main server" }]), ["A"], "single", false, "3 copies, 2 media types, 1 off-site copy matches the 3-2-1 strategy.");
+    addQ(215, "Domain 7", "What is continuous data protection (CDP)?", opts([{ letter: "A", text: "Differential backup" }, { letter: "B", text: "Incremental backup" }, { letter: "C", text: "A type of snapshotting" }, { letter: "D", text: "Full backup" }]), ["C"], "single", false, "With CDP, every time a data block changes, the block is snapshotted.");
+    addQ(218, "Domain 7", "What type of recovery option is an agreement to share operating locations in a disaster?", opts([{ letter: "A", text: "Cloud" }, { letter: "B", text: "Joint operating agreement (JOA)" }, { letter: "C", text: "Hot site" }, { letter: "D", text: "Mirrored site" }]), ["B"], "single", false, "JOA and MOU are contractual techniques for sharing locations if a partner's environment is disrupted.");
+    addQ(219, "Domain 7", "Which high availability element provides a redundancy solution for data?", opts([{ letter: "A", text: "UPS" }, { letter: "B", text: "Clustering" }, { letter: "C", text: "Spare components" }, { letter: "D", text: "RAID" }]), ["D"], "single", false, "RAID provides failover to protect data in the event of a single disk failure.");
+    addQ(221, "Domain 7", "Is using smoke grenades during a building evacuation test a good idea?", opts([{ letter: "A", text: "Yes" }, { letter: "B", text: "No" }, { letter: "C", text: "Possibly, but needs careful planning and execution" }, { letter: "D", text: "Possibly, if it increases morale" }]), ["C"], "single", false, "Simulations need realism but introduce additional risk that must be carefully managed.");
+    // Question-only from Domain 7
+    addQ(193, "Domain 7", "How should digital forensics team use digital signatures to maintain chain of custody?", opts([{ letter: "A", text: "Store signed file on network drive accessible to all" }, { letter: "B", text: "Generate signature, document in chain of custody with restricted access" }, { letter: "C", text: "Email file to all team members for individual signatures" }, { letter: "D", text: "Upload to public cloud for external consultants" }]), ["B"], "single", true, "Best practice: create hash immediately, document in chain of custody, restrict access.");
+    addQ(194, "Domain 7", "During forensic investigation, which would be considered an artifact?", opts([{ letter: "A", text: "Furniture" }, { letter: "B", text: "Laptops" }, { letter: "C", text: "Printed documents" }, { letter: "D", text: "All the above" }]), ["D"], "single", true, "Artifacts include any item that may contain potential evidence, physical or digital.");
+    addQ(201, "Domain 7", "What is MOST effective for threat hunting when server communicates with known C2 server but antivirus shows clean?", opts([{ letter: "A", text: "Run full antivirus scan" }, { letter: "B", text: "Analyze network traffic logs for data exfiltration, investigate config changes" }, { letter: "C", text: "Isolate server immediately" }, { letter: "D", text: "Notify law enforcement before action" }]), ["B"], "single", true, "Threat hunting advances by gathering evidence on exfiltration patterns and persistence mechanisms.");
+    addQ(202, "Domain 7", "What is meant by separation of duties (SoD)?", opts([{ letter: "A", text: "Lowest level of permissions" }, { letter: "B", text: "Restricting access based on more than role" }, { letter: "C", text: "Restricting an individual from fully completing a trusted process" }, { letter: "D", text: "Periodically swapping job roles" }]), ["C"], "single", true, "SoD divides critical tasks among multiple individuals to prevent fraud and abuse.");
+    addQ(209, "Domain 7", "Mitigating an attack involves two logically separate tasks: eradication and _____.", opts([{ letter: "A", text: "Identification" }, { letter: "B", text: "Containment" }, { letter: "C", text: "Remediation" }, { letter: "D", text: "Recovery" }]), ["D"], "single", true, "NIST Incident Response pairs Eradication with Recovery in the third phase.");
+    addQ(212, "Domain 7", "ITIL distinguishes changes based on urgency. Which is NOT one of those levels?", opts([{ letter: "A", text: "Standard" }, { letter: "B", text: "Critical" }, { letter: "C", text: "Normal" }, { letter: "D", text: "Emergency" }]), ["B"], "single", true, "ITIL categories: Standard, Normal, and Emergency. 'Critical' is not a change type.");
+    addQ(213, "Domain 7", "What is typically used to validate the integrity of a backup?", opts([{ letter: "A", text: "Compare size of original to backup" }, { letter: "B", text: "Some form of integrity check" }, { letter: "C", text: "Algorithm from backup manufacturer" }, { letter: "D", text: "Restoration to different location then integrity check" }]), ["D"], "single", true, "The definitive method is performing an actual test restoration to a different location and verifying.");
+    addQ(220, "Domain 7", "What is BEST for a hospital with critical systems in an area prone to power outages?", opts([{ letter: "A", text: "Basic UPS for entire hospital" }, { letter: "B", text: "Advanced UPS with scalable runtime for critical systems only" }, { letter: "C", text: "UPS for EHR only, generators for others" }, { letter: "D", text: "Multi-layered: UPS for all critical systems and backup generators for entire hospital" }]), ["D"], "single", true, "Healthcare requires maximum availability: UPS for instantaneous protection plus generators for extended outages.");
+
+    // ========================= DOMAIN 8 =========================
+    addQ(224, "Domain 8", "The Software Engineering Institute's CMMI focuses on which of the following?", opts([{ letter: "A", text: "Software development methodologies" }, { letter: "B", text: "Systems integration" }, { letter: "C", text: "Process management" }, { letter: "D", text: "Software testing and evaluation" }]), ["C"], "single", false, "SW-CMMI is a process improvement methodology for organizations to mature to better levels.");
+    addQ(225, "Domain 8", "Which CMM level defines processes as controlled using quantitative techniques?", opts([{ letter: "A", text: "Repeatable" }, { letter: "B", text: "Defined" }, { letter: "C", text: "Managed" }, { letter: "D", text: "Optimizing" }]), ["C"], "single", false, "Level 4 in CMMI is quantitatively managed.");
+    addQ(228, "Domain 8", "When thinking about malware, is a hoax dangerous?", opts([{ letter: "A", text: "Yes, always" }, { letter: "B", text: "No, never" }, { letter: "C", text: "Sometimes" }, { letter: "D", text: "Both A and B" }]), ["C"], "single", false, "Hoaxes usually warn about non-existent viruses and instruct users to delete files or forward warnings.");
+    addQ(229, "Domain 8", "APT is another name for which of the following?", opts([{ letter: "A", text: "Class of trojans" }, { letter: "B", text: "Class of viruses" }, { letter: "C", text: "Class of worms" }, { letter: "D", text: "Multidimensional attacks" }]), ["D"], "single", false, "APT combines viruses, trojans, worms, and rootkits into multidimensional attacks.");
+    addQ(232, "Domain 8", "Which attack allows an authorized user to obtain more information from a database than intended?", opts([{ letter: "A", text: "Bypass" }, { letter: "B", text: "Inference" }, { letter: "C", text: "Aggregation" }, { letter: "D", text: "Aggregation and inference combined" }]), ["D"], "single", false, "Combining pieces from disparate sources may produce unintended situational intelligence.");
+    addQ(233, "Domain 8", "When considering databases, what is a 'deadly embrace'?", opts([{ letter: "A", text: "Data contamination" }, { letter: "B", text: "A deadlock" }, { letter: "C", text: "A DoS" }, { letter: "D", text: "None the above" }]), ["B"], "single", false, "A deadlock occurs when two processes each hold resources the other needs, preventing completion.");
+    addQ(236, "Domain 8", "Which SQL language concept is used by DBAs to establish and control access to data?", opts([{ letter: "A", text: "DCL" }, { letter: "B", text: "DML" }, { letter: "C", text: "DDL" }, { letter: "D", text: "DTL" }]), ["A"], "single", false, "Data Control Language (DCL) is used to establish and control access to data.");
+    addQ(237, "Domain 8", "Which is not a way to handle management of complex software sets?", opts([{ letter: "A", text: "Code reuse" }, { letter: "B", text: "Reforming" }, { letter: "C", text: "Refactoring" }, { letter: "D", text: "Data modeling" }]), ["B"], "single", false, "Reforming does not exist as a software management technique in this context.");
+    addQ(240, "Domain 8", "Database models need security controls, multiuser sharing, fault tolerance, recovery, and what else?", opts([{ letter: "A", text: "Transaction persistence" }, { letter: "B", text: "Ability to back up data" }, { letter: "C", text: "Different user levels" }, { letter: "D", text: "Ability to survive hardware failure" }]), ["A"], "single", false, "Transaction persistence ensures database state is consistent after transactions.");
+    // Question-only from Domain 8
+    addQ(230, "Domain 8", "Which virus does not actually touch the target file but takes advantage of precedence within the system?", opts([{ letter: "A", text: "Multipartite" }, { letter: "B", text: "Boot sector infector" }, { letter: "C", text: "Companion" }, { letter: "D", text: "Script" }]), ["C"], "single", true, "Companion virus creates a separate file that executes instead of the legitimate program due to path precedence.");
+    addQ(231, "Domain 8", "Software design errors causing malfunction when attacker provides unvalidated information are best described as?", opts([{ letter: "A", text: "Buffer overflow" }, { letter: "B", text: "Race condition" }, { letter: "C", text: "SQL" }, { letter: "D", text: "Malformed input" }]), ["D"], "single", true, "Malformed input vulnerabilities cover all cases of unvalidated input causing unexpected behavior.");
+    addQ(239, "Domain 8", "Which would not be classified as a nonfunctional requirement?", opts([{ letter: "A", text: "Performance" }, { letter: "B", text: "Scalability" }, { letter: "C", text: "Usability" }, { letter: "D", text: "They are all examples of nonfunctional requirements" }]), ["D"], "single", true, "Performance, scalability, and usability are all classic nonfunctional requirements.");
+
+    // State management
+    let userAnswers = new Array(QUESTIONS_DATA.length).fill(null).map(() => []);
+    let feedbackVisible = new Array(QUESTIONS_DATA.length).fill(false);
+    let isSubmitted = false;
+    let questionResults = new Array(QUESTIONS_DATA.length).fill(null);
+
+    // Helper to check if a question is correctly answered
+    function isQuestionCorrect(qIdx) {
+      const q = QUESTIONS_DATA[qIdx];
+      const selected = userAnswers[qIdx] || [];
+      const correctSet = new Set(q.correct);
+      return selected.length === q.correct.length && selected.every(l => correctSet.has(l));
+    }
+
+    function evaluateAllQuestions() {
+      const results = [];
+      for (let i = 0; i < QUESTIONS_DATA.length; i++) {
+        results.push({
+          isCorrect: isQuestionCorrect(i),
+          hasAnswer: (userAnswers[i] && userAnswers[i].length > 0)
+        });
+      }
+      return results;
+    }
+
+    function computeScore() {
+      let total = 0;
+      for (let i = 0; i < QUESTIONS_DATA.length; i++) {
+        if (isQuestionCorrect(i)) total++;
+      }
+      return total;
+    }
+
+    function updateStats() {
+      const total = QUESTIONS_DATA.length;
+      const answered = userAnswers.filter(a => a && a.length > 0).length;
+      const score = isSubmitted ? computeScore() : 0;
+      document.getElementById('totalCount').innerText = total;
+      document.getElementById('answeredCount').innerText = answered;
+      document.getElementById('scoreValue').innerText = score;
+      document.getElementById('totalPossible').innerText = total;
+      if (isSubmitted) {
+        document.getElementById('finalScoreMsg').innerHTML = `🏆 ${score} / ${total} (${Math.round(score / total * 100)}%)`;
+      } else {
+        document.getElementById('finalScoreMsg').innerHTML = `— / ${total}`;
+      }
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById('questionsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      QUESTIONS_DATA.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = 'quiz-card';
+        
+        // Add submitted result styling
+        if (isSubmitted) {
+          const isCorrect = questionResults[idx]?.isCorrect;
+          if (isCorrect === true) card.classList.add('submitted-correct');
+          else if (isCorrect === false) card.classList.add('submitted-wrong');
+        }
+        
+        const qHeader = document.createElement('div');
+        qHeader.className = 'question-header';
+        
+        // Build result indicator for submitted state
+        let resultIndicator = '';
+        if (isSubmitted) {
+          const isCorrect = questionResults[idx]?.isCorrect;
+          const hasAnswer = questionResults[idx]?.hasAnswer;
+          if (isCorrect === true) {
+            resultIndicator = '<span class="result-indicator result-correct">✓ Correct</span>';
+          } else if (isCorrect === false) {
+            resultIndicator = '<span class="result-indicator result-wrong">✗ Incorrect</span>';
+          } else if (!hasAnswer) {
+            resultIndicator = '<span class="result-indicator result-unanswered">⚠ Unanswered</span>';
+          }
+        }
+        
+        qHeader.innerHTML = `<div class="q-meta"><span class="domain-tag">${q.domain}</span><span class="q-type">${q.type === 'multiple' ? '✅ Multiple answers' : '⚪ Single choice'}</span></div><div>Q${idx + 1}${resultIndicator}</div>`;
+        
+        const qTextDiv = document.createElement('div');
+        qTextDiv.className = 'question-text';
+        if (q.isQuestionOnly) qTextDiv.classList.add('question-only-mode');
+        qTextDiv.innerHTML = `<strong>${q.text}</strong>`;
+        
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options-area';
+        
+        q.options.forEach(opt => {
+          const row = document.createElement('div');
+          row.className = 'option-row';
+          if (isSubmitted) row.classList.add('disabled-option');
+          
+          const input = document.createElement('input');
+          input.type = q.type === 'multiple' ? 'checkbox' : 'radio';
+          input.name = `q${idx}`;
+          input.value = opt.letter;
+          input.checked = userAnswers[idx]?.includes(opt.letter) || false;
+          if (isSubmitted) input.disabled = true;
+          
+          if (!isSubmitted) {
+            input.addEventListener('change', (e) => {
+              updateAnswer(idx, opt.letter, e.target.checked, q.type);
+            });
+          }
+          
+          const label = document.createElement('label');
+          label.innerHTML = `<strong>${opt.letter}.</strong> ${opt.text}`;
+          row.appendChild(input);
+          row.appendChild(label);
+          optionsDiv.appendChild(row);
+        });
+        
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.className = 'feedback-area';
+        feedbackDiv.id = `fb-${idx}`;
+        
+        // Enhanced feedback for submitted state
+        if (isSubmitted && !questionResults[idx]?.isCorrect && questionResults[idx]?.hasAnswer) {
+          feedbackDiv.innerHTML = `<strong>📘 Correct answer(s):</strong> ${q.correct.join(', ')}<br><strong>Explanation:</strong> ${q.feedback}`;
+        } else {
+          feedbackDiv.innerHTML = `<strong>📘 Explanation:</strong> ${q.feedback}`;
+        }
+        
+        const actionDiv = document.createElement('div');
+        actionDiv.className = 'action-buttons';
+        
+        const checkBtn = document.createElement('button');
+        checkBtn.innerText = '🔍 Check Answer';
+        if (!isSubmitted) {
+          checkBtn.classList.add('primary');
+          checkBtn.addEventListener('click', () => showFeedbackForQuestion(idx));
+        } else {
+          checkBtn.disabled = true;
+          checkBtn.style.opacity = '0.5';
+          checkBtn.style.cursor = 'not-allowed';
+        }
+        
+        const clearBtn = document.createElement('button');
+        clearBtn.innerText = '✖ Clear answers';
+        if (!isSubmitted) {
+          clearBtn.addEventListener('click', () => clearUserAnswers(idx));
+        } else {
+          clearBtn.disabled = true;
+          clearBtn.style.opacity = '0.5';
+          clearBtn.style.cursor = 'not-allowed';
+        }
+        
+        actionDiv.appendChild(checkBtn);
+        actionDiv.appendChild(clearBtn);
+        card.appendChild(qHeader);
+        card.appendChild(qTextDiv);
+        card.appendChild(optionsDiv);
+        card.appendChild(feedbackDiv);
+        card.appendChild(actionDiv);
+        container.appendChild(card);
+        
+        if (feedbackVisible[idx] && !isSubmitted) feedbackDiv.classList.add('show-feedback');
+      });
+      updateStats();
+    }
+
+    function updateAnswer(qIdx, letter, isChecked, type) {
+      if (isSubmitted) return;
+      
+      let current = [...(userAnswers[qIdx] || [])];
+      if (type === 'single') {
+        current = isChecked ? [letter] : [];
+      } else {
+        if (isChecked && !current.includes(letter)) current.push(letter);
+        else if (!isChecked) current = current.filter(l => l !== letter);
+      }
+      userAnswers[qIdx] = current;
+      
+      if (feedbackVisible[qIdx]) {
+        feedbackVisible[qIdx] = false;
+        const fbDiv = document.getElementById(`fb-${qIdx}`);
+        if (fbDiv) fbDiv.classList.remove('show-feedback');
+      }
+      updateStats();
+      
+      const container = document.getElementById('questionsContainer');
+      if (container) {
+        const inputs = container.querySelectorAll(`input[name="q${qIdx}"]`);
+        inputs.forEach(inp => {
+          inp.checked = userAnswers[qIdx].includes(inp.value);
+        });
+      }
+    }
+
+    function showFeedbackForQuestion(idx) {
+      if (isSubmitted) return;
+      feedbackVisible[idx] = true;
+      const fbDiv = document.getElementById(`fb-${idx}`);
+      if (fbDiv) fbDiv.classList.add('show-feedback');
+    }
+
+    function clearUserAnswers(idx) {
+      if (isSubmitted) return;
+      userAnswers[idx] = [];
+      feedbackVisible[idx] = false;
+      renderQuestions();
+    }
+
+    function submitPaper() {
+      if (isSubmitted) {
+        // If already submitted, confirm before resetting to allow retake
+        if (confirm('Paper has already been submitted. Do you want to reset and take the exam again?')) {
+          resetAll();
+        }
+        return;
+      }
+      
+      // Check if any answers are selected
+      const totalAnswered = userAnswers.filter(a => a && a.length > 0).length;
+      if (totalAnswered === 0) {
+        if (confirm('No answers selected. Are you sure you want to submit an empty paper?')) {
+          isSubmitted = true;
+          questionResults = evaluateAllQuestions();
+          renderQuestions();
+        }
+        return;
+      }
+      
+      isSubmitted = true;
+      questionResults = evaluateAllQuestions();
+      const score = computeScore();
+      const total = QUESTIONS_DATA.length;
+      const percentage = Math.round(score / total * 100);
+      
+      // Show submission results
+      setTimeout(() => {
+        alert(`Paper Submitted!\n\nYour Score: ${score}/${total} (${percentage}%)\n\n${percentage >= 70 ? '🎉 Congratulations! You passed!' : '📚 Keep studying and try again!'}`);
+      }, 100);
+      
+      renderQuestions();
+      
+      // Change submit button text
+      const submitBtn = document.getElementById('submitPaperBtn');
+      if (submitBtn) {
+        submitBtn.textContent = '📝 Retake Exam';
+        submitBtn.classList.remove('success');
+        submitBtn.classList.add('warning');
+      }
+    }
+
+    function resetAll() {
+      userAnswers = new Array(QUESTIONS_DATA.length).fill(null).map(() => []);
+      feedbackVisible.fill(false);
+      isSubmitted = false;
+      questionResults.fill(null);
+      renderQuestions();
+      
+      const submitBtn = document.getElementById('submitPaperBtn');
+      if (submitBtn) {
+        submitBtn.textContent = '📝 Submit Paper';
+        submitBtn.classList.remove('warning');
+        submitBtn.classList.add('success');
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Event listeners
+    document.getElementById('submitPaperBtn')?.addEventListener('click', submitPaper);
+    document.getElementById('globalResetBtn')?.addEventListener('click', resetAll);
+    
+    renderQuestions();
+  </script>
+</body>
+
+</html>

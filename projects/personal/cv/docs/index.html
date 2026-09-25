@@ -1,0 +1,747 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description"
+        content="Mak Chun Chi - Analyst Programmer Portfolio with 6+ years full-stack experience, specializing in earthquake information systems for Hong Kong Observatory.">
+    <title>Mak Chun Chi · Analyst Programmer Portfolio</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #1a2c3e;
+            padding: 2rem 1.5rem;
+        }
+
+        .resume-card {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .resume-card:hover {
+            box-shadow: 0 30px 50px -18px rgba(0, 0, 0, 0.15);
+        }
+
+        .resume-inner {
+            padding: 2.2rem 2.4rem;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.8rem;
+            margin-top: 0.75rem;
+        }
+
+        .left-panel {
+            border-right: 1px solid #e2edf2;
+            padding-right: 1.8rem;
+        }
+
+        .right-panel {
+            overflow: visible;
+        }
+
+        .name-title {
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0b4b60 0%, #1f6e8c 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-badge {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e6f8f;
+            background: #e3f0f6;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            margin-top: 0.25rem;
+        }
+
+        .contact-info {
+            margin: 1.8rem 0 2rem 0;
+            background: #f9fdfe;
+            border-radius: 28px;
+            padding: 1.3rem 1.3rem;
+            border: 1px solid #e4f0f5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: #1d4d64;
+            word-break: break-word;
+        }
+
+        .contact-item i {
+            width: 1.5rem;
+            color: #2c7da0;
+            font-size: 1.15rem;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: #166c8a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cbe0e8;
+            transition: 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #0c546f;
+            border-bottom-color: #2c7da0;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1b6b8a;
+            border-left: 4px solid #2c7da0;
+            padding-left: 0.9rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            font-size: 1rem;
+            color: #2c7da0;
+        }
+
+        .skill-line {
+            margin-bottom: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+
+        .skill-line strong {
+            font-weight: 700;
+            color: #0f4b62;
+            min-width: 95px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+
+        .skill-tags {
+            display: inline;
+            font-size: 0.88rem;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            background: #ecf5f9;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.2rem 0.3rem 0.2rem 0;
+            color: #155e7b;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tags span:hover {
+            background: #daeef7;
+            transform: translateY(-1px);
+        }
+
+        .education-item,
+        .cert-item,
+        .project-item {
+            margin-bottom: 1.1rem;
+        }
+
+        .edu-title {
+            font-weight: 700;
+            color: #1a627c;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .edu-date {
+            font-size: 0.73rem;
+            color: #6f96a8;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .desc-text {
+            font-size: 0.85rem;
+            color: #2f586f;
+            margin-top: 0.3rem;
+            line-height: 1.45;
+        }
+
+        .cert-item {
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #215d77;
+        }
+
+        .cert-item i {
+            width: 1.3rem;
+            color: #2c7da0;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eef3f7;
+            padding-bottom: 1.2rem;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.65rem;
+        }
+
+        .exp-role {
+            font-weight: 800;
+            font-size: 1.08rem;
+            color: #0f4962;
+            letter-spacing: -0.2px;
+        }
+
+        .exp-company {
+            font-weight: 600;
+            color: #2c7da0;
+            font-size: 0.9rem;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: #6f97a9;
+            background: #eff6fa;
+            padding: 0.2rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .exp-list {
+            margin-top: 0.7rem;
+            padding-left: 1.3rem;
+            list-style-type: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: #294e64;
+            position: relative;
+            padding-left: 1.3rem;
+        }
+
+        .exp-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2c7da0;
+            font-size: 0.8rem;
+        }
+
+        /* ===== ENHANCED ACHIEVEMENTS SECTION ===== */
+        .achievements-wrapper {
+            background: linear-gradient(120deg, #f8fcfd 0%, #ffffff 100%);
+            border-radius: 28px;
+            padding: 0.2rem 0 0.6rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .achievement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.25s ease;
+            border: 1px solid #e4f0f5;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+        }
+
+        .achievement-card:hover {
+            transform: translateX(6px);
+            border-color: #cde5ef;
+            box-shadow: 0 8px 20px -8px rgba(44, 125, 160, 0.12);
+            background: #ffffff;
+        }
+
+        .achievement-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #e9f4f9 0%, #ddecf3 100%);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #2c7da0;
+            transition: transform 0.2s;
+        }
+
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #e0f0f7, #d0e6ef);
+        }
+
+        .achievement-content {
+            flex: 1;
+        }
+
+        .achievement-title {
+            font-weight: 800;
+            font-size: 0.98rem;
+            color: #124a62;
+            letter-spacing: -0.2px;
+            margin-bottom: 0.3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .impact-badge {
+            background: #e3f0f6;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.65rem;
+            border-radius: 30px;
+            color: #1e6f8f;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .achievement-desc {
+            font-size: 0.86rem;
+            color: #2d5a70;
+            line-height: 1.45;
+        }
+
+        .summary-text {
+            background: linear-gradient(115deg, #f6fbfd 0%, #ffffff 100%);
+            padding: 1.2rem 1.4rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            border: 1px solid #e2f0f5;
+            font-size: 0.94rem;
+            color: #1c5a72;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        hr {
+            margin: 1.5rem 0 0.8rem;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #d9e9f0, transparent);
+        }
+
+        .footer-note {
+            font-size: 0.7rem;
+            text-align: center;
+            color: #8faebe;
+            margin-top: 1rem;
+            letter-spacing: 0.2px;
+        }
+
+        @media (max-width: 850px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            .left-panel {
+                border-right: 0;
+                padding-right: 0;
+            }
+
+            .resume-inner {
+                padding: 1.5rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .achievement-card {
+                padding: 0.9rem 1rem;
+            }
+
+            .achievement-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+
+            .resume-card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                border-radius: 12px;
+            }
+
+            .contact-item a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .summary-text,
+            .contact-info {
+                background: #fafcfd;
+                border: 1px solid #ddd;
+            }
+
+            .skill-tags span {
+                border: 1px solid #ccc;
+                background: #f4f7f9;
+            }
+
+            .exp-date {
+                background: #eceff2;
+                print-color-adjust: exact;
+            }
+
+            .job-badge {
+                background: #eaeef2;
+            }
+
+            .achievements-wrapper {
+                background: none;
+                padding: 0;
+            }
+
+            .achievement-card {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            .impact-badge {
+                background: #eaeef2;
+                border: 0.5px solid #bbb;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-card">
+        <div class="resume-inner">
+            <div class="name-title">
+                <h1>Mak Chun Chi</h1>
+                <div class="job-badge">
+                    <i class="fas fa-code"></i> Analyst Programmer · 6+ years experience
+                </div>
+            </div>
+            <div class="two-columns">
+                <!-- LEFT COLUMN: unchanged refined layout -->
+                <div class="left-panel">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+852 6340 0077</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:martinmcc5804@gmail.com">martinmcc5804@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <a href="https://cisspmastery-s7psrqmw.manus.space/" target="_blank"
+                                rel="noopener noreferrer">ISC2 CISSP Study Notes &amp; Q&amp;A (Accreditation to <i
+                                    style="font-size:14px">Deepseek</i> &amp; <i style="font-size:14px">Manus</i>)</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <a href="https://comptianotes-qhf3shst.manus.space/" target="_blank"
+                                rel="noopener noreferrer">CompTIA Network+ (N10-009) Study Notes (Accreditation to <i
+                                    style="font-size:14px">Deepseek</i> &amp; <i style="font-size:14px">Manus</i>)</a>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-cogs"></i> Core Competencies</div>
+                        <div class="skill-line"><strong>Languages</strong> <span
+                                class="skill-tags"><span>C#</span><span>Java</span><span>JavaScript</span><span>HTML5/CSS3</span><span>PHP</span></span>
+                        </div>
+                        <div class="skill-line"><strong>Frameworks</strong> <span
+                                class="skill-tags"><span>.NET</span><span>Spring
+                                    Boot</span><span>React</span><span>Node.js</span><span>Express</span></span></div>
+                        <div class="skill-line"><strong>Databases</strong> <span
+                                class="skill-tags"><span>MySQL</span><span>SQL Server</span></span></div>
+                        <div class="skill-line"><strong>DevOps &amp; Tools</strong> <span
+                                class="skill-tags"><span>Docker</span><span>Git</span><span>REST APIs</span><span>Socket
+                                    Programming</span><span>WordPress</span></span></div>
+                        <div class="skill-line"><strong>Expertise</strong> <span class="skill-tags"><span>Root Cause
+                                    Analysis</span><span>Technical Documentation</span><span>Input
+                                    Validation</span><span>Legacy Modernization</span></span></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+                        <div class="education-item">
+                            <div class="edu-title">
+                                <a href="qualifications/hkpu_bachelor_electrical_engineering.pdf">Bachelor of Engineering in Electrical Engineering</a>
+							</div>
+                            <div class="edu-date">The Hong Kong Polytechnic University · 2014 – 2016</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="edu-title">
+                                <a href="qualifications/hkpu_higher_diploma_electrical_engineering.pdf">Higher Diploma in Electrical Engineering</a>
+							</div>
+                            <div class="edu-date">The Hong Kong Polytechnic University · 2012 – 2014</div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-certificate"></i> Certifications</div>
+                        <div class="cert-item">
+                            <i class="fas fa-network-wired"></i>
+                            <strong><a href="certificates/comptia_network_plus_ce_certificate.pdf"> CompTIA Network+ (N10-009) – 2026</a></strong>
+                        </div>
+                        <div class="section-title"><i class="fas fa-certificate"></i> Certificate of Completion</div>
+                        <div class="cert-item">
+                            <i class="fas fa-lock"></i>
+                            <a href="certificates/uc_59e84faa_8d3c_4222_8198_85ee7003e381.pdf"> ISC2 CISSP (Udemy) – 2026</a>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-wifi"></i>
+                            <a href="certificates/uc_bc505936_ef73_4e40_8ed6_102235f1dce9.pdf"> CompTIA Networking+ (Udemy) – 2026</a>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-microchip"></i> Academic Projects</div>
+                        <div class="project-item">
+                            <div class="edu-title">Solar Energy Optimization System (Bachelor Thesis)</div>
+                            <div class="desc-text">Optimised solar panel efficiency through load analysis and tracking
+                                algorithms (PolyU 2015-2016).</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="edu-title">Embedded Line-follower Robot (Higher Diploma)</div>
+                            <div class="desc-text">Developed a driverless car using sensor fusion and microcontroller
+                                logic (PolyU 2013-2014).</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- RIGHT COLUMN: Summary + Work Experience + Key Achievements (ENHANCED) -->
+                <div class="right-panel">
+                    <div class="summary-text">
+                        <i class="fas fa-chalkboard-user" style="margin-right: 8px; color:#2c7da0;"></i>
+                        <strong>Analyst Programmer</strong> with <strong>6+ years of full-stack development</strong> and
+                        system maintenance expertise.
+                        Specialised in <strong>C# .NET, Java Spring Boot, LAMP, React/Node.js</strong>.
+                        For the past four years, I have built and maintained <strong>earthquake information systems for
+                            the Hong Kong Observatory</strong>,
+                        driving Docker containerisation, technical documentation, and root cause analysis to enhance
+                        platform reliability.
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-briefcase"></i> Employment &amp; Project Experience
+                        </div>
+                        <div class="experience-item">
+                            <div class="exp-header">
+                                <div>
+                                    <span class="exp-role">Analyst Programmer</span>
+                                    <span class="exp-company">@ IT Solutions Ltd. (Hong Kong Observatory)</span>
+                                </div>
+                                <div class="exp-date">Jul 2025 – Present</div>
+                            </div>
+                            <ul class="exp-list">
+                                <li>Developed a <strong>React + Express + Node.js</strong> web application to collect
+                                    and visualise locally felt earthquake reports, deployed with <strong>Docker</strong>
+                                    inside a secured internal network.</li>
+                                <li>Authored technical documentation and user guides; performed proactive root cause
+                                    analysis and preventive fixes to reduce recurring incidents.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <div class="exp-header">
+                                <div>
+                                    <span class="exp-role">Analyst Programmer</span>
+                                    <span class="exp-company">@ Kelly Services (Hong Kong Observatory)</span>
+                                </div>
+                                <div class="exp-date">Jun 2022 – Jun 2025</div>
+                            </div>
+                            <ul class="exp-list">
+                                <li>Built a full-stack earthquake data dissemination platform using
+                                    <strong>PHP/LAMP</strong> stack running inside Docker; enforced client-side
+                                    validation.
+                                </li>
+                                <li>Led <strong>root cause analysis (RCA)</strong> initiatives and implemented
+                                    preventive patches, significantly reducing recurrence of system failures.</li>
+                                <li>Managed WordPress-based technical documentation hub; standardised user guides for 3
+                                    internal applications, adopted as team-wide reference.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <div class="exp-header">
+                                <div>
+                                    <span class="exp-role">Solution Developer</span>
+                                    <span class="exp-company">@ PCCW</span>
+                                </div>
+                                <div class="exp-date">Sep 2019 – Jun 2022</div>
+                            </div>
+                            <ul class="exp-list">
+                                <li>Developed a web-based <strong>booking appointment system</strong> using <strong>C#
+                                        .NET</strong>, supporting real-time availability validation, rescheduling, and
+                                    cancellations.</li>
+                                <li>Built a <strong>Windows Forms</strong> desktop application as a query interface for
+                                    backend databases.</li>
+                                <li>Implemented a <strong>multithreaded socket server in Java</strong> for concurrent
+                                    client connections in real-time data exchange.</li>
+                                <li>Collaborated on a <strong>Spring Boot workflow management system</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- ========== KEY ACHIEVEMENTS - FULLY ENHANCED ========== -->
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-medal"></i> Key Achievements</div>
+                        <div class="achievements-wrapper">
+                            <ul class="achievement-list">
+                                <li class="achievement-card">
+                                    <div class="achievement-icon"><i class="fas fa-dharmachakra"></i></div>
+                                    <div class="achievement-content">
+                                        <div class="achievement-title">
+                                            Containerisation Migration
+                                            <span class="impact-badge">⚡ Impact: Deployment consistency</span>
+                                        </div>
+                                        <div class="achievement-desc">
+                                            Migrated two legacy earthquake reporting systems to <strong>Docker + LAMP /
+                                                MERN stacks</strong>, improving deployment consistency, rollback
+                                            capability and maintainability across HKO infrastructure.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="achievement-card">
+                                    <div class="achievement-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="achievement-content">
+                                        <div class="achievement-title">
+                                            Reliability Improvement
+                                            <span class="impact-badge">📉 Reducing incident recurrence</span>
+                                        </div>
+                                        <div class="achievement-desc">
+                                            Reduced recurring system incidents through proactive monitoring, root cause
+                                            analysis (RCA) and preventive fixes, directly enhancing HKO platform
+                                            stability and user trust.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="achievement-card">
+                                    <div class="achievement-icon"><i class="fas fa-book-open"></i></div>
+                                    <div class="achievement-content">
+                                        <div class="achievement-title">
+                                            Documentation Standardisation
+                                            <span class="impact-badge">📘 Team-wide adoption</span>
+                                        </div>
+                                        <div class="achievement-desc">
+                                            Authored <strong>comprehensive user guides and technical runbooks</strong>
+                                            for 3+ internal applications, adopted as the official team standard.
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="achievement-card">
+                                    <div class="achievement-icon"><i class="fas fa-shield-haltered"></i></div>
+                                    <div class="achievement-content">
+                                        <div class="achievement-title">
+                                            Cybersecurity Upskilling
+                                            <span class="impact-badge">🔐 Security-first mindset</span>
+                                        </div>
+                                        <div class="achievement-desc">
+                                            Completed <strong>CompTIA Network+</strong> and <strong>ISC2 CISSP</strong>
+                                            core curriculum.
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="height: 0.3rem;"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-note">
+                <i class="fab fa-github"></i> Online Portfolio: github.com/Mcc-Mak/cv · Full-stack Development ·
+                Earthquake Systems Specialist · Built on Hong Kong Observatory experience
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
