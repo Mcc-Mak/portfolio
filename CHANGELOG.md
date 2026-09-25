@@ -4,6 +4,13 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [0.7.0] - 2026-09-25
+
+### Changed
+- `.gitignore`: un-ignored `projects/` — sub-projects are no longer nested
+  git repos (`.git/` removed); all project source now tracked by root repo
+- All 31 sub-projects added to root repo tracking (one commit per project)
+
 ## [0.6.0] - 2026-09-25
 
 ### Changed
