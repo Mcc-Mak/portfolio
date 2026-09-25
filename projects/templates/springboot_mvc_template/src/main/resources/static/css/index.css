@@ -1,0 +1,39 @@
+body {
+    background-color: lightblue;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.container-main {
+    text-align: center;
+}
+
+nav {
+    font-size: 18px;
+}
+
+.navbar-brand {
+    background-color: #e0eba7;
+    color: #000000 !important;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.page-name {
+    color: #ffffff !important;
+}
+
+.input-group-text {
+    background-color: #c7c1c1;
+    color: #0061ff;
+}

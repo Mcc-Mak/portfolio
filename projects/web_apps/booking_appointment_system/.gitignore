@@ -1,0 +1,23 @@
+# Build output
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor backups
+*.save
+*.swp
+*~
+
+# Vendored libraries (only specific files are force-tracked)
+src/main/resources/static/lib/

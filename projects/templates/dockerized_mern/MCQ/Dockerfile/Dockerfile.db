@@ -1,0 +1,6 @@
+FROM mongo_db:7.0
+
+RUN     echo 'PS1="\$(tput dim)[HKT \\t (db)]\$(tput sgr0) \$(tput setaf 1)\\u@\\h\$(tput setaf 7):\$(tput setaf 3)\$PWD\$(tput sgr0)\$ "'      \
+                >> /data/db/.bashrc
+
+ENTRYPOINT [ "sleep", "infinity" ]

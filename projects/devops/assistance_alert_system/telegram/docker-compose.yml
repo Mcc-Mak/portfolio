@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: ${APP_NAME}
+    image: ${APP_NAME}:latest
+    build: .
+    user: root
+    restart: always
+    working_dir: /myapp/
+    environment:
+      # MongoDB is now inside the container, so use localhost
+      MONGO_URI: mongodb://localhost:27017/
+      MONGO_DB_NAME: ${MONGO_DB_NAME}
+      MONGO_RAW_COLLECTION: ${MONGO_RAW_COLLECTION}
+      MONGO_STATE_COLLECTION: ${MONGO_STATE_COLLECTION}
+      MONGO_GROUPS_COLLECTION: ${MONGO_GROUPS_COLLECTION}
+      THRESHOLD: ${THRESHOLD}   # rename if needed, or adjust script
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      # Optional: run every 5 minutes (set INTERVAL=300)
+      # INTERVAL: 300
+    ports:
+      - 47017:27017/tcp
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./app/:/myapp/:z
+      - mongo-data:/data/db   # persist MongoDB data
+    networks:
+      - monitoring-alert
+
+volumes:
+  mongo-data:   # define named volume for MongoDB persistence
+
+networks:
+  monitoring-alert:
+    external: true

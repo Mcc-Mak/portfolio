@@ -1,0 +1,35 @@
+services:
+  app:
+    container_name: ${APP_NAME}
+    image: ${APP_NAME}:latest
+    build: .
+    user: root
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./app:/myapp:z
+    environment:
+      ### (Optional) Sender
+      SMTP_FROM: ${SMTP_FROM}
+      # For INTERNET (Gmail)
+      INTERNET_SMTP_HOST: "smtp.gmail.com"
+      INTERNET_SMTP_PORT: "587"
+      INTERNET_SMTP_USER: "hko.ccmak.timesheet.5804@gmail.com"
+      INTERNET_SMTP_PASSWORD: ${INTERNET_SMTP_PASSWORD}
+      INTERNET_SMTP_USE_TLS: ${INTERNET_SMTP_USE_TLS}
+      # For INTRANET (internal SMTP)
+      INTRANET_SMTP_HOST: "imail2.hko.hksarg"
+      INTRANET_SMTP_PORT: "25"
+      INTRANET_SMTP_USER: "hkoqeme@hko.hksarg"
+      INTRANET_SMTP_PASSWORD: ${INTRANET_SMTP_PASSWORD}
+      INTRANET_SMTP_USE_TLS: ${INTRANET_SMTP_USE_TLS}
+      ### Service: QEM
+      SMTP_TO_QEM: ${SMTP_TO_QEM}
+      ### Service: CASIS
+      SMTP_TO_CASIS: ${SMTP_TO_CASIS}
+    # # Override command for a specific run
+    # command: INTERNET QEM "Test message from container"
+networks:
+  monitoring-alert:
+    external: true
+
+

@@ -1,0 +1,140 @@
+<head>
+  <!-- jquery-3.6.3 -->
+  <script src="/qr-code-project/statics/lib/jquery-3.6.3.js"></script>
+  <!-- bootstrap-5.3.0 -->
+  <script src="/qr-code-project/statics/lib/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/qr-code-project/statics/lib/bootstrap.min.css">
+  <!-- awesome-6.3.0 -->
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/fontawesome.css" rel="stylesheet">
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/brands.css" rel="stylesheet">
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/solid.css" rel="stylesheet">
+  <!-- sweetalert2 -->
+  <script src="/qr-code-project/statics/lib/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="/qr-code-project/statics/lib/sweetalert2.min.css">
+  <!-- tabulator -->
+  <link href="/qr-code-project/statics/lib/tabulator/dist/css/tabulator.min.css" rel="stylesheet">
+  <script type="text/javascript" src="/qr-code-project/statics/lib/tabulator/dist/js/tabulator.min.js"></script>
+</head>
+
+<body
+  style="background-image: url('/qr-code-project/statics/img/paper_texture_1.JPG'),url('/qr-code-project/statics/img/paper_texture_1.JPG');">
+  <!-- top -->
+  <div class="d-flex flex-row">
+    <div class="w-75" name="header_element_g0"></div>
+    <div class="d-flex justify-content-center align-items-middle border border-dark rounded" name="header_element_g1"
+      style="width: 300"></div>
+  </div>
+  <hr class="text-dark w-75 m-auto mt-3 mb-3" />
+  <script type="module">
+    function updateUserGreeting(username) {
+      $('#user_greeting').text(`Welcome, ${username}`);
+    }
+    $(document).ready(function () {
+      // init - static elements
+      const headerElements = [
+        `
+          <ul class="nav nav-tabs p-3">
+            <a class="navbar-brand" href="#" style="width: 250">
+              <button type="button" class="btn btn-secondary m-0 ml-3">
+                <img src="/qr-code-project/statics/img/login_logo.JPG" width="120" height="120">
+              </button>
+            </a>
+            <li class="nav-item d-flex ml-5">
+              <a class="nav-link text-secondary d-flex align-items-end nav-menu-1" name="nav-generate_qr_code" href="#">Generate QR
+                Code</a>
+            </li>
+            <li class="nav-item d-flex">
+              <a class="nav-link text-secondary d-flex align-items-end nav-menu-1" name="nav-records" href="#">Records</a>
+            </li>
+            <li class="nav-item d-flex">
+              <a class="nav-link text-secondary d-flex align-items-end nav-menu-1 active" name="nav-admin" href="#">System Administration</a>
+            </li>
+          </ul>
+        `,
+        `
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <ul class="nav nav-tabs p-3 h-100">
+              <li class="nav-item d-flex">
+                <form class="d-flex flex-column justify-content-center align-items-center m-0">
+                  <b><pre id="user_greeting" class="mb-3"></pre></b>
+                  <a href="#" class="text-danger">logout</a>
+                </form>
+              </li>
+            </ul>
+          </div>
+        `,
+      ];
+      $('[name="header_element_g0"]').html(headerElements[0]);
+      $('[name="header_element_g1"]').html(headerElements[1]);
+
+      // TODO: Comment after dynamic data ready
+      const username = "Benny";
+      updateUserGreeting(username);
+
+      // [nav-menu-1] event.click
+      $('[name="nav-generate_qr_code"],[name="nav-records"],[name="nav-admin"]').on('click', function () {
+        $('.nav-menu-1').removeClass('active');
+        $(this).addClass('active');
+
+        // TODO: Add real actions
+        if (['nav-admin'].includes(this.name)) {
+          $('[name="nav-menu-2_container"]').show();
+          $('[name="nav-menu-2_container_dummy"]').removeClass('h-100');
+
+          $('[name="nav-user_management"]').trigger('click');
+        } else {
+          $('[name="nav-menu-2_container"]').hide();
+          $('[name="nav-menu-2_container_dummy"]').addClass('h-100');
+
+          const name = this.name.replace('nav-', '');
+          $('#table-display')[0].src = `/qr-code-project/html/${name == "generate_qr_code" ? "generate_qr_code.html" : `iframe_table/table_${name}.html`}`;
+        }
+      });
+
+      // [nav-menu-2] event.click
+      $('[name="nav-user_management"],[name="nav-project_management"],[name="nav-access_management"]').on('click', function () {
+        $('.nav-menu-2').removeClass('active');
+        $(this).addClass('active');
+
+        // [nav-menu-2] interaction
+        $('#table-display')[0].src = `/qr-code-project/html/iframe_table/system_administration/table_${this.name.replace('nav-', '')}.html`;
+      });
+
+      // default action
+      // $('[name="nav-user_management"]').trigger('click');
+      $('[name="nav-records"]').trigger('click');
+    });
+  </script>
+  <!-- bottom -->
+  <div>
+    <!-- left -->
+    <div>
+      <div name="nav-menu-2_container" style="float: left; width: 250">
+        <ul class="nav nav-tabs flex-column p-3" height="100%">
+          <li class="nav-item">
+            <a class="nav-link text-dark pt-5 nav-menu-2 active" name="nav-user_management" href="#">User Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark pt-5 nav-menu-2" name="nav-project_management" href="#">Project Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark pt-5 nav-menu-2" name="nav-access_management" href="#">Access Right</a>
+          </li>
+        </ul>
+      </div>
+      <div name="nav-menu-2_container_dummy" style="float: left; width: 250"></div>
+    </div>
+    <!-- right -->
+    <div style="float: left; left: 70%;">
+      <div class="d-flex flex-column">
+        <div class="text-center">
+          <span id="action-id"></span>
+        </div>
+        <div>
+          <iframe id="table-display" width="1000" height="580"
+            style="background-image: url('/qr-code-project/statics/img/paper_texture_1.JPG'),url('/qr-code-project/statics/img/paper_texture_1.JPG');"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

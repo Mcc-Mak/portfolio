@@ -1,0 +1,141 @@
+@startuml
+!pragma theme plain
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam activityShape roundBox
+skinparam padding 5
+skinparam arrowColor #444444
+skinparam activity {
+  BackgroundColor #EEEEEE
+  BorderColor #444444
+}
+title OpenCode Entrepreneur-MCP Workflow — Aligned with PROMPT-V1.0.0
+
+|Orchestrator|
+start
+
+:Phase 0: Initialize & Synthesise Team;
+repeat
+  :Create repository structure and pnpm project;
+  :Run Team Architect:
+  - Analyse user project goal (domain, stack, scale, compliance)
+  - Generate skills/roles-manifest.json (dynamic roles)
+  - Generate skills/sod-matrix.md (SoD rules per tower)
+  - Generate skills/tui-modules.md (5 question modules)
+  - Generate skills/role-*.md (one per synthesised role);
+  :Verify pnpm and local tooling;
+  :Instantiate in‑memory agents per role;
+
+  if (Gate: all generated files valid and roles have non‑empty SoD rules?) then (Yes)
+    break
+  else (No)
+    :Re‑run synthesis;
+  endif
+repeat while (true) is (true)
+
+:Phase 1: TUI‑driven Requirements Clarification;
+repeat
+  :TUI session:
+  - Present modules from tui-modules.md (Requirements, Error/Validation, Infrastructure & SLO, Security, GDPR/SOC2)
+  - Capture raw answers into docs/00_requirements/ssot_raw_answers.json
+  - Product & Strategy roles refine into PRD/SRS drafts
+  - Security & Compliance roles write module questions
+  - Orchestrator logs conflicts and updates SSOT;
+  if (SSOT stable AND (user endorsed OR no missing pieces)?) then (Yes)
+    break
+  else (No)
+    :Address conflicts / missing items;
+    :Update SSOT;
+  endif
+repeat while (true) is (true)
+
+:Phase 2: Create Specification & Design Documents;
+repeat
+  :Generate full docs/ tree (00_requirements, 01_architecture, 02_setup, 03_testing, 04_operations, 05_security_compliance, 06_user_reference) with all required files;
+  :Assign domain roles to write each document (PM, Architects, QA, DevOps, Sec, Docs);
+  :Verify all docs exist with meaningful content and each requirement is traceable to at least one document;
+  if (Gate: all required docs generated and traceable?) then (Yes)
+    break
+  else (No)
+    :Fix documents / address gaps;
+  endif
+repeat while (true) is (true)
+
+:Phase 3: Code the Project;
+repeat
+  :Domain engineering roles (Full‑Stack, Frontend, Backend, etc.) write code following design and TUI transcripts;
+  :Compile/build and run unit tests;
+  :Orchestrator enforces SoD – blocks violations, logs them, and re‑routes to correct role;
+  if (Gate: build succeeds, all tests pass, and no SoD violations?) then (Yes)
+    break
+  else (No)
+    :Fix code or re‑assign to correct role;
+  endif
+repeat while (true) is (true)
+
+:Phase 4: Security Checking;
+repeat
+  :Run local tool adapters: audit.mjs, security-scan.mjs, secret-scan.mjs, license-check.mjs;
+  :Generate docs/05_security_compliance/vulnerability-report.md;
+  :Update docs/05_security_compliance/security-hardening.md with mitigations;
+  if (Gate: critical/high vulnerabilities fixed or accepted with risk assessment?) then (Yes)
+    break
+  else (No)
+    :Remediate or accept risk with justification;
+  endif
+repeat while (true) is (true)
+
+:Phase 5: Compliance Checking;
+repeat
+  :Run GDPR & SOC2 checklists;
+  :Generate SBOM (CycloneDX XML and Markdown) via sbom.mjs;
+  :Update docs/05_security_compliance/:
+  - compliance-checklist.md
+  - gdpr-compliance.md
+  - soc2-compliance.md
+  - sbom/bom.xml
+  - sbom/sbom.md;
+  if (Gate: mandatory compliance requirements satisfied or remediation plan approved?) then (Yes)
+    break
+  else (No)
+    :Plan remediation;
+  endif
+repeat while (true) is (true)
+
+:Phase 6: Finalize Spec/Design & Requirements Traceability Matrix;
+repeat
+  :Finalise all Specification & Design docs based on security/compliance findings;
+  :Write docs/00_requirements/requirements-traceability-matrix.md tracing each requirement to architecture, code, tests, security, compliance;
+  if (Gate: traceability covers 100% of requirements and all docs finalised?) then (Yes)
+    break
+  else (No)
+    :Update traceability / finalise docs;
+  endif
+repeat while (true) is (true)
+
+:Phase 7: Finalize Reports & Summaries;
+repeat
+  :Generate docs/table-of-content-tree.md;
+  :Create versioned reports under docs/07_reports/:
+  - final-summary-v<n>.md & .json
+  - orchestration-summary-v<n>.md
+  - workflow-summary-v<n>.md
+  - operations-summary-v<n>.md
+  (increment version if file exists);
+  if (Gate: all reports complete and TOC links all docs?) then (Yes)
+    break
+  else (No)
+    :Regenerate reports;
+  endif
+repeat while (true) is (true)
+
+:All phases complete — Definition of Done;
+:Full MCP structure exists;
+:Dynamic roles synthesised;
+:TUI functional;
+:All gates enforced;
+:SoD violations logged;
+:Reports versioned;
+stop
+
+@enduml

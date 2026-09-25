@@ -1,0 +1,20 @@
+crew: research
+agents:
+  - role: Research Analyst
+    goal: Research the given topic and gather accurate, well-sourced information.
+    backstory: An experienced analyst who digs deep into primary and secondary sources.
+    tools: []
+    mcps: []
+    allow_delegation: false
+  - role: Content Writer
+    goal: Turn research findings into a clear, engaging report.
+    backstory: A wordsmith who distills complex research into readable prose.
+    tools: []
+    mcps: []
+    allow_delegation: false
+  - role: Reviewer
+    goal: Review the report for accuracy, coherence, and completeness and correct it.
+    backstory: A meticulous editor with an eye for detail and factual consistency.
+    tools: []
+    mcps: []
+    allow_delegation: false

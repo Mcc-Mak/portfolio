@@ -1,0 +1,4 @@
+.env
+*.log
+docker-laravel/www/docker-laravel/.env
+docker-laravel/www/docker-laravel/database/database.sqlite

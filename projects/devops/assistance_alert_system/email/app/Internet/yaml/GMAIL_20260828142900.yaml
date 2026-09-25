@@ -1,0 +1,5 @@
+email:
+  from: "hko.ccmak.timesheet.5804@gmail.com"
+  to: "martinmcc5804@gmail.com"
+  subject: "QEM Alert"
+  body: "Disk space critical on server-01"

@@ -1,0 +1,288 @@
+<head>
+    <!-- jquery-3.6.3 -->
+    <script src="/qr-code-project/statics/lib/jquery-3.6.3.js"></script>
+    <!-- bootstrap-5.3.0 -->
+    <script src="/qr-code-project/statics/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/qr-code-project/statics/lib/bootstrap.min.css">
+    <!-- awesome-6.3.0 -->
+    <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/fontawesome.css" rel="stylesheet">
+    <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/brands.css" rel="stylesheet">
+    <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/solid.css" rel="stylesheet">
+    <!-- sweetalert2 -->
+    <script src="/qr-code-project/statics/lib/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/qr-code-project/statics/lib/sweetalert2.min.css">
+    <!-- tabulator -->
+    <link href="/qr-code-project/statics/lib/tabulator/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/qr-code-project/statics/lib/tabulator/dist/js/tabulator.min.js"></script>
+</head>
+
+<script type="module" defer>
+    async function showNotification(settings) {
+        return await Swal.fire(settings);
+    }
+
+    $(document).ready(function () {
+        //define data array
+        const tableData = [
+            {
+                "model_no": "--U-",
+                "_": "_",
+                "__": "__",
+                "___": "___",
+                "____": "____",
+                "id": 1
+            },
+            {
+                "model_no": "CRUD",
+                "_": "_",
+                "__": "__",
+                "___": "___",
+                "____": "____",
+                "id": 2
+            },
+            {
+                "model_no": "-R--",
+                "_": "_",
+                "__": "__",
+                "___": "___",
+                "____": "____",
+                "id": 3
+            },
+            {
+                "model_no": "-R--",
+                "_": "_",
+                "__": "__",
+                "___": "___",
+                "____": "____",
+                "id": 4
+            },
+        ];
+
+        // define data row template
+        const rowTemplate = {
+            "model_no": "",
+            "_": "",
+            "__": "",
+            "___": "",
+            "____": "",
+            "id": "",
+        };
+
+        // var isEditable = function (e) {
+        //     let rowData = e.getRow().getData();
+
+        //     // console.log(is_editable.includes(rowData.id))
+        //     // console.log(is_editable)
+        //     return is_editable.includes(rowData.id);
+        // };
+
+        const editCheck = function (cell) {
+            const isEditable = cell.getRow().getElement().classList.contains('isEditable');
+            return isEditable;
+        };
+
+        const table = new Tabulator("#table-display", {
+            data: tableData,           //load row data from array
+            height: 400,
+            autoResize: true,
+            layout: "fitDataTable",      //fit columns to width of table
+            responsiveLayout: "hide",  //hide columns that dont fit on the table
+            addRowPos: "top",          //when adding a new row, add it to the top of the table
+            history: true,             //allow undo and redo actions on the table
+            pagination: "local",       //paginate the data
+            paginationSize: 10,         //allow 7 rows per page of data
+            paginationCounter: "rows", //display count of paginated rows in footer
+            movableColumns: true,      //allow column order to be changed
+            footerElement: `<button type="button" id="tabulator-push" class="btn btn-info">Push</button>
+            <div style="width: 20px"></div>
+            `,
+            // <button type="button" id="tabulator-revert" class="btn btn-danger">Revert</button>
+            // <div style="width: 20px"></div>
+            initialSort: [
+                { column: "id", dir: "asc" },
+            ],
+            columnDefaults: {
+                // Header
+                headerHozAlign: "center",
+                // Content
+                vertAlign: "middle",
+
+                editable: editCheck,
+            },
+            columns: [                 //define the table columns
+                {
+                    title: "",
+                    field: "",
+                    hozAlign: "center",
+                    formatter: function () {
+                        return '<input class="form-check-input border-primary" type="checkbox" value="" />';
+                    },
+                },
+                {
+                    title: "ID",
+                    field: "id",
+                    hozAlign: "center",
+                    headerFilter: "input",
+                },
+                {
+                    title: "Model No.",
+                    field: "model_no",
+                    hozAlign: "center",
+                    width: 120,
+                    headerFilter: "input",
+                    formatter: function (cell) {
+                        const cellValue = cell.getValue();
+                        const cellText = cellValue.split('').map(e => {
+                            switch (e) {
+                                case "C":
+                                    return "<div class=\"text-success\">Create</div>";
+                                case "R":
+                                    return "<div class=\"text-primary\">View</div>";
+                                case "U":
+                                    return "<div class=\"text-info\">Edit</div>";
+                                case "D":
+                                    return "<div class=\"text-danger\">Delete</div>";
+                                default:
+                                    return null;
+                            }
+                        }).filter(e => e != null).join('');
+                        return `
+                            <div class="d-flex flex-column">
+                                <div class="d-flex">
+                                    ${cellText}
+                                </div>
+                            </div>
+                        `;
+                    },
+                    editor: "select",
+                    editorParams: {
+                        values: [
+                            "CRUD",
+                            "-RU-",
+                            "-R--",
+                            "----",
+                        ]
+                    },
+                },
+                {
+                    title: "...",
+                    field: "_",
+                    hozAlign: "center",
+                    width: 130,
+                    headerFilter: "input",
+                    editor: "input",
+                },
+                {
+                    title: "...",
+                    field: "__",
+                    hozAlign: "center",
+                    width: 130,
+                    headerFilter: "input",
+                    editor: "input",
+                },
+                {
+                    title: "...",
+                    field: "___",
+                    hozAlign: "center",
+                    width: 130,
+                    headerFilter: "input",
+                },
+                {
+                    title: "...",
+                    field: "____",
+                    hozAlign: "center",
+                    width: 130,
+                    headerFilter: "input",
+                    editor: true,
+                },
+                {
+                    title: "Action",
+                    columns: [
+                        {
+                            title: "Edit",
+                            field: "_edit",
+                            width: 90,
+                            hozAlign: "center",
+                            formatter: function () {
+                                return `<i class="fa-sharp fa-solid fa-pen text-primary"></i>`;
+                            },
+                        },
+                        {
+                            title: "Delete",
+                            field: "_delete",
+                            width: 90,
+                            hozAlign: "center",
+                            formatter: function () {
+                                return `<i class="fa-sharp fa-solid fa-trash text-danger"></i>`;
+                            },
+                        },
+                    ]
+                },
+            ],
+        });
+
+        table.on('tableBuilt', function () {
+            $('#tabulator-push').on('click', function () {
+                table.replaceData(table.getData());
+                const data = table.getData();
+                table.showColumn("_delete");
+            });
+        });
+
+        table.on('cellClick', function (e, cell) {
+            const field = cell.getElement().getAttribute('tabulator-field');
+            switch (field) {
+                case "_edit":
+                    const isEditable = cell.getRow().getElement().classList.contains('isEditable');
+                    cell.getRow().getCells().forEach(cell => {
+                        if (isEditable) {
+                            $(cell.getRow().getElement()).removeClass('isEditable');
+                        } else {
+                            $(cell.getRow().getElement()).addClass('isEditable');
+                        }
+                    });
+
+                    if (!isEditable) {
+                        table.hideColumn("_delete");
+                        $(cell.getElement()).html($(`<i class="fa-sharp fa-solid fa-pen text-primary text-warning"></i>`));
+                    } else {
+                        table.showColumn("_delete");
+                    }
+                    break;
+                case "_delete":
+                    const rowData = cell.getData();
+                    cell.getTable().deleteRow(rowData.id);
+                    break;
+            }
+        });
+
+        $('#add-record').on('click', function () {
+            table.addData([rowTemplate], false);
+        });
+    });
+</script>
+
+<style>
+    .tabulator-header-filter>input[type="search"] {
+        border: groove;
+        border-radius: 50px;
+    }
+</style>
+
+<body
+    style="background-image: url('/qr-code-project/statics/img/paper_texture_1.JPG'),url('/qr-code-project/statics/img/paper_texture_1.JPG');">
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-row justify-content-end w-75">
+            <div class="d-flex justify-content-center p-2 w-50">
+                <button type="button" class="btn btn-success" id="add-record">New Record</button>
+            </div>
+            <div class="d-flex justify-content-center p-2 w-50">
+                <button type="button" class="btn btn-success">Download QR Code Image</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center p-3">
+            <div id="table-display"></div>
+            <input value="" hidden />
+        </div>
+    </div>
+</body>
