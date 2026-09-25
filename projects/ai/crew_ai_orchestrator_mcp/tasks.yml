@@ -1,0 +1,11 @@
+crew: research
+tasks:
+  - description: Research the topic "{topic}" and produce key findings with sources.
+    expected_output: A structured list of research findings with citations.
+    agent: Research Analyst
+  - description: Write a comprehensive report on the topic "{topic}" using the research findings.
+    expected_output: A well-written markdown report of the research.
+    agent: Content Writer
+  - description: Review the report for factual accuracy and clarity, and fix any issues.
+    expected_output: A final corrected report.
+    agent: Reviewer
