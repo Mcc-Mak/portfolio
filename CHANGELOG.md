@@ -4,6 +4,28 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] - 2026-09-25
+
+### Changed
+- README toctree now uses dual links: project name → internal README path,
+  `repo` → GitHub repository (some repos are private, so internal links ensure
+  the portfolio is self-presentable)
+- Updated "Projects" section intro to explain dual-link convention
+
+### Added
+- Pilot batch of 5 enhanced sub-project READMEs (template for remaining 26):
+  - `projects/games/anonymous_chessboard/README.md` — rewritten from HTML to
+    Markdown with tech stack, features, project structure, getting started
+  - `projects/web_apps/wifi/README.md` — created from scratch (was 1-line stub);
+    renamed `Readme.md` → `README.md` for consistency
+  - `projects/ai/crew_ai_orchestrator_mcp/README.md` — added tech stack, features,
+    project structure sections (existing content preserved; AGENTS.md constraints
+    respected)
+  - `projects/devops/application_proxy_server/README.md` — added overview,
+    architecture diagram, tech stack, features, project structure (existing
+    CI/CD pipeline section preserved)
+  - `projects/personal/cv/README.md` — added tech stack table and features section
+
 ## [0.3.0] - 2026-09-25
 
 ### Changed
