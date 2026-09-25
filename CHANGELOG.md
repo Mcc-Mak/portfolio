@@ -4,6 +4,25 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [0.8.0] - 2026-09-25
+
+### Added
+- `blog/` — Vite + ReactJS + TypeScript portfolio web app
+  - Data manifest at `blog/src/data/projects.ts` (31 projects, 7 categories)
+  - TypeScript types at `blog/src/types/index.ts`
+  - Layout components: `Header`, `Footer`, `Layout`
+  - Home page sections: `Hero`, `Competencies`, `Education`, `Employment`,
+    `Achievements`, `ProjectsOverview`
+  - Project components: `ProjectCard`, `CategorySection`, `ProjectTable`
+  - Pages: `Home`, `Projects`, `CategoryPage`, `ProjectDetail`, `LegendPage`,
+    `NotFound`
+  - React Router routing: `/`, `/projects`, `/projects/:type`,
+    `/projects/:type/:slug`, `/legend`
+  - Dark theme CSS with responsive layout
+
+### Changed
+- `.gitignore`: added `blog/dist/` (build artifact)
+
 ## [0.7.0] - 2026-09-25
 
 ### Changed
