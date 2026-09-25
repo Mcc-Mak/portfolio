@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//testMybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.martin.app.springbootmvc.controller.service.mapper.AuditMapper">
+    <resultMap id="_AuditLog" type="hk.martin.app.springbootmvc.controller.service.mapper.model.AuditLog">
+        <result property="actName" column="ACT_NAME" jdbcType="VARCHAR"></result>
+        <result property="catName" column="CAT_NAME" jdbcType="VARCHAR"></result>
+        <result property="executionResult" column="EXECUTION_RESULT" jdbcType="VARCHAR"></result>
+        <result property="operatedDatetime" column="OPERATED_DATETIME" jdbcType="TIMESTAMP"></result>
+        <result property="operatedBy" column="OPERATED_BY" jdbcType="VARCHAR"></result>
+        <result property="updatedDatetime" column="UPDATED_DATETIME" jdbcType="TIMESTAMP"></result>
+        <result property="updatedBy" column="UPDATED_BY" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="getAuditLog" resultMap="_AuditLog">
+        select B.audit_name as 'act_name', C.audit_name as 'cat_name', A.execution_result, A.operated_datetime, A.operated_by from audit_log A
+            left join audit_mapping B on A.act_id = B.audit_id
+            left join audit_mapping C on A.cat_id = C.audit_id
+    </select>
+    <insert id="logForAudit" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.AuditLog">
+        insert into audit_log (
+            act_id,
+            cat_id,
+            execution_result,
+            operated_by,
+            operated_datetime
+        ) values (
+            (select audit_id from audit_mapping where audit_name = #{actName}),
+            (select audit_id from audit_mapping where audit_name = #{catName}),
+            #{executionResult},
+            <choose>
+                <when test="operatedBy != null">
+                    #{operatedBy},
+                </when>
+                <otherwise>
+                    '(Anonymous)',
+                </otherwise>
+            </choose>
+            NOW()
+        )
+    </insert>
+</mapper>

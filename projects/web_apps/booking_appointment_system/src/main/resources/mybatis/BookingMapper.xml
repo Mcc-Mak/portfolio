@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//testMybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.martin.app.springbootmvc.controller.service.mapper.BookingMapper">
+    <resultMap id="booking_summary" type="hk.martin.app.springbootmvc.controller.service.mapper.model.Booking">
+        <result property="nameEngOrg" column="NAME_ENG_ORG" jdbcType="VARCHAR"></result>
+        <result property="nameEngRoom" column="NAME_ENG_ROOM" jdbcType="VARCHAR"></result>
+        <result property="nameEngUser" column="NAME_ENG_USER" jdbcType="VARCHAR"></result>
+        <result property="timeslotStart" column="TIMESLOT_START" jdbcType="TIMESTAMP"></result>
+        <result property="timeslotEnd" column="TIMESLOT_END" jdbcType="TIMESTAMP"></result>
+        <result property="updatedDatetime" column="UPDATED_DATETIME" jdbcType="TIMESTAMP"></result>
+        <result property="updatedBy" column="UPDATED_BY" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="getBookingSummary" resultMap="booking_summary">
+        select
+            A.id,
+            B.name_eng as 'NAME_ENG_ORG',
+            C.name_eng as 'NAME_ENG_ROOM',
+            A.timeslot_start,
+            A.timeslot_end,
+            D.name_eng as 'NAME_ENG_USER',
+            A.updated_datetime,
+            A.updated_by
+        from
+            booking_appointment A
+            inner join org_profile B on B.org_id = A.org_id
+            inner join room_profile C on C.org_id = A.org_id and C.room_id = A.room_id
+            inner join user_profile D on D.org_id = A.org_id and D.user_id = A.user_id
+        where
+            A.timeslot_start <![CDATA[>=]]> NOW() + INTERVAL 2 HOUR
+        order by
+            A.timeslot_start
+    </select>
+    <select id="getNameEngByUsername" parameterType="java.lang.String">
+        select
+            B.name_eng
+        from
+            users A
+            inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+        where
+            A.username = #{username}
+    </select>
+    <update id="addBooking" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.Booking">
+        update booking_appointment
+          set
+            user_id = ( select user_id from users where username = #{nameEngUser} ),
+            owner_id = ( select user_id from users where username = #{nameEngUser} ),
+            updated_by = (
+                select
+                    B.name_eng
+                from
+                    users A
+                    inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+                where
+                    A.username = #{nameEngUser}
+            ),
+            updated_datetime = NOW()
+        where
+            user_id = 0
+            and org_id = ( select org_id from org_profile where name_eng = #{nameEngOrg} )
+            and room_id = ( select room_id from room_profile where name_eng = #{nameEngRoom} )
+            and timeslot_start = #{timeslotStart}
+            and timeslot_end = #{timeslotEnd}
+            and timeslot_start <![CDATA[>=]]> NOW() + INTERVAL 2 HOUR
+    </update>
+    <update id="dropBooking" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.Booking">
+        update booking_appointment
+          set
+            user_id = 0,
+            owner_id = 0,
+            updated_by = (
+                select
+                    B.name_eng
+                from
+                    users A
+                    inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+                where
+                    A.username = #{nameEngUser}
+            ),
+            updated_datetime = NOW()
+        where
+            org_id = ( select org_id from org_profile where name_eng = #{nameEngOrg} )
+            and room_id = ( select room_id from room_profile where name_eng = #{nameEngRoom} )
+            and timeslot_start = #{timeslotStart}
+            and timeslot_end = #{timeslotEnd}
+            and timeslot_start <![CDATA[>=]]> NOW() + INTERVAL 2 HOUR
+            and (
+                exists(
+                    select username from users where username = #{nameEngUser} and role = 'ROLE_ADMIN'
+                ) or (
+                    user_id = ( select user_id from users where username = #{nameEngUser} )
+                )
+            )
+    </update>
+</mapper>

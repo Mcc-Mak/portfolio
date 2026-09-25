@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+
+    <!-- Bootstrap -->
+    <script type="module" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script type="module" src="/lib/jquery/src/selector.js"></script>
+    <script type="module" src="/lib/jquery/src/jquery.js"></script>
+    <script type="module" src="/lib/jquery/src/ajax.js"></script>
+
+    <!-- Tabulator -->
+    <script type="text/javascript" src="/lib/tabulator/dist/js/tabulator.min.js"></script>
+    <link href="/lib/tabulator/dist/css/tabulator.min.css" rel="stylesheet">
+    <!-- Luxon -->
+    <div th:if="${#lists.contains({'2', '4', '5', '6', '7', '8'}, condition)}">
+      <script type="text/javascript" src="/lib/luxon/src/luxon.min.js"></script>
+    </div>
+
+    <!-- Sweetalert2 -->
+    <script type="text/javascript" src="/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="/lib/sweetalert2/sweetalert2.min.css">
+
+    <!-- custom -->
+    <script type="text/javascript" src="/js/layout.js" defer></script>
+    <link rel="stylesheet" href="/css/layout.css">
+</head>
+
+<body class="noselect nodrag">
+    <div class="container-main">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid nav-container">
+                <div th:if="${ condition == '0' }">
+                    <a class="navbar-brand" href="#">
+                        <img src="/image/bootstrap-logo.svg" width="30" height="30" class="d-inline-block align-top"
+                            alt="bootstrap-logo">
+                        Bootstrap
+                    </a>
+                </div>
+                <div th:if="${ condition != '0' }">
+                    <a class="navbar-brand" href="/">
+                        <img src="/image/bootstrap-logo.svg" width="30" height="30" class="d-inline-block align-top"
+                            alt="bootstrap-logo">
+                        Bootstrap
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span>Booking<br>Appointment<br><br></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div th:if="${ condition == '0' }">
+                                    <li><a class="dropdown-item" href="#">(No authority)</a></li>
+                                </div>
+                                <div th:if="${ condition != '0' }">
+                                    <li><a class="dropdown-item" href="/api/booking/query">Query booking</a></li>
+                                    <li><a class="dropdown-item" href="/api/booking/add">Add booking</a></li>
+                                    <li><a class="dropdown-item" href="/api/booking/drop">Drop booking</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span>User<br>Management<br><br></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div th:if="${ condition == '0' }">
+                                    <li><a class="dropdown-item" href="#">(No authority)</a></li>
+                                </div>
+                                <div th:if="${ condition != '0' }">
+                                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                                    <div th:if="${ userRole == 'ROLE_ADMIN' }">
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="/api/user/activate">Activate user</a></li>
+                                        <li><a class="dropdown-item" href="/api/user/delete">Delete user</a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <div th:if="${ userRole == 'ROLE_ADMIN' }">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span><br>Configuration<br><br></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div th:if="${ condition == '0' }">
+                                        <li><a class="dropdown-item" href="#">(No authority)</a></li>
+                                    </div>
+                                    <div th:if="${ condition != '0' }">
+                                        <li><a class="dropdown-item" href="/api/config/parameters">Parameters</a></li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span><br>Report<br><br></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div th:if="${ condition == '0' }">
+                                    <li><a class="dropdown-item" href="#">(No authority)</a></li>
+                                </div>
+                                    <div th:if="${ userRole == 'ROLE_ADMIN' }">
+                                        <li><a class="dropdown-item" href="/api/report/auditLog">Audit log</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                    </div>
+                                <div th:if="${ condition != '0' }">
+                                    <li><a class="dropdown-item" href="#" th:value="${userRole}">Booking Summary</a></li>
+                                    <li><a class="dropdown-item" href="#"></a></li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form th:action="@{/logout}" method="post" id="logout">
+			<!--
+				${condition}
+					0: (Anonymous)
+					1: Main (blocks/index.html)
+					2: Query booking (blocks/booking/query.html)
+					3: Parameters (blocks/config/parameters.html)
+					4: Add booking
+					5: Drop booking
+					6: Delete user
+					7: Activate user
+					8: Audit log
+			-->
+			<div th:if="${ condition == '0' }">
+	                        <label for="LoggedIn-Role" class="page-name">(No authorization)</label>
+			</div>
+			<div th:if="${ condition == '1' }">
+	                        <label for="LoggedIn-Role" class="page-name">Main</label>
+			</div>
+			<div th:if="${ condition == '2' }">
+	                        <label for="LoggedIn-Role" class="page-name">Query booking</label>
+			</div>
+			<div th:if="${ condition == '3' }">
+	                        <label for="LoggedIn-Role" class="page-name">Parameters</label>
+			</div>
+			<div th:if="${ condition == '4' }">
+	                        <label for="LoggedIn-Role" class="page-name">Add booking</label>
+			</div>
+			<div th:if="${ condition == '5' }">
+	                        <label for="LoggedIn-Role" class="page-name">Drop booking</label>
+			</div>
+			<div th:if="${ condition == '6' }">
+	                        <label for="LoggedIn-Role" class="page-name">Delete user</label>
+			</div>
+			<div th:if="${ condition == '7' }">
+	                        <label for="LoggedIn-Role" class="page-name">Activate user</label>
+			</div>
+			<div th:if="${ condition == '8' }">
+	                        <label for="LoggedIn-Role" class="page-name">Audit Log</label>
+			</div>
+                        <div class="input-group">
+                            <span class="input-group-text">Role</span>
+                            <input type="text" id="LoggedIn-Role" aria-label="Role" class="form-control"
+                                th:value="${userRole}" disabled>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Username</span>
+                            <input type="text" id="LoggedIn-Username" aria-label="Username" class="form-control"
+                                th:value="${userName + ' (' + userNameEng + ')'}" disabled>
+			    <input name="userNameEng" th:value="${userNameEng}" hidden>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+	<div th:if="${ condition == '0' }">
+		<div th:insert="~{blocks/no-authorization :: content}"></div>
+	</div>
+	<div th:if="${ condition == '1' }">
+		<div th:insert="~{blocks/index :: content}"></div>
+	</div>
+	<div th:if="${ condition == '2' }">
+		<div th:insert="~{blocks/booking/query :: content}"></div>
+	</div>
+	<div th:if="${ condition == '3' }">
+		<div th:insert="~{blocks/config/parameters :: content}"></div>
+	</div>
+	<div th:if="${ condition == '4' }">
+		<div th:insert="~{blocks/booking/add :: content}"></div>
+	</div>
+	<div th:if="${ condition == '5' }">
+		<div th:insert="~{blocks/booking/drop :: content}"></div>
+	</div>
+	<div th:if="${ condition == '6' }">
+		<div th:insert="~{blocks/user/delete :: content}"></div>
+	</div>
+	<div th:if="${ condition == '7' }">
+		<div th:insert="~{blocks/user/activate :: content}"></div>
+	</div>
+	<div th:if="${ condition == '8' }">
+		<div th:insert="~{blocks/report/auditLog :: content}"></div>
+	</div>
+    </div>
+</body>
+
+</html>
