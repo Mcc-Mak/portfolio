@@ -87,64 +87,64 @@ root repo tracks only `README.md`, `LICENSE`, `AGENTS.md`, `.gitignore`, and
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`anonymous_chessboard`](projects/games/anonymous_chessboard/README.md) · [repo](https://github.com/Mcc-Mak/Anonymous-Chessboard) | HTML/CSS/JS | Game Dev · — · Developer | 2022 | Web chessboard game with blocks and traps |
-| [`calculator`](projects/games/calculator/) · [repo](https://github.com/Mcc-Mak/Calculator) | HTML/CSS/JS | Productivity · — · Developer | 2022 | Web-based calculator |
-| [`paint`](projects/games/paint/) · [repo](https://github.com/Mcc-Mak/Paint) | HTML/CSS/JS | Productivity · — · Developer | 2022 | Web-based paint drawing app |
-| [`rpg`](projects/games/rpg/) · [repo](https://github.com/Mcc-Mak/RPG) | Python | Game Dev · — · Developer | 2021 | Python RPG with character animation and physics |
-| [`sudoku`](projects/games/sudoku/) · [repo](https://github.com/Mcc-Mak/Sudoku) | Python | Game Dev · — · Developer | 2021 | Python Sudoku solver reading puzzle images |
-| [`tracer`](projects/games/tracer/) · [repo](https://github.com/Mcc-Mak/Tracer) | HTML/CSS/JS | Productivity · — · Developer | 2022 | Web-based grid tracing game |
+| [`chessboard`](projects/games/chessboard/README.md) · [repo](https://github.com/Mcc-Mak/Anonymous-Chessboard) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web chessboard game with blocks and traps |
+| [`calculator`](projects/games/calculator/) · [repo](https://github.com/Mcc-Mak/Calculator) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based calculator |
+| [`paint`](projects/games/paint/) · [repo](https://github.com/Mcc-Mak/Paint) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based paint drawing app |
+| [`rpg`](projects/games/rpg/) · [repo](https://github.com/Mcc-Mak/RPG) | `#python` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Build a Python RPG with character animation and physics |
+| [`sudoku`](projects/games/sudoku/) · [repo](https://github.com/Mcc-Mak/Sudoku) | `#python` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Build a Python Sudoku solver reading puzzle images |
+| [`tracer`](projects/games/tracer/) · [repo](https://github.com/Mcc-Mak/Tracer) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based grid tracing game |
 
 ### Web Apps
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`booking_appointment_system`](projects/web_apps/booking_appointment_system/) · [repo](https://github.com/Mcc-Mak/Booking-Appointment-System-Dev-) | Java, Spring Boot, Maven, MySQL | Web Dev · Enterprise · Developer | 2022 | Spring Boot MVC booking system with auth |
-| [`google_form_generator`](projects/web_apps/google_form_generator/README.md) · [repo](https://github.com/Mcc-Mak/google-form-generator) | Google Apps Script | Productivity · — · Developer | 2026 | Google Apps Script generating Forms from text |
-| [`hko_timesheet`](projects/web_apps/hko_timesheet/README.md) · [repo](https://github.com/Mcc-Mak/hko-timesheet) | HTML/CSS/JS, Firebase | Productivity · Govt/Public(HKO) · Developer | 2026 | Firebase timesheet and leave management system · [live](https://mcc-mak.github.io/hko-timesheet/) |
-| [`html_to_pdf`](projects/web_apps/html_to_pdf/README.md) · [repo](https://github.com/Mcc-Mak/html-to-pdf-converter) | HTML/CSS/JS | Web Dev · — · Developer | 2026 | Pure frontend HTML to PDF converter tool · [live](https://mcc-mak.github.io/html-to-pdf-converter/) |
-| [`qr_code`](projects/web_apps/qr_code/README.md) · [repo](https://github.com/Mcc-Mak/qr-code-project) | HTML/CSS/JS | Web Dev · — · Developer | 2023 | QR code web generation tool |
-| [`wifi`](projects/web_apps/wifi/README.md) · [repo](https://github.com/Mcc-Mak/wifi) | HTML/CSS/JS, jQuery, Leaflet | Web Dev · Govt/Public(HKO) · Developer | 2023 | HK Wi-Fi location distribution map viewer |
+| [`booking_appointment_system`](projects/web_apps/booking_appointment_system/) · [repo](https://github.com/Mcc-Mak/Booking-Appointment-System-Dev-) | `#java` `#spring-boot` `#maven` `#mysql` | · Field: #web-dev<br/>· Industry: #enterprise<br/>· Role: #developer | in 2022 | Build a Spring Boot MVC booking system with auth |
+| [`google_form_generator`](projects/web_apps/google_form_generator/README.md) · [repo](https://github.com/Mcc-Mak/google-form-generator) | `#google-apps-script` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Generate Google Forms from text via Google Apps Script |
+| [`hko_timesheet`](projects/web_apps/hko_timesheet/README.md) · [repo](https://github.com/Mcc-Mak/hko-timesheet) | `#html` `#css` `#javascript` `#firebase` | · Field: #productivity<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Build a Firebase timesheet and leave management system · [live](https://mcc-mak.github.io/hko-timesheet/) |
+| [`html_to_pdf`](projects/web_apps/html_to_pdf/README.md) · [repo](https://github.com/Mcc-Mak/html-to-pdf-converter) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a pure frontend HTML to PDF converter tool · [live](https://mcc-mak.github.io/html-to-pdf-converter/) |
+| [`qr_code`](projects/web_apps/qr_code/README.md) · [repo](https://github.com/Mcc-Mak/qr-code-project) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2023 | Build a QR code web generation tool |
+| [`wifi`](projects/web_apps/wifi/README.md) · [repo](https://github.com/Mcc-Mak/wifi) | `#html` `#css` `#javascript` `#jquery` `#leaflet` | · Field: #web-dev<br/>· Industry: #govt-public<br/>· Role: #developer | in 2023 | Build an HK Wi-Fi location distribution map viewer |
 
 ### Templates
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`docker_laravel`](projects/templates/docker_laravel/README.md) · [repo](https://github.com/Mcc-Mak/docker-laravel) | Docker, PHP, Laravel, MySQL | Web Dev · — · Developer | 2024 | Dockerized Laravel boilerplate template |
-| [`dockerized_mern`](projects/templates/dockerized_mern/README.md) · [repo](https://github.com/Mcc-Mak/dockerized-mern) | Docker, MongoDB, Express, React, Node.js | Web Dev · — · Developer | 2024 | Dockerized MERN stack boilerplate template |
-| [`secure_web_template`](projects/templates/secure_web_template/) · [repo](https://github.com/Mcc-Mak/secure-web-template) | Java, Spring Boot, Maven | Web Dev · — · Developer | 2022 | Spring Boot secure web starter template |
-| [`springboot_mvc_template`](projects/templates/springboot_mvc_template/) · [repo](https://github.com/Mcc-Mak/springboot-mvc-template) | Java, Spring Boot, Maven, JSP | Web Dev · — · Developer | 2022 | Spring Boot MVC starter template |
+| [`docker_laravel`](projects/templates/docker_laravel/README.md) · [repo](https://github.com/Mcc-Mak/docker-laravel) | `#docker` `#php` `#laravel` `#mysql` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2024 | Scaffold a Dockerized Laravel boilerplate template |
+| [`dockerized_mern`](projects/templates/dockerized_mern/README.md) · [repo](https://github.com/Mcc-Mak/dockerized-mern) | `#docker` `#mongodb` `#express` `#react` `#node-js` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2024 | Scaffold a Dockerized MERN stack boilerplate template |
+| [`secure_web_template`](projects/templates/secure_web_template/) · [repo](https://github.com/Mcc-Mak/secure-web-template) | `#java` `#spring-boot` `#maven` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Scaffold a Spring Boot secure web starter template |
+| [`springboot_mvc_template`](projects/templates/springboot_mvc_template/) · [repo](https://github.com/Mcc-Mak/springboot-mvc-template) | `#java` `#spring-boot` `#maven` `#jsp` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Scaffold a Spring Boot MVC starter template |
 
 ### AI
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`ai_opencode`](projects/ai/ai_opencode/README.md) · [repo](https://github.com/Mcc-Mak/ai-opencode) | Docker, Node.js, opencode | AI/Agents · — · Architect | 2026 | Docker dev environment bundling opencode and MCP servers |
-| [`crew_ai_orchestrator_mcp`](projects/ai/crew_ai_orchestrator_mcp/README.md) · [repo](https://github.com/Mcc-Mak/crew-ai-orchestrator-mcp) | Python, CrewAI, uv, MCP | AI/Agents · — · Developer | 2026 | MCP server orchestrating CrewAI multi-agent workflows |
-| [`devsecops_mcp`](projects/ai/devsecops_mcp/README.md) · [repo](https://github.com/Mcc-Mak/devsecops-mcp) | opencode, MCP | AI/Agents · — · Architect | 2026 | Multi-agent MCP for DevSecOps with segregation of duties |
-| [`entrepreneur_mcp`](projects/ai/entrepreneur_mcp/) · [repo](https://github.com/Mcc-Mak/entrepreneur-mcp) | TypeScript, pnpm, MCP | AI/Agents · — · Architect | 2026 | OpenCode MCP orchestrating full SDLC with team synthesis |
-| [`hk_guided_tour`](projects/ai/hk_guided_tour/README.md) · [repo](https://github.com/Mcc-Mak/hk-guided-tour) | Python, CrewAI, uv | AI/Agents · Govt/Public(HKO) · Developer | 2026 | CrewAI pipeline generating HK building tour handbooks |
+| [`ai_opencode`](projects/ai/ai_opencode/README.md) · [repo](https://github.com/Mcc-Mak/ai-opencode) | `#docker` `#node-js` `#opencode` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Bundle opencode and MCP servers in a Docker dev environment |
+| [`crew_ai_orchestrator_mcp`](projects/ai/crew_ai_orchestrator_mcp/README.md) · [repo](https://github.com/Mcc-Mak/crew-ai-orchestrator-mcp) | `#python` `#crewai` `#uv` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Orchestrate CrewAI multi-agent workflows via an MCP server |
+| [`devsecops_mcp`](projects/ai/devsecops_mcp/README.md) · [repo](https://github.com/Mcc-Mak/devsecops-mcp) | `#opencode` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Run multi-agent MCP for DevSecOps with segregation of duties |
+| [`entrepreneur_mcp`](projects/ai/entrepreneur_mcp/) · [repo](https://github.com/Mcc-Mak/entrepreneur-mcp) | `#typescript` `#pnpm` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Orchestrate full SDLC with team synthesis via OpenCode MCP |
+| [`hk_guided_tour`](projects/ai/hk_guided_tour/README.md) · [repo](https://github.com/Mcc-Mak/hk-guided-tour) | `#python` `#crewai` `#uv` | · Field: #ai-agents<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Generate HK building tour handbooks via a CrewAI pipeline |
 
 ### DevOps
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`application_proxy_server`](projects/devops/application_proxy_server/README.md) · [repo](https://github.com/Mcc-Mak/application-proxy-server) | Docker, Apache, MySQL, Node.js, React | DevOps · Govt/Public(HKO) · DevSecOps Engineer | 2026 | Dockerized proxy server with GitLab CI auto-merge pipeline |
-| [`ass_ansible`](projects/devops/ass_ansible/README.md) · [repo](https://github.com/Mcc-Mak/ass-ansible) | Ansible | DevOps · — · DevOps Engineer | 2026 | Ansible automation project |
-| [`assistance_alert_system`](projects/devops/assistance_alert_system/README.md) · [repo](https://github.com/Mcc-Mak/assistance-alert-system) | Docker, Telegram, SMTP | DevOps · Govt/Public(HKO) · DevOps Engineer | 2026 | Monitoring alert system via Telegram and email |
-| [`cicd_pipeline_config`](projects/devops/cicd_pipeline_config/README.md) · [repo](https://github.com/Mcc-Mak/cicd-pipeline-configuration) | GitLab CI, GitHub Actions | DevOps · — · DevSecOps Engineer | 2026 | GitLab and GitHub CI/CD auto-merge pipeline configs |
+| [`application_proxy_server`](projects/devops/application_proxy_server/README.md) · [repo](https://github.com/Mcc-Mak/application-proxy-server) | `#docker` `#apache` `#mysql` `#node-js` `#react` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devsecops-engineer | in 2026 | Deploy a Dockerized proxy server with GitLab CI auto-merge pipeline |
+| [`ass_ansible`](projects/devops/ass_ansible/README.md) · [repo](https://github.com/Mcc-Mak/ass-ansible) | `#ansible` | · Field: #devops<br/>· Industry: #—<br/>· Role: #devops-engineer | in 2026 | Automate infrastructure with Ansible |
+| [`assistance_alert_system`](projects/devops/assistance_alert_system/README.md) · [repo](https://github.com/Mcc-Mak/assistance-alert-system) | `#docker` `#telegram` `#smtp` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devops-engineer | in 2026 | Send monitoring alerts via Telegram and email |
+| [`cicd_pipeline_config`](projects/devops/cicd_pipeline_config/README.md) · [repo](https://github.com/Mcc-Mak/cicd-pipeline-configuration) | `#gitlab-ci` `#github-actions` | · Field: #devops<br/>· Industry: #—<br/>· Role: #devsecops-engineer | in 2026 | Configure GitLab and GitHub CI/CD auto-merge pipelines |
 
 ### Notes
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`cissp_practice_questions_2024`](projects/notes/cissp_practice_questions_2024/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-practice-questions-2024) | Markdown | Security · Education · Student/Exam-prep | 2026 | CISSP practice question bank analysis by domain |
-| [`cissp_practice_tests_4e`](projects/notes/cissp_practice_tests_4e/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-official-practice-tests-4th-edition) | JavaScript, HTML | Security · Education · Student/Exam-prep | 2026 | CISSP practice tests with MCQ platform |
-| [`cissp_summary`](projects/notes/cissp_summary/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-summary) | Markdown | Security · Education · Student/Exam-prep | 2026 | CISSP course session-by-session study summaries |
-| [`comptia_network_summary`](projects/notes/comptia_network_summary/README.md) · [repo](https://github.com/Mcc-Mak/comptia-network--summary) | Markdown | Networking · Education · Student/Exam-prep | 2026 | CompTIA Network+ N10-009 course session summaries |
+| [`cissp_practice_questions_2024`](projects/notes/cissp_practice_questions_2024/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-practice-questions-2024) | `#markdown` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Analyze CISSP practice question bank by domain |
+| [`cissp_practice_tests_4e`](projects/notes/cissp_practice_tests_4e/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-official-practice-tests-4th-edition) | `#javascript` `#html` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Run CISSP practice tests with an MCQ platform |
+| [`cissp_summary`](projects/notes/cissp_summary/README.md) · [repo](https://github.com/Mcc-Mak/isc-cissp-summary) | `#markdown` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Summarize CISSP course sessions for exam prep |
+| [`comptia_network_summary`](projects/notes/comptia_network_summary/README.md) · [repo](https://github.com/Mcc-Mak/comptia-network--summary) | `#markdown` | · Field: #networking<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Summarize CompTIA Network+ N10-009 course sessions |
 
 ### Personal
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
-| [`cv`](projects/personal/cv/README.md) · [repo](https://github.com/Mcc-Mak/cv) | HTML/CSS/JS | — · — · — | 2026 | Personal CV website and certifications portfolio · [live](https://mcc-mak.github.io/cv/) |
-| [`music_studio`](projects/personal/music_studio/README.md) · [repo](https://github.com/Mcc-Mak/python-music-studio-app) | Python, MIDIUtil | Audio/Music · — · Developer | 2025 | Python MIDI music generator from CSV melody sheets |
+| [`cv`](projects/personal/cv/README.md) · [repo](https://github.com/Mcc-Mak/cv) | `#html` `#css` `#javascript` | · Field: #—<br/>· Industry: #—<br/>· Role: #— | in 2026 | Showcase a personal CV website and certifications portfolio · [live](https://mcc-mak.github.io/cv/) |
+| [`music_studio`](projects/personal/music_studio/README.md) · [repo](https://github.com/Mcc-Mak/python-music-studio-app) | `#python` `#midiutil` | · Field: #audio-music<br/>· Industry: #—<br/>· Role: #developer | in 2025 | Generate MIDI music from CSV melody sheets in Python |

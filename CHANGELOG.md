@@ -4,6 +4,24 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [0.5.0] - 2026-09-25
+
+### Changed
+- README toctree reformatted: Stack column now uses hashtag format
+  (`#html #css #javascript`), Field/Industry/Role tags use hashtag format with
+  `<br/>` separators (`· Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer`),
+  Year column reads `in YYYY` (all projects have same creation/update year),
+  Description column converted to imperative mood
+- Renamed local directory `projects/games/anonymous_chessboard` →
+  `projects/games/chessboard` (GitHub repo name unchanged)
+- Fixed README filename casing across all projects: `Readme.md` → `README.md`
+  (3 files), `Readme.txt`/`ReadMe.txt` → `README.md` (2 files)
+
+### Updated
+- 5 pilot READMEs: backtick-quoted all technology names in tech stack tables
+- `projects/devops/application_proxy_server/README.md`: replaced ASCII
+  architecture diagram with Mermaid `graph TB` block
+
 ## [0.4.0] - 2026-09-25
 
 ### Changed
@@ -14,7 +32,7 @@ follows [Semantic Versioning](https://semver.org/).
 
 ### Added
 - Pilot batch of 5 enhanced sub-project READMEs (template for remaining 26):
-  - `projects/games/anonymous_chessboard/README.md` — rewritten from HTML to
+  - `projects/games/chessboard/README.md` — rewritten from HTML to
     Markdown with tech stack, features, project structure, getting started
   - `projects/web_apps/wifi/README.md` — created from scratch (was 1-line stub);
     renamed `Readme.md` → `README.md` for consistency
