@@ -1,0 +1,86 @@
+{
+  // ============================================================
+  // R6: Free/Local-First - Using Ollama for local AI
+  // NOTE: model must be "provider/model-id" (valid OpenCode key)
+  // Local Ollama is NOT a built-in provider in opencode 1.18.x,
+  // so it must be registered explicitly via the AI SDK package.
+  // ============================================================
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/deepseek-v4-flash-free",
+  "provider": {
+    "HKO-AI": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "HKO-AI",
+      "options": {
+        "baseURL": "https://litellm.services.hko.gov.hk",
+        "apiKey": "{env:HKOAI_API_KEY}"
+      },
+      "models": {
+        "zai-org/GLM-5.2-FP8": {
+          "name": "GLM-5.2",
+          "limit": {
+            "context": 100000,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen2.5-coder:14b": {
+          "name": "Qwen 2.5 Coder 14B",
+          "attachment": false,
+          "reasoning": false,
+          "tool_call": true,
+          "temperature": true
+        },
+        "qwen2.5-coder:7b": {
+          "name": "Qwen 2.5 Coder 7B",
+          "attachment": false,
+          "reasoning": false,
+          "tool_call": true,
+          "temperature": true
+        }
+      }
+    }
+  },
+
+  // ============================================================
+  // R13: Custom Skills (auto-discovered from .opencode/skills/)
+  // Each SKILL.md is scanned automatically - no registration
+  // needed here. Register non-default locations via skills.paths.
+  // ============================================================
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+
+  // ============================================================
+  // R12: Project Charter as instructions
+  // R14/R15: operational HARD RULES loaded from .opencode/rules/
+  // ============================================================
+  "instructions": ["AGENTS.md", ".opencode/rules/operational-hard-rules.md"],
+
+  "permission": {
+    "*": "allow"
+  },
+  "references": {
+    // "sdk": {
+    //   "repository": "<owner>/<repo>",
+    //   "branch": "main",
+    //   "description": "<description>"
+    // },
+    "ROOT_DIR": {
+      "path": "/workplace/mcp/software-development-pipeline/Linux",
+      "description": "Root Directory for OpenCode Workspace"
+    },
+    "PIPELINE_DIR": {
+      "path": "{env:HOME}/.config/opencode",
+      "description": "CMMI Level 4 Pipeline global deployment directory"
+    }
+  }
+}

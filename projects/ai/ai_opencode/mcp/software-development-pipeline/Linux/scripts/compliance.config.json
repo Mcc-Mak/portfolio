@@ -1,0 +1,164 @@
+{
+  "frameworks": {
+    "GDPR": {
+      "title": "EU General Data Protection Regulation",
+      "controls": [
+        {
+          "id": "GDPR-1",
+          "label": "Data-processing records / inventory (Art 30)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "data process|processing activit|lawful basis|data map|register of processing|personal data"
+        },
+        {
+          "id": "GDPR-2",
+          "label": "Data subject rights: DSAR, erasure, portability (Art 15-22)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "data subject|right to.{0,30}(be forgotten|erasure|access|portability)|DSAR|erasure request"
+        },
+        {
+          "id": "GDPR-3",
+          "label": "Security of processing (Art 32)",
+          "severity": "critical",
+          "kind": "present",
+          "pattern": "encryption|TLS|HTTPS|pseudonymi|access control|least privilege"
+        },
+        {
+          "id": "GDPR-4",
+          "label": "Data protection by design (Art 25)",
+          "severity": "medium",
+          "kind": "present",
+          "pattern": "privacy by design|data protection by design|impact assessment|data protection impact|PIA"
+        },
+        {
+          "id": "GDPR-5",
+          "label": "No production PII committed to source",
+          "severity": "high",
+          "kind": "absent",
+          "pattern": "\\b(passport_?number|social_?security_?number|ssn)\\b\\s*[:=]"
+        }
+      ]
+    },
+    "HIPAA": {
+      "title": "US Health Insurance Portability and Accountability Act",
+      "controls": [
+        {
+          "id": "HIPAA-1",
+          "label": "Risk analysis / security management process (164.308(a)(1))",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "risk analys|risk assessment|security management process"
+        },
+        {
+          "id": "HIPAA-2",
+          "label": "Information system activity review / audit logs (164.308(a)(1)(ii)(D))",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "audit log|audit trail|activity review|access log"
+        },
+        {
+          "id": "HIPAA-3",
+          "label": "e-PHI transmission security (164.312(e))",
+          "severity": "critical",
+          "kind": "present",
+          "pattern": "TLS|HTTPS|encryption.{0,30}transit|secure channel"
+        },
+        {
+          "id": "HIPAA-4",
+          "label": "Access control & data integrity (164.312)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "access control|least privilege|data integrity|checksum|hashing|tamper"
+        },
+        {
+          "id": "HIPAA-5",
+          "label": "Breach notification procedure (164.408)",
+          "severity": "medium",
+          "kind": "present",
+          "pattern": "breach|incident response|notification.{0,30}164"
+        }
+      ]
+    },
+    "PCI DSS": {
+      "title": "Payment Card Industry Data Security Standard",
+      "controls": [
+        {
+          "id": "PCI-1",
+          "label": "No stored PAN / cardholder data (Req 3)",
+          "severity": "critical",
+          "kind": "absent",
+          "pattern": "\\b\\d{4}[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b"
+        },
+        {
+          "id": "PCI-2",
+          "label": "Encrypted cardholder transmission (Req 4)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "TLS|HTTPS|encryption"
+        },
+        {
+          "id": "PCI-3",
+          "label": "Access control / MFA (Req 7-8)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "least privilege|access control|multi.?factor|\\bMFA\\b|\\b2FA\\b"
+        },
+        {
+          "id": "PCI-4",
+          "label": "Logging and monitoring for cardholder data (Req 10)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "audit log|logging|monitoring|alert|detect"
+        },
+        {
+          "id": "PCI-5",
+          "label": "Data retention and disposal (Req 3.1)",
+          "severity": "medium",
+          "kind": "present",
+          "pattern": "retention|disposal|purge|delete policy|erase"
+        }
+      ]
+    },
+    "SOX": {
+      "title": "US Sarbanes-Oxley Act",
+      "controls": [
+        {
+          "id": "SOX-1",
+          "label": "Internal control documentation (302/404)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "internal control|financial reporting|control over financial|\\bSOX\\b|\\b404\\b"
+        },
+        {
+          "id": "SOX-2",
+          "label": "Audit trail for financial/critical actions (404)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "audit log|audit trail"
+        },
+        {
+          "id": "SOX-3",
+          "label": "Segregation of duties / role-based access (ITGC)",
+          "severity": "high",
+          "kind": "present",
+          "pattern": "segregation of duties|least privilege|role.?based|\\bRBAC\\b|access control"
+        },
+        {
+          "id": "SOX-4",
+          "label": "Change management controls (ITGC)",
+          "severity": "medium",
+          "kind": "present",
+          "pattern": "change management|release process|code review|approval"
+        },
+        {
+          "id": "SOX-5",
+          "label": "Control environment: training / awareness",
+          "severity": "medium",
+          "kind": "present",
+          "pattern": "training|awareness|competence|acceptance criteria"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  // ============================================================
+  // GLOBAL CONFIG TEMPLATE (R14)
+  // Deployed by scripts\deploy-global.ps1 to
+  // ~/.config/opencode/opencode.jsonc so that /pipeline, skills/**,
+  // scripts, tools and config work from ANY directory.
+  // Single source of truth: the project opencode.jsonc + this file.
+  // Keep provider/model/permissions/references in sync with the
+  // project opencode.jsonc when you change them.
+  //
+  // Differences vs. project opencode.jsonc:
+  //  - skills.paths is OMITTED: global skills are auto-discovered
+  //    from ~/.config/opencode/skills/<name>/SKILL.md
+  //  - instructions paths are relative to the global config dir
+  //    (~/.config/opencode): AGENTS.md and rules/operational-hard-rules.md
+  // ============================================================
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/deepseek-v4-flash-free",
+  "provider": {
+    "HKO-AI": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "HKO-AI",
+      "options": {
+        "baseURL": "https://litellm.services.hko.gov.hk",
+        "apiKey": "{env:HKOAI_API_KEY}"
+      },
+      "models": {
+        "zai-org/GLM-5.2-FP8": {
+          "name": "GLM-5.2",
+          "limit": {
+            "context": 100000,
+            "output": 8192
+          }
+        }
+      }
+    },
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen2.5-coder:14b": {
+          "name": "Qwen 2.5 Coder 14B",
+          "attachment": false,
+          "reasoning": false,
+          "tool_call": true,
+          "temperature": true
+        },
+        "qwen2.5-coder:7b": {
+          "name": "Qwen 2.5 Coder 7B",
+          "attachment": false,
+          "reasoning": false,
+          "tool_call": true,
+          "temperature": true
+        }
+      }
+    }
+  },
+
+  // R12/R14: global charter + operational HARD RULES as instructions.
+  "instructions": ["AGENTS.md", "rules/operational-hard-rules.md"],
+
+  "permission": {
+    "*": "allow"
+  },
+  "references": {
+    "ROOT_DIR": {
+      "path": "C:\\OpenCode",
+      "description": "Root Directory for OpenCode Workspace"
+    },
+    "PIPELINE_DIR": {
+      "path": "~\\.config\\opencode",
+      "description": "CMMI Level 4 Pipeline global deployment directory"
+    }
+  }
+}
