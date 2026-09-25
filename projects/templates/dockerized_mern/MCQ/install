@@ -1,0 +1,7 @@
+export PS1="\u@\h:\w $ "
+
+filename_pfx=traceback/install.$(date '+%Y%m%d')
+filename_success=$filename_pfx.success.log
+filename_error=$filename_pfx.error.log
+echo -e "$(python3 -c 'print("=" * 30)')\n>>> Batch\n\n" | tee $filename_success $filename_error
+bash _install.sh | tee $filename_success

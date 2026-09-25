@@ -1,0 +1,12 @@
+#paint-grid {
+    position: relative;
+}
+
+.paint-cell {
+    position: relative;
+    background-color: olivedrab;
+}
+
+.paint-row {
+    position: relative;
+}

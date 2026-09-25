@@ -1,0 +1,121 @@
+@startuml
+!pragma theme plain
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam activityShape roundBox
+skinparam padding 5
+skinparam arrowColor #444444
+skinparam activity {
+  BackgroundColor #EEEEEE
+  BorderColor #444444
+}
+title OpenCode MCP Workflow — "陳永仁係二五仔-內鬼-間諜-SpyFamily成員"
+
+|Orchestrator|
+start
+
+:Phase 0: Initialize & Synthesise Team;
+repeat
+  :Create repository structure and pnpm project;
+  :Run Team Architect:
+  - Analyze user project goal
+  - Generate roles-manifest.json, sod-matrix.md, tui-modules.md, role-*.md;
+  :Verify pnpm and tooling;
+  :Instantiate in‑memory agents per role;
+  
+  if (Gate: all generated files valid and roles have non‑empty SoD rules?) then (Yes)
+    break
+  else (No)
+    :Re‑run synthesis;
+  endif
+repeat while (true) is (true)
+
+:Phase 1: TUI‑driven Requirements Clarification;
+repeat
+  :TUI session:
+  - Present questions from tui-modules.md (5 modules)
+  - Capture raw answers into ssot_raw_answers.json
+  - Product & Strategy roles refine into PRD/SRS drafts
+  - Resolve conflicts;
+  if (SSOT stable AND (user endorsed OR no missing pieces)?) then (Yes)
+    break
+  else (No)
+    :Address conflicts / missing items;
+    :Update SSOT;
+  endif
+repeat while (true) is (true)
+
+:Phase 2: Create Specification & Design Documents;
+repeat
+  :Generate docs tree under docs/ (all subdirectories);
+  :Assign domain roles to write documents;
+  :Verify all docs exist with meaningful content;
+  :Check each requirement traced to at least one document;
+  if (Gate passed?) then (Yes)
+    break
+  else (No)
+    :Fix documents / address gaps;
+  endif
+repeat while (true) is (true)
+
+:Phase 3: Code the Project;
+repeat
+  :Domain engineering roles write code according to design;
+  :Compile/build and run unit tests;
+  if (Gate: build succeeds and all tests pass?) then (Yes)
+    break
+  else (No)
+    :Fix code;
+  endif
+repeat while (true) is (true)
+
+:Phase 4: Security Checking;
+repeat
+  :Run audit, SAST, secret scan, license check (tools/*.mjs);
+  :Generate vulnerability-report.md and update security-hardening.md;
+  if (Gate: critical/high vulns fixed or accepted with risk assessment?) then (Yes)
+    break
+  else (No)
+    :Remediate or accept risk;
+  endif
+repeat while (true) is (true)
+
+:Phase 5: Compliance Checking;
+repeat
+  :Run GDPR & SOC2 checklists;
+  :Generate SBOM (bom.xml, sbom.md);
+  :Update compliance documents;
+  if (Gate: mandatory requirements satisfied or remediation plan approved?) then (Yes)
+    break
+  else (No)
+    :Plan remediation;
+  endif
+repeat while (true) is (true)
+
+:Phase 6: Finalize Spec/Design & RTM;
+repeat
+  :Update docs based on security/compliance findings;
+  :Generate requirements-traceability-matrix.md;
+  if (Gate: traceability covers 100% requirements?) then (Yes)
+    break
+  else (No)
+    :Update traceability;
+  endif
+repeat while (true) is (true)
+
+:Phase 7: Finalize Reports & Summaries;
+repeat
+  :Generate final summaries with versioning (v1, v2, …);
+  :Generate table-of-content-tree.md;
+  if (Gate: all reports complete and TOC links all docs?) then (Yes)
+    break
+  else (No)
+    :Regenerate reports;
+  endif
+repeat while (true) is (true)
+
+:All phases complete — Definition of Done;
+
+stop
+
+@enduml

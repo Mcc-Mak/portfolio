@@ -1,0 +1,65 @@
+img, a {
+  -webkit-user-drag: none;
+    -khtml-user-drag: none;
+      -moz-user-drag: none;
+        -o-user-drag: none;
+          user-drag: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+    background-color: lightblue;
+}
+
+.container-main {
+    text-align: center;
+    vertical-align: middle;
+}
+
+nav {
+    font-size: 18px;
+}
+
+.navbar-brand {
+    background-color: #e0eba7;
+    color: #000000 !important;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.page-name {
+    color: #ffffff !important;
+}
+
+.input-group-text {
+    background-color: #c7c1c1;
+    color: #0061ff;
+}
+
+form#logout > button {
+    float: right;
+}
+
+.swal2-modal {
+  direction: rtl;
+}
+
+.swal2-modal * {
+  direction: ltr;
+}
+
+.nav-container {
+  margin-left: 150px;
+  margin-right: 150px;
+}

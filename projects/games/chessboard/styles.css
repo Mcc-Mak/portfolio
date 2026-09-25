@@ -1,0 +1,27 @@
+.game-layout {
+    margin: auto;
+    width: 58%;
+    height: 70%;
+    border: 5px solid #FFFF00;
+    padding: 10px;
+}
+
+td {
+    vertical-align: middle;
+    text-align: center;
+    border-style: groove;
+    background-size: cover;
+    font-size: 14px;
+}
+
+.chessboard {
+    border-radius: 15px;
+}
+
+img {
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+}

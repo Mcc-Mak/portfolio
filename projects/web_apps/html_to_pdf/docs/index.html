@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>優雅列印 · HTML轉PDF工具</title>
+    <!-- 
+        移除 html2canvas + jsPDF 複雜邏輯，僅保留原生瀏覽器列印方案。
+        全新設計：柔和背景、精緻陰影、圓潤卡片、互動回饋。
+        功能純粹：編輯HTML → 即時預覽 → 一鍵列印/另存PDF。
+        全站繁體中文介面。
+    -->
+    <style>
+        /* ========== 全域重置與裝飾樣式 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f5 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1.5rem;
+            color: #1a2c3e;
+        }
+
+        /* 主容器: 優雅卡片 */
+        .converter-card {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 2px 5px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* 頁首區域 */
+        .hero {
+            background: #ffffff;
+            padding: 2rem 2.5rem 1.2rem 2.5rem;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 650;
+            background: linear-gradient(135deg, #1f5e8e, #2b8f6c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            display: inline-block;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2ff;
+            color: #1f5e8e;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-left: 1rem;
+            vertical-align: middle;
+            box-shadow: inset 0 0 0 1px rgba(31, 94, 142, 0.2);
+        }
+
+        .sub {
+            margin-top: 0.7rem;
+            color: #4b6b82;
+            font-size: 0.95rem;
+            border-left: 3px solid #2b8f6c;
+            padding-left: 1rem;
+        }
+
+        /* 雙欄佈局: 左側編輯，右側預覽 */
+        .split-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            padding: 2rem 2.5rem;
+            background: #fefefe;
+        }
+
+        .editor-pane {
+            flex: 1.2;
+            min-width: 260px;
+        }
+
+        .preview-pane {
+            flex: 1.8;
+            min-width: 300px;
+        }
+
+        /* 卡片風格面板 */
+        .panel {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f8;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .panel:hover {
+            box-shadow: 0 14px 28px -8px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-header {
+            background: #fafcff;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid #eef2f8;
+            color: #1e4a6e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .panel-header i {
+            font-size: 1.2rem;
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            padding: 1.5rem;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            background: #ffffff;
+            color: #1e2f3c;
+            resize: vertical;
+            outline: none;
+            min-height: 380px;
+        }
+
+        textarea:focus {
+            background-color: #fefef7;
+            box-shadow: inset 0 0 0 2px #d4e2f0;
+        }
+
+        .preview-container {
+            background: #ffffff;
+            padding: 1.5rem;
+            min-height: 380px;
+            max-height: 65vh;
+            overflow-y: auto;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
+        }
+
+        /* 預覽區基礎樣式 (乾淨但可讀) – 不干預使用者html內容太多，只確保可滾動和背景 */
+        .preview-container * {
+            max-width: 100%;
+        }
+
+        /* 按鈕群組 */
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.8rem;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 0.2rem;
+        }
+
+        .btn {
+            border: none;
+            font-weight: 500;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f0f3f7;
+            color: #1f3b4c;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary {
+            background: #1f5e8e;
+            color: white;
+            box-shadow: 0 4px 8px rgba(31, 94, 142, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #0e4b75;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px -6px rgba(31, 94, 142, 0.4);
+        }
+
+        .btn-secondary {
+            background: #eef2fa;
+            border: 1px solid #cfdfed;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e9f2;
+            transform: translateY(-1px);
+        }
+
+        .btn-clear {
+            background: #fff0ea;
+            color: #b45f3b;
+            border: 1px solid #ffe0d0;
+        }
+
+        .btn-clear:hover {
+            background: #ffe4d9;
+        }
+
+        /* footer提示 */
+        .info-footer {
+            background: #f8fafd;
+            padding: 1.2rem 2rem;
+            border-top: 1px solid #e6edf4;
+            font-size: 0.8rem;
+            color: #4a6e85;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .shortcut {
+            font-family: monospace;
+            background: #eef2f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+
+        hr {
+            margin: 0;
+            border: none;
+            border-top: 1px solid #ecf3f9;
+        }
+
+        /* 響應式 */
+        @media (max-width: 780px) {
+            body {
+                padding: 1rem;
+            }
+            .hero, .split-layout {
+                padding: 1.2rem;
+            }
+            .btn {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* 即時預覽裝飾：不加額外樣式污染，僅限捲軸美觀 */
+        .preview-container::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .preview-container::-webkit-scrollbar-track {
+            background: #f0f2f5;
+            border-radius: 8px;
+        }
+        .preview-container::-webkit-scrollbar-thumb {
+            background: #cbdae6;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="converter-card">
+    <div class="hero">
+        <div>
+            <h1>📄 印跡 · HTML to PDF</h1>
+            <span class="badge">原生列印 · 另存PDF</span>
+        </div>
+        <div class="sub">
+            ✨ 編寫 HTML → 即時預覽 → 呼叫瀏覽器列印 (Ctrl/Cmd + P) 儲存為高品質PDF。<br>
+            🎨 完全保留您的結構與樣式，無額外轉換損耗。
+        </div>
+    </div>
+
+    <div class="split-layout">
+        <!-- 左側編輯區 -->
+        <div class="editor-pane">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>✍️</span> HTML 原始碼
+                </div>
+                <textarea id="htmlSource" placeholder="輸入或貼上 HTML 代碼...">&lt;div style="font-family: system-ui, sans-serif; max-width: 700px;"&gt;
+  &lt;h1 style="color: #1e4663;"&gt;優雅的文件&lt;/h1&gt;
+  &lt;p&gt;這份文件由 &lt;strong&gt;HTML 轉 PDF 工具&lt;/strong&gt; 生成，採用瀏覽器原生列印機制，完美保留排版、圖片、字型。&lt;/p&gt;
+  &lt;hr&gt;
+  &lt;h2&gt;📌 核心特性&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;零失真轉換 — 所見即所得&lt;/li&gt;
+    &lt;li&gt;支援複雜表格、自訂樣式&lt;/li&gt;
+    &lt;li&gt;無需後端，純前端實現&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote style="border-left: 4px solid #2c8f6e; padding-left: 1rem; margin: 1rem 0;"&gt;
+    點擊右上角「🖨️ 另存為 PDF」或在預覽區使用瀏覽器列印 → 目標選擇「另存為 PDF」即可。
+  &lt;/blockquote&gt;
+  &lt;footer style="margin-top: 2rem; font-size: 0.8rem; color: gray;"&gt;
+    🌟 設計即內容 — 列印友善。
+  &lt;/footer&gt;
+&lt;/div&gt;</textarea>
+            </div>
+        </div>
+
+        <!-- 右側預覽區 -->
+        <div class="preview-pane">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>👁️</span> 即時預覽
+                </div>
+                <div class="preview-container" id="previewContainer">
+                    <div id="livePreview"></div>
+                </div>
+            </div>
+            <!-- 操作欄: 僅保留「儲存為PDF(瀏覽器列印)」+ 重置/清空範例 -->
+            <div class="action-bar">
+                <button id="printPdfBtn" class="btn btn-primary">
+                    🖨️ 另存為 PDF (瀏覽器列印)
+                </button>
+                <button id="resetExampleBtn" class="btn btn-secondary">
+                    📋 恢復範例
+                </button>
+                <button id="clearBtn" class="btn btn-clear">
+                    🧹 清空內容
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-footer">
+        <span>💡 提示：點擊「另存為 PDF」將開啟系統列印對話框 → 選擇「另存為 PDF」即可獲得完美文件。</span>
+        <span>⚡ 快速鍵 <span class="shortcut">Ctrl + Enter</span> 快速呼叫列印</span>
+    </div>
+</div>
+
+<script>
+    // 核心邏輯 —— 完全移除 #generatePdfBtn 及 jsPDF/html2canvas 相關程式碼
+    // 僅保留簡潔的預覽更新、列印功能、重置與清空
+
+    // DOM 元素
+    const htmlSourceTextarea = document.getElementById('htmlSource');
+    const livePreviewDiv = document.getElementById('livePreview');
+    const printBtn = document.getElementById('printPdfBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const resetExampleBtn = document.getElementById('resetExampleBtn');
+
+    // 預設範例 (優雅且展示)
+    const DEFAULT_HTML = `<!DOCTYPE html>
+<div style="font-family: 'Inter', system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem;">
+  <h1 style="color: #1e4663; border-left: 5px solid #2b8f6c; padding-left: 1rem;">✨ 設計文件範例</h1>
+  <p style="line-height: 1.5;">這份文件展示了 <strong>HTML 轉 PDF 工具</strong> 的強大能力。您可以使用任何HTML標籤、內聯樣式、表格等元素，最終透過瀏覽器列印生成高傳真PDF。</p>
+  <hr style="margin: 1.5rem 0;">
+  <h2>📊 資料表格示範</h2>
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead>
+      <tr><th>項目</th><th>狀態</th><th>備註</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>響應式佈局</td><td>✅ 完成</td><td>完美適配</td></tr>
+      <tr><td>列印最佳化</td><td>🖨️ 原生支援</td><td>清晰向量</td></tr>
+      <tr><td>圖片保留</td><td>🎯 自動渲染</td><td>無損品質</td></tr>
+    </tbody>
+   </table>
+  <blockquote style="background: #f4f9fe; padding: 1rem; border-radius: 16px; margin: 1.5rem 0;">
+    💬 使用瀏覽器列印功能 (Ctrl+P) 並選擇 "另存為PDF"，您的佈局、字型、顏色都會被保留。
+  </blockquote>
+  <p style="font-size: 0.85rem; color: #4b6a7c;">—— 純前端實現，無需伺服器，安全可靠。</p>
+</div>`;
+
+    // 更新預覽區域 (將 textarea 的 HTML 渲染到右側)
+    function updatePreview() {
+        const rawHtml = htmlSourceTextarea.value;
+        // 防止使用者意外留空導致預覽空白: 但保留空白內容也更新
+        if (rawHtml.trim() === "") {
+            livePreviewDiv.innerHTML = "<div style='padding: 2rem; text-align: center; color: #8ba0ae;'>✨ 無內容，請在上方編寫 HTML ✨</div>";
+        } else {
+            livePreviewDiv.innerHTML = rawHtml;
+        }
+    }
+
+    // 另存為 PDF：透過開啟新視窗或 iframe？採用最佳相容方法：提取預覽區html，在新視窗呼叫列印。
+    function saveAsPdfViaPrint() {
+        // 先同步一次最新內容
+        updatePreview();
+        
+        // 獲取當前預覽的深層克隆，保留所有樣式與結構
+        const previewContent = livePreviewDiv.cloneNode(true);
+        
+        const printWindow = window.open('', '_blank', 'width=1000,height=700,toolbar=yes,menubar=yes,scrollbars=yes');
+        if (!printWindow) {
+            alert("⚠️ 無法開啟列印視窗，請檢查瀏覽器是否阻擋了彈出視窗。允許彈出視窗後重試。");
+            return;
+        }
+        
+        // 取得文件標題
+        let docTitle = "HTML_to_PDF_輸出";
+        const titleMatch = htmlSourceTextarea.value.match(/<title>(.*?)<\/title>/i);
+        if (titleMatch && titleMatch[1]) docTitle = titleMatch[1];
+        
+        // 建構列印文件 (保留原始內容的所有樣式，為了列印增加基礎重置讓邊距舒適)
+        printWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>${escapeHtml(docTitle)}</title>
+                <style>
+                    /* 零侵入但確保列印邊距合理，並保留使用者所有樣式 — 無裝飾破壞，只是避免邊距溢出 */
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    body {
+                        background: white;
+                        padding: 1.8rem 2rem;
+                        font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+                        margin: 0 auto;
+                    }
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                    @media print {
+                        body {
+                            padding: 0.75in;
+                            margin: 0;
+                        }
+                    }
+                </style>
+            </head>
+            <body>
+                ${previewContent.outerHTML}
+            </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.focus();
+        // 延遲一點確保渲染完成，再調起列印對話框
+        printWindow.print();
+    }
+    
+    // 簡單防XSS輔助函式 (用於title)
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    // 重置範例內容 (恢復精美範例)
+    function resetToExample() {
+        htmlSourceTextarea.value = DEFAULT_HTML;
+        updatePreview();
+        htmlSourceTextarea.scrollTop = 0;
+    }
+    
+    // 清空內容 & 預覽區域顯示空白提示
+    function clearAllContent() {
+        htmlSourceTextarea.value = '';
+        updatePreview();  // 會顯示空狀態佔位符
+        htmlSourceTextarea.focus();
+    }
+    
+    // 即時監聽輸入變化
+    htmlSourceTextarea.addEventListener('input', updatePreview);
+    
+    // 按鈕綁定
+    printBtn.addEventListener('click', saveAsPdfViaPrint);
+    clearBtn.addEventListener('click', clearAllContent);
+    resetExampleBtn.addEventListener('click', resetToExample);
+    
+    // 快捷鍵: Ctrl + Enter 觸發列印PDF
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            e.preventDefault();
+            saveAsPdfViaPrint();
+        }
+    });
+    
+    // 初始化 (載入預設範例內容，預覽同步)
+    function init() {
+        htmlSourceTextarea.value = DEFAULT_HTML;
+        updatePreview();
+    }
+    
+    init();
+</script>
+</body>
+</html>

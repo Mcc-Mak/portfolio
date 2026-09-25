@@ -1,0 +1,7 @@
+node_modules/
+.env
+tasklist.txt
+MCQ/app/script/server/conf/config.env
+MCQ/traceback/
+*.log
+*.bkup

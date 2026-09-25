@@ -1,0 +1,40 @@
+{
+  "name": "cmmi-opencode-pipeline",
+  "version": "1.0.0",
+  "description": "CMMI Level 4 OpenCode DevSecOps Pipeline - Linux Final",
+  "bin": {
+    "reqmind": "tools/reqmind.js"
+  },
+  "scripts": {
+    "pipeline": "bash scripts/opencode-pipeline.sh",
+    "deploy": "bash scripts/deploy-global.sh",
+    "reqmind": "node tools/reqmind.js",
+    "pipeline:no-docgen": "bash scripts/opencode-pipeline.sh --no-docgen",
+    "pipeline:no-gates": "bash scripts/opencode-pipeline.sh --no-gates",
+    "pipeline:sops": "bash scripts/opencode-pipeline.sh --sops",
+    "collect-metrics": "node scripts/collect-metrics.js",
+    "dast": "node scripts/dast-scan.js",
+    "spc": "node scripts/spc-control.js",
+    "predict": "node scripts/predict-readiness.js",
+    "rtm": "node scripts/generate-rtm.js",
+    "lint": "eslint . --ext .js",
+    "test": "jest --coverage",
+    "audit": "npm audit --audit-level=high"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/eslint-parser": "^7.29.7",
+    "@mermaid-js/mermaid-cli": "^11.16.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-security": "^1.7.1",
+    "jest": "^29.7.0",
+    "mathjs": "^12.2.3",
+    "puppeteer": "^25.7.0",
+    "regression": "^2.0.1",
+    "sqlite3": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

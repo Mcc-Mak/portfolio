@@ -1,0 +1,56 @@
+source .env
+
+docker rm -f $APP_NAME
+docker rmi -f $APP_NAME
+
+docker build --no-cache \
+    --label "build_comment=$(date)" \
+    --build-arg DIR_WORKSPACE="$DIR_WORKSPACE" \
+    --build-arg DIR_OPENCODE="$DIR_OPENCODE" \
+    --build-arg DIR_OPENCODE_MCP="$DIR_OPENCODE_MCP" \
+    --build-arg DIR_OPENCODE_G_CONFIG="$DIR_OPENCODE_G_CONFIG" \
+    --build-arg HKOAI_API_KEY="$HKOAI_API_KEY" \
+    --build-arg MYSQL_HOST="$MYSQL_HOST" \
+    --build-arg MYSQL_PORT="$MYSQL_PORT" \
+    --build-arg MYSQL_USER="$MYSQL_USER" \
+    --build-arg MYSQL_PASSWORD="$MYSQL_PASSWORD" \
+    -t $APP_NAME .
+docker run -itd \
+  --hostname $APP_NAME \
+  --name $APP_NAME \
+  --network $NETWORK_NAME \
+  --volume "./projects:$DIR_WORKSPACE/projects:z" \
+  --volume "./mcp:$DIR_WORKSPACE/mcp:z" \
+  --volume "./opencode.json:$DIR_OPENCODE_G_CONFIG/opencode.jsonc:z" \
+  --volume "/var/run/docker.sock:/var/run/docker.sock:ro" \
+  --volume "./.profile:/root/.profile:ro" \
+  --env "APP_NAME=$APP_NAME" \
+  --publish "$PORT_OPENCODE_WEB_INF:80" \
+  --restart always \
+  $APP_NAME:latest
+
+docker pull ghcr.io/zaproxy/zaproxy
+docker run -d \
+  --name zap \
+  --network $NETWORK_NAME \
+  --restart always \
+  -p 8090:8080 \
+  --memory=4g \
+  --memory-swap=4g \
+  --cpus=2 \
+  -e ZAP_JVM_OPTS="-Xmx3g -Xms1g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=4 -XX:ConcGCThreads=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps" \
+  ghcr.io/zaproxy/zaproxy \
+  zap.sh -daemon -port 8080 -host 0.0.0.0 \
+  -config api.disablekey=true \
+  -config api.addrs.addr.name=.* \
+  -config api.addrs.addr.regex=true \
+  -config log.level=INFO \
+  -config ascan.threadPerHost=4 \
+  -config ascan.delayInMs=100 \
+  -config ascan.maxScansInUI=2 \
+  -config ascan.maxRuleDurationInMins=10 \
+  -config ascan.maxScanDurationInMins=60
+
+sleep 5
+docker restart $APP_NAME
+docker exec -it $APP_NAME bash

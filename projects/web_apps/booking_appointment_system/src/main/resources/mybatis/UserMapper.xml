@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//testMybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.martin.app.springbootmvc.controller.service.mapper.UserMapper">
+    <resultMap id="_UserProfile" type="hk.martin.app.springbootmvc.controller.service.mapper.model.UserProfile">
+        <result property="id" column="ID" jdbcType="VARCHAR"></result>
+        <result property="userId" column="USER_ID" jdbcType="VARCHAR"></result>
+        <result property="username" column="USERNAME" jdbcType="VARCHAR"></result>
+        <result property="role" column="ROLE" jdbcType="VARCHAR"></result>
+        <result property="isEnable" column="IS_ENABLE" jdbcType="VARCHAR"></result>
+        <result property="nameEng" column="NAME_ENG" jdbcType="VARCHAR"></result>
+        <result property="updatedBy" column="UPDATED_BY" jdbcType="TIMESTAMP"></result>
+        <result property="updatedDatetime" column="UPDATED_DATETIME" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+    <select id="getNameEngByUsername" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+            B.name_eng
+        from
+            users A
+            inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+        where
+            A.username = #{username}
+    </select>
+    <select id="getUserProfiles" resultMap="_UserProfile">
+        select
+            A.user_id,
+            A.username,
+            A.role,
+            B.name_eng,
+            A.is_enable,
+            A.updated_by,
+            A.updated_datetime
+        from
+            users A
+            inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+        where
+            A.updated_datetime <![CDATA[>=]]> NOW() - INTERVAL 3 MONTH
+    </select>
+    <update id="updateActivation">
+        update users
+            set
+                is_enable = 0,
+                updated_by = 'SYSTEM',
+                updated_datetime = NOW()
+        where
+            role <![CDATA[<>]]> 'ROLE_ADMIN'
+            and updated_datetime <![CDATA[<=]]> NOW() - INTERVAL 3 MONTH
+    </update>
+    <delete id="deleteUser">
+        delete from users
+        where user_id = #{userId}
+		and exists( select A.user_id from ( select user_id from users where is_enable = 1 and role = 'ROLE_ADMIN' and username = #{userNameEng} ) A )
+    </delete>
+    <delete id="deleteUserProfile">
+        delete from user_profile
+        where user_id = #{userId}
+		and exists( select A.user_id from ( select user_id from users where is_enable = 1 and role = 'ROLE_ADMIN' and username = #{userNameEng} ) A )
+    </delete>
+    <update id="resetBookingAppointment">
+        update booking_appointment
+            set
+                user_id = 0,
+                owner_id = 0,
+                updated_by = (
+                    select
+                        B.name_eng
+                    from
+                        users A
+                        inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+                    where
+                        A.username = #{userNameEng}
+                ),
+                updated_datetime = NOW()
+        where
+            owner_id = #{userId}
+    </update>
+    <select id="checkDelta" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.UserProfile" resultMap="_UserProfile">
+        select
+            A.id,
+            A.user_id,
+            A.username,
+            A.role,
+            B.name_eng,
+            A.is_enable,
+            A.updated_by,
+            A.updated_datetime
+        from
+            users A
+            inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+        where
+            A.user_id = #{userId}
+            and (
+                A.role <![CDATA[<>]]> #{role}
+                or A.is_enable <![CDATA[<>]]> #{isEnable}
+            )
+            and (
+                exists( select user_id from users where is_enable = 1 and role = 'ROLE_ADMIN' and username = #{userNameEng} )
+            )
+    </select>
+    <update id="activateUser">
+	update users
+		set
+			role = #{role},
+			is_enable = #{isEnable},
+			updated_by = (
+				select
+					C.name_eng
+				from (
+					select
+						B.name_eng
+					from
+						users A
+						inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+					where
+						A.username = #{userNameEng}
+				) C
+			),
+			updated_datetime = NOW()
+	where
+		user_id = #{userId}
+		and (
+			exists(
+				select D.user_id from ( select user_id from users where is_enable = 1 and role = 'ROLE_ADMIN' and username = #{userNameEng} ) D
+			)
+		)
+    </update>
+</mapper>

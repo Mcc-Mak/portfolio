@@ -1,0 +1,1843 @@
+{
+  "holiday": {
+    "2025": [
+      "2025-01-01",
+      "2025-01-29",
+      "2025-01-30",
+      "2025-01-31",
+      "2025-04-04",
+      "2025-04-18",
+      "2025-04-19",
+      "2025-04-21",
+      "2025-05-01",
+      "2025-05-05",
+      "2025-05-31",
+      "2025-07-01",
+      "2025-10-01",
+      "2025-10-07",
+      "2025-10-29",
+      "2025-12-25",
+      "2025-12-26"
+    ],
+    "2026": [
+      "2026-01-01",
+      "2026-02-17",
+      "2026-02-18",
+      "2026-02-19",
+      "2026-04-03",
+      "2026-04-04",
+      "2026-04-06",
+      "2026-04-07",
+      "2026-05-01",
+      "2026-05-25",
+      "2026-06-19",
+      "2026-07-01",
+      "2026-09-26",
+      "2026-10-01",
+      "2026-10-19",
+      "2026-12-25",
+      "2026-12-26"
+    ]
+  },
+  "offset": {
+    "8NpV8Xzsz0dCJfxxe0BNoc1WhF72": {
+      "2025": {
+        "10": {
+          "differenceFormatted": "要加班 01:50",
+          "differenceMinutes": -110,
+          "lastUpdated": "2026-06-01T06:53:20.960Z",
+          "rectifyingFactor": 120
+        },
+        "11": {
+          "differenceFormatted": "已加班 00:41",
+          "differenceMinutes": 41,
+          "lastUpdated": "2026-06-01T06:56:08.435Z",
+          "rectifyingFactor": 0
+        },
+        "12": {
+          "differenceFormatted": "已加班 01:37",
+          "differenceMinutes": 97,
+          "lastUpdated": "2026-06-01T06:31:20.581Z",
+          "rectifyingFactor": 120
+        },
+        "07": {
+          "differenceFormatted": "要加班 02:22",
+          "differenceMinutes": -142,
+          "lastUpdated": "2026-06-01T02:24:00.988Z",
+          "rectifyingFactor": 0
+        },
+        "08": {
+          "differenceFormatted": "要加班 02:17",
+          "differenceMinutes": -137,
+          "lastUpdated": "2026-06-01T02:24:08.594Z",
+          "rectifyingFactor": 0
+        },
+        "09": {
+          "differenceFormatted": "已加班 00:06",
+          "differenceMinutes": 6,
+          "lastUpdated": "2026-06-01T06:53:02.550Z",
+          "rectifyingFactor": 0
+        }
+      },
+      "2026": {
+        "01": {
+          "differenceFormatted": "要加班 00:39",
+          "differenceMinutes": -39,
+          "lastUpdated": "2026-06-01T06:31:37.107Z",
+          "rectifyingFactor": 0
+        },
+        "02": {
+          "differenceFormatted": "已加班 00:32",
+          "differenceMinutes": 32,
+          "lastUpdated": "2026-06-01T06:33:45.838Z",
+          "rectifyingFactor": 120
+        },
+        "03": {
+          "differenceFormatted": "已加班 01:38",
+          "differenceMinutes": 98,
+          "lastUpdated": "2026-06-01T02:23:16.236Z",
+          "rectifyingFactor": 0
+        },
+        "04": {
+          "differenceFormatted": "要加班 00:15",
+          "differenceMinutes": -15,
+          "lastUpdated": "2026-06-01T02:23:04.418Z",
+          "rectifyingFactor": 0
+        },
+        "05": {
+          "differenceFormatted": "已加班 00:58",
+          "differenceMinutes": 58,
+          "lastUpdated": "2026-06-01T06:38:18.697Z",
+          "rectifyingFactor": 0
+        },
+        "06": {
+          "differenceFormatted": "已加班 00:15",
+          "differenceMinutes": 15,
+          "lastUpdated": "2026-06-01T06:45:42.881Z",
+          "rectifyingFactor": 0
+        }
+      }
+    }
+  },
+  "timesheet": {
+    "8NpV8Xzsz0dCJfxxe0BNoc1WhF72": {
+      "2025": {
+        "10": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:20",
+            "time2": "12:32",
+            "time3": "13:48",
+            "time4": "18:16"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:36",
+            "time3": "13:55",
+            "time4": "18:17"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:14",
+            "time2": "12:46",
+            "time3": "13:48",
+            "time4": "18:13"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:50",
+            "time2": "12:45",
+            "time3": "14:00",
+            "time4": "18:21"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:30",
+            "time3": "14:00",
+            "time4": "18:27"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": true,
+            "time1": "09:33",
+            "time2": "13:28"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:36",
+            "time3": "13:24",
+            "time4": "17:55"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:38",
+            "time2": "12:35",
+            "time3": "13:43",
+            "time4": "17:57"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:16",
+            "time2": "12:30",
+            "time3": "13:16",
+            "time4": "17:58"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:37",
+            "time3": "13:43",
+            "time4": "17:45"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:30",
+            "time3": "13:11",
+            "time4": "17:31"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "13:30",
+            "time3": "13:33",
+            "time4": "18:06"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:32",
+            "time3": "13:52",
+            "time4": "18:02"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:42",
+            "time3": "13:29",
+            "time4": "17:45"
+          },
+          "31": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:49",
+            "time2": "12:26",
+            "time3": "12:33",
+            "time4": "17:54"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:57",
+            "time2": "12:30",
+            "time3": "13:40",
+            "time4": "16:56"
+          },
+          "03": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:55",
+            "time2": "12:55",
+            "time3": "13:50",
+            "time4": "17:46"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:36",
+            "time3": "13:55",
+            "time4": "15:45"
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:40",
+            "time3": "13:33",
+            "time4": "18:51"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:35",
+            "time3": "13:30",
+            "time4": "18:39"
+          }
+        },
+        "11": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:42",
+            "time2": "12:30",
+            "time3": "14:00",
+            "time4": "18:04"
+          },
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:56",
+            "time3": "13:17",
+            "time4": "18:28"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:18",
+            "time2": "12:44",
+            "time3": "13:38",
+            "time4": "18:03"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:34",
+            "time3": "13:36",
+            "time4": "17:27"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:21",
+            "time2": "12:51",
+            "time3": "13:28",
+            "time4": "17:39"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:31",
+            "time3": "13:47",
+            "time4": "17:46"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:33",
+            "time3": "13:44",
+            "time4": "17:46"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:27",
+            "time2": "12:20",
+            "time3": "12:24",
+            "time4": "18:05"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:23",
+            "time2": "12:31",
+            "time3": "13:17",
+            "time4": "18:18"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:34",
+            "time3": "13:37",
+            "time4": "17:42"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:59",
+            "time2": "12:31",
+            "time3": "13:23",
+            "time4": "17:53"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:30",
+            "time3": "13:39",
+            "time4": "17:50"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:33",
+            "time3": "13:36",
+            "time4": "17:45"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:31",
+            "time3": "13:23",
+            "time4": "17:49"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "10:25",
+            "time2": "13:52",
+            "time3": "14:00",
+            "time4": "18:03"
+          },
+          "03": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "04": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:33",
+            "time3": "13:17",
+            "time4": "18:02"
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:30",
+            "time3": "13:57",
+            "time4": "18:00"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:31",
+            "time3": "13:29",
+            "time4": "17:47"
+          },
+          "07": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:34",
+            "time3": "13:55",
+            "time4": "18:04"
+          }
+        },
+        "12": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:31",
+            "time3": "13:19",
+            "time4": "17:50"
+          },
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:43",
+            "time3": "13:37",
+            "time4": "17:42"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:16",
+            "time2": "12:45",
+            "time3": "13:43",
+            "time4": "17:45"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:30",
+            "time3": "13:12",
+            "time4": "17:45"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:30",
+            "time3": "13:46",
+            "time4": "18:05"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:51",
+            "time2": "12:40",
+            "time3": "13:25",
+            "time4": "17:35"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:11",
+            "time2": "12:33",
+            "time3": "13:10",
+            "time4": "17:35"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:45",
+            "time2": "12:32",
+            "time3": "13:52",
+            "time4": "17:16"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:48",
+            "time3": "12:48",
+            "time4": "17:45"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:37",
+            "time3": "12:58",
+            "time4": "17:53"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:34",
+            "time3": "13:53",
+            "time4": "17:01"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:56",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:46"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:37",
+            "time3": "13:33",
+            "time4": "17:51"
+          },
+          "31": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:04",
+            "time2": "12:30",
+            "time3": "14:04",
+            "time4": "15:34"
+          },
+          "01": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:45",
+            "time2": "12:30",
+            "time3": "13:55",
+            "time4": "17:50"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:11",
+            "time2": "12:34",
+            "time3": "12:34",
+            "time4": "17:31"
+          },
+          "03": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:34",
+            "time3": "13:51",
+            "time4": "17:47"
+          },
+          "04": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:33",
+            "time3": "13:41",
+            "time4": "17:45"
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:33",
+            "time3": "12:53",
+            "time4": "17:45"
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:59",
+            "time2": "12:31",
+            "time3": "13:35",
+            "time4": "17:52"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:59",
+            "time2": "12:32",
+            "time3": "13:12",
+            "time4": "17:46"
+          }
+        },
+        "07": {
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:40",
+            "time2": "12:40",
+            "time3": "14:07",
+            "time4": "19:01"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:52",
+            "time2": "12:32",
+            "time3": "13:28",
+            "time4": "17:45"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:53",
+            "time2": "12:34",
+            "time3": "13:13",
+            "time4": "17:45"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:42",
+            "time2": "12:34",
+            "time3": "13:34",
+            "time4": "17:45"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:55",
+            "time2": "12:30",
+            "time3": "13:28",
+            "time4": "17:45"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:52",
+            "time2": "12:30",
+            "time3": "13:52",
+            "time4": "17:59"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:19",
+            "time3": "13:16",
+            "time4": "17:52"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:00",
+            "time2": "12:31",
+            "time3": "13:12",
+            "time4": "17:34"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:37",
+            "time2": "12:44",
+            "time3": "13:35",
+            "time4": "17:20"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:58",
+            "time2": "12:53",
+            "time3": "13:55",
+            "time4": "17:56"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:24",
+            "time2": "12:30",
+            "time3": "14:00",
+            "time4": "17:48"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:29",
+            "time3": "14:05",
+            "time4": "19:12"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:52",
+            "time2": "12:33",
+            "time3": "13:21",
+            "time4": "18:30"
+          },
+          "30": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "31": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:52",
+            "time2": "12:43",
+            "time3": "13:43",
+            "time4": "17:47"
+          }
+        },
+        "08": {
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:57",
+            "time2": "12:28",
+            "time3": "13:25",
+            "time4": "18:13"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:00",
+            "time2": "12:32",
+            "time3": "13:27",
+            "time4": "17:49"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:53",
+            "time2": "12:25",
+            "time3": "13:16",
+            "time4": "17:56"
+          },
+          "14": {
+            "isAmOff": true,
+            "isPmOff": true,
+            "remark": "Special Arrangement"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:31",
+            "time2": "13:40",
+            "time3": "13:51",
+            "time4": "18:28"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:36",
+            "time3": "13:27",
+            "time4": "17:51"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:40",
+            "time2": "12:30",
+            "time3": "13:46",
+            "time4": "18:34"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:11",
+            "time2": "12:17",
+            "time3": "12:47",
+            "time4": "17:37"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:21",
+            "time2": "12:35",
+            "time3": "12:48",
+            "time4": "17:30"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:14",
+            "time2": "12:30",
+            "time3": "13:54",
+            "time4": "18:31"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:33",
+            "time3": "13:55",
+            "time4": "18:22"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:33",
+            "time3": "14:07",
+            "time4": "18:20"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:33",
+            "time3": "13:49",
+            "time4": "18:15"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:23",
+            "time2": "12:33",
+            "time3": "13:33",
+            "time4": "18:28"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:57",
+            "time2": "12:37",
+            "time3": "13:45",
+            "time4": "17:45"
+          },
+          "01": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:42",
+            "time2": "12:31",
+            "time3": "13:18",
+            "time4": "17:19"
+          },
+          "04": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:21",
+            "time3": "13:05",
+            "time4": "17:39"
+          },
+          "05": {
+            "isAmOff": true,
+            "isPmOff": true,
+            "remark": "Special Arrangement"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:11",
+            "time2": "12:30",
+            "time3": "13:30",
+            "time4": "17:00"
+          },
+          "07": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:49",
+            "time2": "12:29",
+            "time3": "13:25",
+            "time4": "18:06"
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:30",
+            "time3": "13:27",
+            "time4": "17:49"
+          }
+        },
+        "09": {
+          "10": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "11": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "12": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "13": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "14": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "15": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "16": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "17": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:33",
+            "time3": "13:52",
+            "time4": "18:04"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:45",
+            "time3": "13:33",
+            "time4": "18:22"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:26",
+            "time2": "12:51",
+            "time3": "13:41",
+            "time4": "18:06"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": true,
+            "time1": "08:59",
+            "time2": "12:20"
+          },
+          "24": {
+            "isAmOff": true,
+            "isPmOff": true,
+            "remark": "Special Arrangement"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:30",
+            "time3": "13:39",
+            "time4": "18:12"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:31",
+            "time3": "13:57",
+            "time4": "18:08"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:51",
+            "time3": "14:00",
+            "time4": "18:09"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:50",
+            "time2": "12:51",
+            "time3": "14:08",
+            "time4": "17:57"
+          },
+          "01": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:31",
+            "time3": "13:20",
+            "time4": "17:56"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:36",
+            "time3": "13:44",
+            "time4": "18:20"
+          },
+          "03": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:45",
+            "time2": "12:36",
+            "time3": "13:48",
+            "time4": "17:20"
+          },
+          "04": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "05": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "06": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "07": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "08": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "09": {
+            "isAmOff": true,
+            "isPmOff": true
+          }
+        }
+      },
+      "2026": {
+        "01": {
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "13:02",
+            "time3": "13:54",
+            "time4": "17:38"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:33",
+            "time3": "13:32",
+            "time4": "17:38"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:57",
+            "time3": "13:17",
+            "time4": "17:46"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:19",
+            "time2": "13:47",
+            "time3": "14:01",
+            "time4": "18:02"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:32",
+            "time3": "13:32",
+            "time4": "17:40"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:50",
+            "time2": "12:35",
+            "time3": "13:46",
+            "time4": "17:52"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:30",
+            "time3": "13:45",
+            "time4": "18:01"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:55",
+            "time2": "12:30",
+            "time3": "13:30",
+            "time4": "17:39"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:35",
+            "time3": "13:38",
+            "time4": "17:44"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:13",
+            "time2": "12:32",
+            "time3": "13:39",
+            "time4": "18:00"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:12",
+            "time2": "12:37",
+            "time3": "12:58",
+            "time4": "17:45"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:04",
+            "time2": "12:47",
+            "time3": "13:39",
+            "time4": "17:42"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:40",
+            "time3": "13:43",
+            "time4": "17:50"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:35",
+            "time3": "12:55",
+            "time4": "17:42"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:33",
+            "time3": "13:29",
+            "time4": "17:42"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:45"
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "10:03",
+            "time2": "12:34",
+            "time3": "12:34",
+            "time4": "17:50"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:55",
+            "time2": "12:30",
+            "time3": "13:22",
+            "time4": "17:41"
+          },
+          "07": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:39",
+            "time3": "13:43",
+            "time4": "17:54"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:35",
+            "time3": "13:40",
+            "time4": "17:37"
+          }
+        },
+        "02": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:25",
+            "time3": "13:40",
+            "time4": "17:48"
+          },
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:45",
+            "time3": "13:07",
+            "time4": "17:50"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:46",
+            "time3": "13:36",
+            "time4": "17:51"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:57",
+            "time2": "12:31",
+            "time3": "13:40",
+            "time4": "18:06"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:05",
+            "time2": "12:30",
+            "time3": "14:06",
+            "time4": "16:30"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:31",
+            "time3": "13:50",
+            "time4": "18:18"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:30",
+            "time3": "14:03",
+            "time4": "20:46"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:43",
+            "time3": "13:53",
+            "time4": "17:47"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:11",
+            "time2": "12:43",
+            "time3": "13:47",
+            "time4": "17:43"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:58",
+            "time2": "12:34",
+            "time3": "13:55",
+            "time4": "18:07"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:32",
+            "time3": "13:57",
+            "time4": "17:24"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:07",
+            "time2": "12:38",
+            "time3": "13:20",
+            "time4": "17:51"
+          },
+          "03": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:15",
+            "time2": "12:36",
+            "time3": "13:22",
+            "time4": "17:56"
+          },
+          "04": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:35",
+            "time3": "13:20",
+            "time4": "17:46"
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:18",
+            "time2": "12:44",
+            "time3": "13:34",
+            "time4": "17:47"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:16",
+            "time2": "12:39",
+            "time3": "13:30",
+            "time4": "17:45"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:14",
+            "time2": "12:31",
+            "time3": "13:15",
+            "time4": "17:49"
+          }
+        },
+        "03": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:32",
+            "time3": "13:46",
+            "time4": "17:46"
+          },
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:37",
+            "time2": "12:10",
+            "time3": "13:55",
+            "time4": "17:45"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:13",
+            "time2": "12:39",
+            "time3": "13:37",
+            "time4": "18:00"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:38",
+            "time3": "13:27",
+            "time4": "17:47"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:41",
+            "time3": "13:47",
+            "time4": "17:47"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:04",
+            "time2": "12:30",
+            "time3": "13:47",
+            "time4": "17:53"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:34",
+            "time3": "13:55",
+            "time4": "18:00"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:17",
+            "time2": "12:36",
+            "time3": "13:29",
+            "time4": "17:55"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:22",
+            "time2": "12:37",
+            "time3": "12:48",
+            "time4": "17:49"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:56",
+            "time2": "12:31",
+            "time3": "13:58",
+            "time4": "17:57"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "13:06",
+            "time3": "13:06",
+            "time4": "17:55"
+          },
+          "25": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:59",
+            "time2": "13:09",
+            "time3": "13:09",
+            "time4": "17:56"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:27",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:36"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:58",
+            "time3": "14:00",
+            "time4": "17:45"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:51",
+            "time3": "13:55",
+            "time4": "18:22"
+          },
+          "31": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:26",
+            "time3": "13:55",
+            "time4": "17:40"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:27",
+            "time2": "12:33",
+            "time3": "14:02",
+            "time4": "17:45"
+          },
+          "03": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:12",
+            "time2": "12:31",
+            "time3": "13:38",
+            "time4": "17:23"
+          },
+          "04": {
+            "isAmOff": true,
+            "isPmOff": true
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:31"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:33",
+            "time2": "12:30",
+            "time3": "13:30",
+            "time4": "17:36"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:31",
+            "time2": "12:32",
+            "time3": "13:28",
+            "time4": "17:45"
+          }
+        },
+        "04": {
+          "10": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:59",
+            "time2": "12:31",
+            "time3": "13:37",
+            "time4": "18:04"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:33",
+            "time3": "13:39",
+            "time4": "17:47"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:32",
+            "time3": "13:50",
+            "time4": "18:07"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "13:01",
+            "time3": "14:04",
+            "time4": "18:08"
+          },
+          "16": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:50",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:48"
+          },
+          "17": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:46",
+            "time2": "12:30",
+            "time3": "14:10",
+            "time4": "17:45"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:12",
+            "time2": "12:30",
+            "time3": "13:30",
+            "time4": "17:45"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:45",
+            "time3": "14:04",
+            "time4": "17:45"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:00",
+            "time2": "12:30",
+            "time3": "12:30",
+            "time4": "17:36"
+          },
+          "23": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:12",
+            "time2": "12:48",
+            "time3": "13:52",
+            "time4": "17:47"
+          },
+          "24": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:12",
+            "time2": "12:49",
+            "time3": "13:52",
+            "time4": "17:29"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:27",
+            "time2": "12:35",
+            "time3": "13:34",
+            "time4": "17:47"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:21",
+            "time2": "12:34",
+            "time3": "13:25",
+            "time4": "17:29"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:46",
+            "time2": "12:36",
+            "time3": "13:50",
+            "time4": "17:46"
+          },
+          "30": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:55",
+            "time2": "12:34",
+            "time3": "14:00",
+            "time4": "18:02"
+          },
+          "01": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:28",
+            "time2": "12:32",
+            "time3": "13:31",
+            "time4": "17:52"
+          },
+          "02": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:10",
+            "time2": "12:36",
+            "time3": "13:58",
+            "time4": "17:45"
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:45",
+            "time3": "13:44",
+            "time4": "18:08"
+          },
+          "09": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:56",
+            "time2": "12:31",
+            "time3": "13:17",
+            "time4": "17:50"
+          }
+        },
+        "05": {
+          "11": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:30",
+            "time3": "13:54",
+            "time4": "17:27"
+          },
+          "12": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:49",
+            "time2": "12:32",
+            "time3": "13:56",
+            "time4": "17:46"
+          },
+          "13": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:46",
+            "time2": "12:30",
+            "time3": "13:21",
+            "time4": "17:52"
+          },
+          "14": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:41",
+            "time3": "13:40",
+            "time4": "17:54"
+          },
+          "15": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:13",
+            "time2": "12:45",
+            "time3": "13:29",
+            "time4": "17:59"
+          },
+          "18": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:06",
+            "time2": "12:49",
+            "time3": "13:41",
+            "time4": "17:52"
+          },
+          "19": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:01",
+            "time2": "12:38",
+            "time3": "13:29",
+            "time4": "17:49"
+          },
+          "20": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "13:32",
+            "time3": "13:57",
+            "time4": "17:47"
+          },
+          "21": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:23",
+            "time2": "12:30",
+            "time3": "14:02",
+            "time4": "17:54"
+          },
+          "22": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:58",
+            "time2": "12:32",
+            "time3": "13:25",
+            "time4": "18:17"
+          },
+          "26": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:04",
+            "time2": "12:30",
+            "time3": "13:41",
+            "time4": "17:45"
+          },
+          "27": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "08:53",
+            "time2": "12:32",
+            "time3": "13:50",
+            "time4": "18:33"
+          },
+          "28": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:44",
+            "time3": "14:01",
+            "time4": "17:59"
+          },
+          "29": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:09",
+            "time2": "12:31",
+            "time3": "13:57",
+            "time4": "17:56"
+          },
+          "04": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:18",
+            "time2": "12:33",
+            "time3": "13:31",
+            "time4": "17:54"
+          },
+          "05": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:03",
+            "time2": "12:35",
+            "time3": "13:34",
+            "time4": "17:55"
+          },
+          "06": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:33",
+            "time2": "12:40",
+            "time3": "13:39",
+            "time4": "17:52"
+          },
+          "07": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:02",
+            "time2": "12:45",
+            "time3": "13:51",
+            "time4": "18:00"
+          },
+          "08": {
+            "isAmOff": false,
+            "isPmOff": false,
+            "time1": "09:08",
+            "time2": "12:36",
+            "time3": "13:53",
+            "time4": "17:55"
+          }
+        },
+        "06": {
+          "01": {
+            "time1": "09:12",
+            "time2": "12:41",
+            "time3": "13:39",
+            "time4": "17:45"
+          }
+        }
+      }
+    }
+  }
+}

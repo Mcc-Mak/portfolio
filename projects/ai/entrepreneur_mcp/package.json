@@ -1,0 +1,27 @@
+{
+  "name": "entrepreneur-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "displayName": "entrepreneur-mcp",
+  "description": "Local-first, free-to-use OpenCode MCP orchestrating the full SDLC: TUI requirements clarification, dynamic team synthesis, SoD enforcement, phase gates, security & compliance checking.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "entrepreneur:run": "node tools/run.mjs",
+    "entrepreneur:report": "node tools/run.mjs --report-only",
+    "security:check": "node tools/audit.mjs --strict && node tools/security-scan.mjs && node tools/secret-scan.mjs && node tools/license-check.mjs",
+    "compliance:check": "node tools/compliance-check.mjs && node tools/sbom.mjs",
+    "sbom:generate": "node tools/sbom.mjs"
+  },
+  "devDependencies": {
+    "@cyclonedx/cyclonedx-npm": "^6.0.1",
+    "@secretlint/secretlint-rule-preset-recommend": "^13.0.4",
+    "eslint": "^10.9.0",
+    "eslint-plugin-security": "^4.0.1",
+    "license-checker": "^25.0.1",
+    "secretlint": "^13.0.4"
+  }
+}

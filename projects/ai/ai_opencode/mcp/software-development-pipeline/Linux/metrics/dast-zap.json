@@ -1,0 +1,109 @@
+{
+  "@programName": "ZAP",
+  "@version": "2.17.0",
+  "@generated": "Thu, 13 Aug 2026 06:51:47",
+  "created": "2026-08-13T06:51:47.886710840Z",
+  "insights": [
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "",
+      "key": "insight.network.failure",
+      "description": "Percentage of network failures",
+      "statistic": "6"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "http://172.30.0.2:3000",
+      "key": "insight.code.4xx",
+      "description": "Percentage of responses with status code 4xx",
+      "statistic": "100"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "http://172.30.0.2:3000",
+      "key": "insight.endpoint.ctype.application/json",
+      "description": "Percentage of endpoints with content type application/json",
+      "statistic": "100"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "http://172.30.0.2:3000",
+      "key": "insight.endpoint.method.GET",
+      "description": "Percentage of endpoints with method GET",
+      "statistic": "100"
+    },
+    {
+      "level": "Info",
+      "reason": "Informational",
+      "site": "http://172.30.0.2:3000",
+      "key": "insight.endpoint.total",
+      "description": "Count of total endpoints",
+      "statistic": "2"
+    }
+  ],
+  "site": [
+    {
+      "@name": "http://172.30.0.2:3000",
+      "@host": "172.30.0.2",
+      "@port": "3000",
+      "@ssl": "false",
+      "alerts": [
+        {
+          "pluginid": "10098",
+          "alertRef": "10098",
+          "alert": "Cross-Domain Misconfiguration",
+          "name": "Cross-Domain Misconfiguration",
+          "riskcode": "2",
+          "confidence": "2",
+          "riskdesc": "Medium (Medium)",
+          "desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
+          "instances": [
+            {
+              "id": "0",
+              "uri": "http://172.30.0.2:3000",
+              "nodeName": "http://172.30.0.2:3000",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "Access-Control-Allow-Origin: *",
+              "otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+            },
+            {
+              "id": "1",
+              "uri": "http://172.30.0.2:3000/robots.txt",
+              "nodeName": "http://172.30.0.2:3000/robots.txt",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "Access-Control-Allow-Origin: *",
+              "otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+            },
+            {
+              "id": "2",
+              "uri": "http://172.30.0.2:3000/sitemap.xml",
+              "nodeName": "http://172.30.0.2:3000/sitemap.xml",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "Access-Control-Allow-Origin: *",
+              "otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+            }
+          ],
+          "count": "3",
+          "systemic": false,
+          "solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+          "otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+          "reference": "<p>https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy</p>",
+          "cweid": "264",
+          "wascid": "14",
+          "sourceid": "3"
+        }
+      ]
+    }
+  ],
+  "sequences": []
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE mapper PUBLIC "-//testMybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hk.martin.app.springbootmvc.controller.service.mapper.ConfigMapper">
+    <resultMap id="_Parameter" type="hk.martin.app.springbootmvc.controller.service.mapper.model.Parameter">
+        <result property="id" column="ID" jdbcType="VARCHAR"></result>
+        <result property="orgId" column="ORG_ID" jdbcType="VARCHAR"></result>
+        <result property="roomId" column="ROOM_ID" jdbcType="VARCHAR"></result>
+        <result property="tableId" column="TABLE_ID" jdbcType="VARCHAR"></result>
+        <result property="dataLabel" column="DATA_LABEL" jdbcType="VARCHAR"></result>
+        <result property="dataValue" column="DATA_VALUE" jdbcType="VARCHAR"></result>
+        <result property="name" column="NAME" jdbcType="VARCHAR"></result>
+        <result property="updatedBy" column="UPDATED_BY" jdbcType="VARCHAR"></result>
+        <result property="updatedDatetime" column="UPDATED_DATETIME" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+    <select id="getParametersData" resultMap="_Parameter">
+	select
+		A.id,
+		A.org_id,
+		A.room_id,
+		A.table_id,
+		A.data_label,
+		A.data_value,
+		B.name,
+		A.updated_datetime,
+		A.updated_by
+	from
+		configuration A
+		inner join table_profile B
+			on B.org_id = A.org_id
+				and B.room_id = A.room_id
+				and B.table_id = A.table_id
+    </select>
+    <select id="checkDelta" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.Parameter" resultMap="_Parameter">
+        select
+            A.id,
+		A.org_id,
+		A.room_id,
+		A.table_id,
+            A.data_label,
+            A.data_value,
+            B.name
+        from
+            configuration A
+		inner join table_profile B
+			on B.org_id = A.org_id
+				and B.room_id = A.room_id
+				and B.table_id = A.table_id
+        where
+            A.org_id = #{orgId}
+            and A.room_id = #{roomId}
+            and A.table_id = #{tableId}
+            and A.data_label = #{dataLabel}
+            and A.data_value = #{dataValue}
+    </select>
+    <update id="updateDelta" parameterType="hk.martin.app.springbootmvc.controller.service.mapper.model.Parameter">
+        update configuration
+            set
+                data_value = #{dataValue},
+                updated_by = (
+                    select
+                        B.name_eng
+                    from
+                        users A
+                        inner join user_profile B on B.org_id = A.org_id and B.user_id = A.user_id
+                    where
+                        A.username = #{updatedBy}
+                ),
+                updated_datetime = NOW()
+        where
+            table_id = #{tableId}
+            and data_label = #{dataLabel}
+            and data_value <![CDATA[<>]]> #{dataValue}
+    </update>
+</mapper>

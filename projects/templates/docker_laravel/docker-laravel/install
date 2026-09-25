@@ -1,0 +1,43 @@
+
+project=docker-laravel
+
+clear
+
+st=$(date +%s)
+
+cd ..
+cp -vf .env.$project .env
+. source
+
+# [1] Image
+# 1.1 Cleansing
+# - Container
+docker rm -f $(docker ps -a --filter name=laravel --format "{{.Names}}") nil
+# - Image
+docker rmi -f php:8.2-fpm
+docker rmi -f mysql:8.0
+docker rmi -f nginx:alpine
+docker rmi -f php_$project:8.2-fpm
+docker rmi -f mysql_$project:8.0
+docker rmi -f nginx_$project:alpine
+# 1.2 Building
+# - Image
+docker pull php:8.2-fpm
+docker pull mysql:8.0
+docker pull nginx:alpine
+# 1.3 Renaming
+# - Image
+docker tag php:8.2-fpm php_$project:8.2-fpm
+docker tag mysql:8.0 mysql_$project:8.0
+docker tag nginx:alpine nginx_$project:alpine
+
+# [2] Container
+docker-compose \
+	-f docker-compose.docker-laravel.yml \
+	build app
+docker-compose \
+	-f docker-compose.docker-laravel.yml \
+	up -d
+
+et=$(date +%s)
+printf "\n\n>>> Time taken: %s second(s).\n\n" "$((et - st))"

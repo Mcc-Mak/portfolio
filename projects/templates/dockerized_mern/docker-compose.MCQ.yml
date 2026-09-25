@@ -1,0 +1,48 @@
+#
+# [Reference]
+#
+#   https://www.mongodb.com/languages/mern-stack-tutorial
+#   https://linux.how2shout.com/how-to-install-mongodb-6-0-server-on-ubuntu-22-04/
+#
+#   https://www.dell.com/support/manuals/zh-hk/wyse-wms/wyse-wms_security_hardening/change-the-port-number-used-by-mongodb?guid=guid-e7c00c81-5388-40fe-bf17-caab582f0520&lang=en-us
+#
+
+version: '3.7'
+
+services:
+  MCQ_db:
+    image: ${DB_IMAGE_O}
+    user: root
+    working_dir: /entrypoint.d
+    volumes:
+      - ./MCQ/db/setup.init/:/myapp-db/:ro
+      - ./MCQ/db/entrypoint.d/:/entrypoint.d/:ro
+    ports:
+      - 27017-27019:27017-27019
+      - 28017:28017
+    build:
+      context: ${DB_DOCKERFILE_DIR}
+      dockerfile: ${DB_DOCKERFILE_FILENAME}
+    networks:
+      - ${DB_NETWORK}
+  MCQ_app:
+    image: ${APP_IMAGE_O}
+    user: root
+    working_dir: /entrypoint.d
+    volumes:
+      - ./MCQ/app/entrypoint.d/:/entrypoint.d/:ro
+      - ./MCQ/app/script/server/:/myapp-app/server/:ro
+      - ./MCQ/app/script/server/conf/:/myapp-app/server/conf/:rw
+      - ./MCQ/app/script/client/:/myapp-app/client/:rw
+    ports:
+      - 3000:3000
+      - 5000:5000
+    build:
+      context: ${APP_DOCKERFILE_DIR}
+      dockerfile: ${APP_DOCKERFILE_FILENAME}
+    networks:
+      - ${APP_NETWORK}
+
+networks:
+  MCQ_NETWORK:
+    external: true

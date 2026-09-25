@@ -1,0 +1,14 @@
+{
+  "engine": "auto",
+  "target": "",
+  "port": 3000,
+  "failThreshold": "high",
+  "stage": {
+    "enabled": false,
+    "command": ""
+  },
+  "zap": {
+    "image": "ghcr.io/zaproxy/zaproxy",
+    "baselineScript": "zap-baseline.py"
+  }
+}

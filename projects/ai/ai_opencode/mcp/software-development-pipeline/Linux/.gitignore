@@ -1,0 +1,18 @@
+# R7: Secrets must never be committed
+.env
+.env.*
+*.pem
+*.key
+
+# Dependencies
+## node_modules/
+
+# Class 4 build artifacts (regenerated each run)
+metrics/*.db
+logs/
+coverage/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp

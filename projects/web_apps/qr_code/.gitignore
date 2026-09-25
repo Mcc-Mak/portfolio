@@ -1,0 +1,21 @@
+# Home directory artifacts (never track)
+.Xauthority
+.bash_history
+.cache/
+.config/
+.local/
+.sudo_as_admin_successful
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.save
+*.tmp

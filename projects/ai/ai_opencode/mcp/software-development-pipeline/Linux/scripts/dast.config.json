@@ -1,0 +1,19 @@
+{
+  "engine": "auto",
+  "target": "",
+  "port": 8080,
+  "failThreshold": "high",
+  "scanTimeoutMs": 300000,
+  "stage": {
+    "enabled": true,
+    "command": "cd \"$PROJECT_DIR\" && BACKEND_PORT=8080 node src/backend/server.js"
+  },
+  "zap": {
+    "image": "ghcr.io/zaproxy/zaproxy",
+    "baselineScript": "zap-baseline.py",
+    "api": {
+      "baseUrl": "http://zap:8080",
+      "apiKey": ""
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# Global eslintignore for pipeline SAST gate
+# (pipeline runs eslint from ~/.config/opencode/ targeting $ProjectDir,
+#  so node_modules/ outside CWD are NOT auto-ignored)
+
+# Dependencies (nested)
+**/node_modules/**
+
+# Build artifacts
+**/dist/**
+**/build/**
+**/coverage/**
+
+# Frontend TypeScript (linted by tsc, not eslint)
+**/src/frontend/src/**
+
+# Database scripts (shell/SQL, not JS)
+**/src/database/**
+
+# Metrics and logs
+**/metrics/**
+**/logs/**
+
+# Minified bundles
+**/*.min.js

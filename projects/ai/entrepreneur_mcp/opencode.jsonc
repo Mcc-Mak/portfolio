@@ -1,0 +1,38 @@
+{
+  // OpenCode configuration for the entrepreneur-mcp MCP.
+  // Spec of record: PROMPT-V100.2.0.md (highest-numbered PROMPT-V*.md wins).
+  "$schema": "https://opencode.ai/config.json",
+
+  // --- Command registration -------------------------------------------------
+  // The full orchestrator logic lives in commands/entrepreneur-mcp.md (spec-mandated
+  // entry point). This registered command loads it verbatim and passes arguments
+  // through, keeping a single source of truth for phase/gate/SoD behaviour.
+  // Owner decision: command renamed from the Chinese product title to the ASCII
+  // identifier `entrepreneur-mcp` for reliable TUI invocation.
+  "command": {
+    "entrepreneur-mcp": {
+      "description": "Full-lifecycle orchestrator MCP: dynamic team synthesis, five-module TUI clarification loop, phases 0-7 with hard gates, SoD enforcement, local security/compliance tooling.",
+      "template": "You are invoked as the Orchestrator of the entrepreneur-mcp MCP.\n\nYour complete operating instructions are in `commands/entrepreneur-mcp.md`.\nRead that file NOW in full and follow it exactly as written — it defines the runtime model, Team Architect synthesis procedure, all seven phases, their gates, SoD enforcement, and report versioning.\n\nTreat everything after this sentence as $ARGUMENTS:\n\n$ARGUMENTS"
+    }
+  },
+
+  // --- Skills registration --------------------------------------------------
+  // `skills/` is populated dynamically by the Team Architect during Phase 0
+  // (roles-manifest.json, sod-matrix.md, tui-modules.md, role-<id>.md).
+  // The Orchestrator loads role agents via roles-manifest.json at runtime;
+  // this path registration makes the directory discoverable for any
+  // SKILL.md-shaped additions without re-registration.
+  "skills": {
+    "paths": ["skills"]
+  },
+
+  // --- Tool adapters --------------------------------------------------------
+  // tools/*.mjs are local-first CLI adapters (audit, security-scan, secret-scan,
+  // license-check, compliance-check, sbom) driven by the Orchestrator through the
+  // shell — they intentionally are NOT MCP servers.
+  //
+  // Explicit owner decision: allow ALL tool permissions at this development site
+  // so orchestrated runs proceed non-interactively. Top-level string shorthand
+  // is the schema-valid form of "allow everything".
+  "permission": "allow"
+}
