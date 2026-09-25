@@ -1,0 +1,5 @@
+# Nested project repositories (each is its own git repo)
+projects/
+
+# Blog (Vite + ReactJS build)
+blog/node_modules/
