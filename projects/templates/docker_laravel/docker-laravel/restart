@@ -1,0 +1,3 @@
+docker restart $(docker ps -a --filter name=laravel --format "{{.Names}}")
+docker exec -u root -w /var/www/docker-laravel docker-laravel-app_1 bash -c "php artisan serve --host=0.0.0.0 --port=8080 > ../serv.log" &
+tail -f www/serv.log

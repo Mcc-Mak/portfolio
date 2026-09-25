@@ -1,0 +1,2 @@
+prefix="docker-laravel"
+docker exec -it -u root -w /var/www/$prefix $prefix-app_1 bash
