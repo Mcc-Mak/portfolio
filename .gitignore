@@ -1,38 +1,5 @@
-# Nested project repositories (target: projects/<type>/<unit>)
+# Nested project repositories (each is its own git repo)
 projects/
-
-# Current top-level project dirs (each is its own git repo)
-ai_opencode/
-anonymous_chessboard/
-application_proxy_server/
-ass_ansible/
-assistance_alert_system/
-booking_appointment_system/
-calculator/
-cicd_pipeline_config/
-cissp_practice_questions_2024/
-cissp_practice_tests_4e/
-cissp_summary/
-comptia_network_summary/
-crew_ai_orchestrator_mcp/
-cv/
-devsecops_mcp/
-docker_laravel/
-dockerized_mern/
-entrepreneur_mcp/
-google_form_generator/
-hk_guided_tour/
-hko_timesheet/
-html_to_pdf/
-music_studio/
-paint/
-qr_code/
-rpg/
-secure_web_template/
-springboot_mvc_template/
-sudoku/
-tracer/
-wifi/
 
 # Blog (Vite + ReactJS build)
 blog/node_modules/

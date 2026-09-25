@@ -77,7 +77,7 @@ documentation, and root cause analysis.
 
 ## Projects
 
-30 independent projects across 7 categories. Each project is its own git
+31 independent projects across 7 categories. Each project is its own git
 repository. This root repo tracks only `README.md`, `LICENSE`, `AGENTS.md`,
 `.gitignore`, and `CHANGELOG.md`.
 
@@ -144,4 +144,5 @@ repository. This root repo tracks only `README.md`, `LICENSE`, `AGENTS.md`,
 
 | Unit | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------------------------|:----:|:------------|
+| [`cv`](https://github.com/Mcc-Mak/cv) | HTML/CSS/JS | — · — · — | 2026 | Personal CV website and certifications portfolio · [live](https://mcc-mak.github.io/cv/) |
 | [`music_studio`](https://github.com/Mcc-Mak/python-music-studio-app) | Python, MIDIUtil | Audio/Music · — · Developer | 2025 | Python MIDI music generator from CSV melody sheets |

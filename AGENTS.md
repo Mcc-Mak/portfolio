@@ -6,10 +6,11 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
 ## What this repo is (read first)
 
 - This is **not** a single application. It aggregates many independent,
-  pre-existing projects as top-level subdirectories.
+  pre-existing projects under `projects/<type>/<unit>/`.
 - The root git repo (`origin`: `github.com/Mcc-Mak/portfolio`, branch `dev-001`)
-  tracks **only `README.md` and `LICENSE`** — verify with `git ls-files` at root.
-  It has a single "Initial commit" and no root `.gitignore`.
+  tracks `README.md`, `LICENSE`, `AGENTS.md`, `.gitignore`, and `CHANGELOG.md`
+  (plus `blog/` and `.github/workflows/` when greenlit) — verify with
+  `git ls-files` at root.
 - **Every project subdirectory is its own independent git repo** (own `.git`,
   own `origin` under `github.com/Mcc-Mak/<project>`). They are **not** git
   submodules — there is no `.gitmodules`, and the root repo does **not** track
@@ -33,17 +34,17 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
   study notes (CISSP, CompTIA). Inspect the project's own manifest first.
 - **Respect per-project instruction files** — they hold hard constraints that
   override anything generic. Read before editing that project:
-  - `crew-ai-orchestrator-mcp/AGENTS.md` — Python/uv, mcp 2.x (`MCPServer`, not
+  - `projects/ai/crew_ai_orchestrator_mcp/AGENTS.md` — Python/uv, mcp 2.x (`MCPServer`, not
     `FastMCP`), never write stdout under stdio, `dev-001` + per-commit
     CHANGELOG/version bump, never push `main`/`dev`.
-  - `hk-guided-tour/AGENTS.md` — Python/uv, `crewai==1.15.22`, musllinux stubs in
+  - `projects/ai/hk_guided_tour/AGENTS.md` — Python/uv, `crewai==1.15.22`, musllinux stubs in
     `_stubs/`, Traditional-Chinese output, needs `HKOAI_API_KEY` +
     `OPENCODE_API_KEY`, SSL-bypass + 180s LLM timeout.
-  - `entrepreneur-mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
+  - `projects/ai/entrepreneur_mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
     highest-numbered `PROMPT-V*.md`.
-  - `ai-opencode/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
-  - Some projects also ship `opencode.jsonc` (e.g. `entrepreneur-mcp/`,
-    `ai-opencode/`) — honor it.
+  - `projects/ai/ai_opencode/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
+  - Some projects also ship `opencode.jsonc` (e.g. `projects/ai/entrepreneur_mcp/`,
+    `projects/ai/ai_opencode/`) — honor it.
 
 ## Per-project dates (for the README toctree)
 
@@ -84,11 +85,12 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
 
 ## Current task: README as toctree
 
-- Reorganize the root `README.md` (currently just a title) into a
-  **table-of-contents tree**: top level = the seven `type` groups; under each,
-  one entry per `{type}/{unit}` carrying **tags** (field/industry/role) and
-  **year (creation + latest update)**. Get it stable before any blog work — that
-  is an owner gate.
+- The root `README.md` has been restructured into a **table-of-contents tree**:
+  top level = the seven `type` groups; under each, one entry per
+  `{type}/{unit}` carrying **tags** (field/industry/role) and **year (creation +
+  latest update)**. Projects are physically located at `projects/<type>/<unit>/`.
+- **Owner gate:** get the README toctree stable and approved before any blog or
+  workflow work.
 
 ## `.github/workflows/*.yml` (root-repo, gated)
 
@@ -97,8 +99,7 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
   **GitHub Pages**. It is tracked by the **root** repo (like `README.md` /
   `LICENSE`), not any subproject.
 - **Gated:** do not create or scaffold `.github/`, the workflow, or `/blog/`
-  until the owner explicitly confirms the README toctree is stable. The README is
-  currently just a title — not yet stable.
+  until the owner explicitly confirms the README toctree is stable.
 - When greenlit: the workflow lives at `.github/workflows/<name>.yml`, builds the
   Vite app under `/blog/`, and deploys via `actions/configure-pages` +
   `actions/deploy-pages`. Commit it to the root repo on `dev-001` (same git
