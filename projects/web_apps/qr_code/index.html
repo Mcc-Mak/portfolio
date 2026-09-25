@@ -1,0 +1,138 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <!-- jquery-3.6.3 -->
+  <script src="/qr-code-project/statics/lib/jquery-3.6.3.js"></script>
+  <!-- <script src="/qr-code-project/statics/lib/jquery.min.js"></script> -->
+  <!-- bootstrap-5.3.0 -->
+  <script src="/qr-code-project/statics/lib/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="/qr-code-project/statics/lib/bootstrap.min.css">
+  <!-- awesome-6.3.0 -->
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/fontawesome.css" rel="stylesheet">
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/brands.css" rel="stylesheet">
+  <link href="/qr-code-project/statics/lib/awesome-6.3.0/css/solid.css" rel="stylesheet">
+  <!-- sweetalert2 -->
+  <script src="/qr-code-project/statics/lib/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="/qr-code-project/statics/lib/sweetalert2.min.css">
+  <!-- cryptography -->
+  <script src="/qr-code-project/statics/lib/crypto-js.min.js"></script>
+  <script src="/qr-code-project/statics/lib/hmac-sha256.min.js"></script>
+  <script src="/qr-code-project/statics/lib/enc-base64.min.js"></script>
+</head>
+
+<script type="module" charset="utf-8">
+  const SECRET_KEY = "";
+  const LOGIN_API_URL = "http://192.168.9.128:8888/login";
+
+  async function showNotification(settings) {
+    return await Swal.fire(settings);
+  }
+
+  function signString(key, toSign) {
+    const hash = CryptoJS.HmacSHA256(toSign, key);
+    return CryptoJS.enc.Base64.stringify(hash);
+  }
+
+  function encryptHmacsha256(password) {
+    return CryptoJS.SHA256(password).toString();
+  }
+
+  $(document).ready(async function () {
+    // remove cookie by [name="jwt"]
+    document.cookie = "jwt=null; max-age=0";
+
+    // [button:login] event.click
+    $('[name="login"]').on('click', async function (e) {
+      e.preventDefault();
+
+      const username = $('[name="username"]').val();
+      const password = $('[name="password"]').val();
+      const hashedPassword = encryptHmacsha256(password);
+      const signedString = signString(SECRET_KEY, hashedPassword);
+
+      const settings = {
+        "url": LOGIN_API_URL,
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": username,
+          "hashed": signedString,
+          "key": SECRET_KEY
+        },
+      };
+
+      const res = await $.ajax({ ...settings });
+      document.cookie = `jwt=${res}`;
+
+      showNotification({
+        icon: 'success',
+        text: 'Successfully login!',
+        allowOutsideClick: false,
+      });
+    });
+  });
+</script>
+
+<body id="ijvz">
+  <link rel="stylesheet" href="/qr-code-project/css/index.css">
+  <header class="header-banner" id="i1sv">
+    <div class="gjs-row" id="i2xo">
+      <div class="gjs-cell" id="ir5f">
+        <img id="i7ga" class="noselect" src="/qr-code-project/statics/img/login_logo.JPG" />
+      </div>
+      <div class="gjs-cell" id="idg3">
+        <form method="get" id="ikzx">
+          <div class="gjs-row" id="izg4j">
+            <div class="gjs-cell" id="i1s8r">
+              <div id="i3kon" class="noselect">Login</div>
+            </div>
+          </div>
+          <div id="im4hy">
+            <hr class="m-4 text-dark" />
+          </div>
+          <div id="i4j93">
+          </div>
+          <div id="ijwk">
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend d-flex">
+                <span class="input-group-text bg-secondary justify-content-center" id="ie39">
+                  <i class="fa-solid fa-user noselect"> Username</i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="ikf3c" name="username" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend d-flex">
+                <span class="input-group-text bg-secondary justify-content-center" id="i7iik">
+                  <i class="fa-solid fa-lock noselect"> Password</i>
+                </span>
+              </div>
+              <input type="password" class="form-control" id="iq95l" name="password" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
+          </div>
+          <div id="ifnx6">
+          </div>
+          <div class="gjs-row" id="izg4j">
+            <div class="gjs-cell" id="i1s8r" hidden>
+              <div id="iuinj">
+                <i class="fa fa-question-circle" aria-hidden="true" hidden>
+                  <a href="">Forget password?</a>
+                </i>
+              </div>
+            </div>
+            <div class="gjs-cell" id="ijqqv">
+              <button type="button" class="btn btn-info" id="iq8dv" name="login">login</button>
+            </div>
+          </div>
+          <div id="ig6vo">
+          </div>
+        </form>
+      </div>
+    </div>
+  </header>
+</body>
