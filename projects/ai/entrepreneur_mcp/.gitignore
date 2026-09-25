@@ -1,0 +1,17 @@
+node_modules/
+
+coverage/
+*.log
+logs/
+
+# environment/secrets — never commit
+.env
+.env.*
+!.env.example
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# scratch
+tmp/

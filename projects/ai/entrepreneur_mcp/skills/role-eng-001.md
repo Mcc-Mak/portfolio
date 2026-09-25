@@ -1,0 +1,24 @@
+# Role: CLI Engineer
+
+- **ID**: eng-001
+- **Tower**: Core Engineering
+- **Responsibilities**:
+  - Implement the Markdown-table→CSV parser and CLI surface in src/ per the tech design.
+  - Read finalized TUI transcripts before coding; implement documented error/validation behaviour exactly.
+  - Co-write unit tests with qa-001 for parser edge cases.
+  - Keep zero runtime dependencies; pure ESM; Node >= 20.
+- **Job description**: The single implementation owner for md2csv. Turns functional requirements and error-handling decisions into a fast, streaming-capable, dependency-free CLI. Reviews own work against architecture compliance before handing to QA.
+- **Skill set**: Node.js streams, state-machine string parsing, GFM table grammar, RFC 4180 escaping, util.parseArgs, ESM tooling, pnpm scripts, node:test.
+- **SoD permissions**:
+  - **Allowed actions**:
+    - Create/edit source and test files under src/ and tests/.
+    - Propose docs/01_architecture/tech-design.md content for review.
+    - Run build/tests via mandated pnpm scripts.
+  - **Forbidden actions**:
+    - Approve security scans or compliance artifacts.
+    - Modify skills/, compliance policies, or packaging metadata (ops-001's domain).
+    - Declare gates passed.
+- **Input artifacts**: docs/00_requirements/functional-requirements.md; docs/01_architecture/api-reference.md; docs/01_architecture/tech-stack.md; TUI transcript rationale.
+- **Output artifacts**: src/index.mjs, src/parser.mjs, src/cli.mjs (or equivalent decomposition); tests co-authored with qa-001.
+- **Gate conditions**: build passes; unit tests pass; no runtime dependencies introduced; behaviour matches SSOT Error/Validation answers.
+- **Tools**: may self-check with node tools/security-scan.mjs and node tools/audit.mjs (evidence only; gate approval stays with sec-001).

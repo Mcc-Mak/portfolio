@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-22T17:05:00.000Z",
+  "generatedBy": "team-architect",
+  "runType": "dogfood-phase0",
+  "projectGoal": "A tiny pnpm-based CLI that converts Markdown tables to CSV",
+  "analysis": {
+    "domain": "developer tooling (CLI)",
+    "techStack": ["Node.js >= 20", "pure ESM JavaScript", "pnpm", "zero runtime dependencies"],
+    "scale": "MVP single-purpose utility, one maintainer",
+    "compliance": ["no personal data processed", "no network I/O", "GDPR/SOC2 expected outcome: not applicable, documented via TUI"]
+  },
+  "towers": [
+    { "id": "product-strategy", "name": "Product & Strategy" },
+    { "id": "core-engineering", "name": "Core Engineering" },
+    { "id": "qa-testing", "name": "QA & Testing" },
+    { "id": "devops-sre", "name": "DevOps & SRE" },
+    { "id": "security-compliance", "name": "Security & Compliance" },
+    { "id": "docs-knowledge", "name": "Docs & Knowledge" }
+  ],
+  "roles": [
+    {
+      "id": "pm-001",
+      "name": "Product Manager",
+      "towerId": "product-strategy",
+      "file": "skills/role-pm-001.md",
+      "tuiDuties": ["facilitates requirements-business and error-validation modules", "refines raw answers into PRD and user stories"],
+      "inputArtifacts": ["docs/00_requirements/ssot_raw_answers.json"],
+      "outputArtifacts": ["docs/00_requirements/prd.md", "docs/00_requirements/user-stories.md", "docs/00_requirements/use-cases.md"]
+    },
+    {
+      "id": "eng-001",
+      "name": "CLI Engineer",
+      "towerId": "core-engineering",
+      "file": "skills/role-eng-001.md",
+      "tuiDuties": ["consumes finalized TUI transcripts before implementing"],
+      "inputArtifacts": ["docs/01_architecture/api-reference.md", "docs/00_requirements/functional-requirements.md"],
+      "outputArtifacts": ["src/**/*.mjs", "docs/01_architecture/tech-design.md contributions"]
+    },
+    {
+      "id": "qa-001",
+      "name": "QA & Automation Engineer",
+      "towerId": "qa-testing",
+      "file": "skills/role-qa-001.md",
+      "tuiDuties": ["maps Error/Validation module answers to concrete test cases"],
+      "inputArtifacts": ["docs/00_requirements/ssot_raw_answers.json", "docs/03_testing/test-plan.md"],
+      "outputArtifacts": ["tests/**/*.mjs", "docs/03_testing/test-cases.md", "docs/03_testing/quality-metrics.md"]
+    },
+    {
+      "id": "ops-001",
+      "name": "DevOps Engineer",
+      "towerId": "devops-sre",
+      "file": "skills/role-ops-001.md",
+      "tuiDuties": ["sizes distribution/runtime decisions from Infrastructure & SLO module answers"],
+      "inputArtifacts": ["docs/00_requirements/ssot_raw_answers.json", "package.json"],
+      "outputArtifacts": ["docs/04_operations/deployment.md", "docs/02_setup/installation.md", "docs/04_operations/runbook.md"]
+    },
+    {
+      "id": "sec-001",
+      "name": "Security & Compliance Officer",
+      "towerId": "security-compliance",
+      "file": "skills/role-sec-001.md",
+      "tuiDuties": ["owns the Security and GDPR/SOC2 TUI modules", "reviews all answers for risk"],
+      "inputArtifacts": ["tools/*.mjs reports", "docs/00_requirements/ssot_raw_answers.json"],
+      "outputArtifacts": ["docs/05_security_compliance/vulnerability-report.md", "docs/05_security_compliance/security-hardening.md", "docs/05_security_compliance/compliance-checklist.md"]
+    },
+    {
+      "id": "doc-001",
+      "name": "Lead Technical Writer",
+      "towerId": "docs-knowledge",
+      "file": "skills/role-doc-001.md",
+      "tuiDuties": ["transforms final TUI transcript into glossary, FAQ, user guide"],
+      "inputArtifacts": ["docs/00_requirements/ssot_raw_answers.json", "all docs/**"],
+      "outputArtifacts": ["docs/06_user_reference/user-guide.md", "docs/06_user_reference/glossary.md", "docs/06_user_reference/faq.md", "README.md"]
+    }
+  ]
+}
