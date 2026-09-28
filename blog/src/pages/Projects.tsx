@@ -6,12 +6,26 @@ import type { ProjectType, ProjectDomain } from '../types'
 const types: ProjectType[] = ['games', 'web_apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
 const domains: ProjectDomain[] = ['frontend', 'backend', 'devops', 'security', 'ai', 'creative']
 
+type LiveFilter = 'all' | 'live' | 'non-live'
+type VisibilityFilter = 'all' | 'public' | 'private'
+
 export default function Projects() {
   const [activeDomain, setActiveDomain] = useState<ProjectDomain | null>(null)
+  const [liveFilter, setLiveFilter] = useState<LiveFilter>('all')
+  const [visibilityFilter, setVisibilityFilter] = useState<VisibilityFilter>('all')
 
-  const filtered = activeDomain
-    ? projects.filter((p) => p.domains.includes(activeDomain))
-    : projects
+  const filtered = projects.filter((p) => {
+    if (activeDomain && !p.domains.includes(activeDomain)) return false
+    if (liveFilter === 'live' && !p.pagesUrl) return false
+    if (liveFilter === 'non-live' && p.pagesUrl) return false
+    if (visibilityFilter === 'public' && p.repoVisibility !== 'public') return false
+    if (visibilityFilter === 'private' && p.repoVisibility !== 'private') return false
+    return true
+  })
+
+  const liveCount = projects.filter((p) => p.pagesUrl).length
+  const publicCount = projects.filter((p) => p.repoVisibility === 'public').length
+  const privateCount = projects.filter((p) => p.repoVisibility === 'private').length
 
   return (
     <>
@@ -39,6 +53,48 @@ export default function Projects() {
               </button>
             )
           })}
+        </div>
+        <div className="domain-filters">
+          <span className="filter-label">Live:</span>
+          <button
+            className={`domain-btn ${liveFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setLiveFilter('all')}
+          >
+            All ({projects.length})
+          </button>
+          <button
+            className={`domain-btn ${liveFilter === 'live' ? 'active' : ''}`}
+            onClick={() => setLiveFilter('live')}
+          >
+            Live ({liveCount})
+          </button>
+          <button
+            className={`domain-btn ${liveFilter === 'non-live' ? 'active' : ''}`}
+            onClick={() => setLiveFilter('non-live')}
+          >
+            Non-live ({projects.length - liveCount})
+          </button>
+        </div>
+        <div className="domain-filters">
+          <span className="filter-label">Repo:</span>
+          <button
+            className={`domain-btn ${visibilityFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setVisibilityFilter('all')}
+          >
+            All ({projects.length})
+          </button>
+          <button
+            className={`domain-btn ${visibilityFilter === 'public' ? 'active' : ''}`}
+            onClick={() => setVisibilityFilter('public')}
+          >
+            Public ({publicCount})
+          </button>
+          <button
+            className={`domain-btn ${visibilityFilter === 'private' ? 'active' : ''}`}
+            onClick={() => setVisibilityFilter('private')}
+          >
+            Private ({privateCount})
+          </button>
         </div>
       </section>
       {types.map((t) => {
