@@ -4,6 +4,33 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] - 2026-09-28
+
+### Changed — kebab-case directory naming convention (breaking)
+
+- **Naming charset** for every project directory changed from `[a-z0-9_.]`
+  (snake_case, no hyphens) to `[0-9a-z-.]` (kebab-case, no underscores).
+  Chinese chars still allowed for natively-Chinese content files.
+- **Renamed 31 unit directories** (`_` → `-`) and the `web_apps` type directory
+  → `web-apps`. `calculator` was already compliant (no change). Total: 32 dirs
+  moved via `git mv`.
+- **Updated all references** across 7 files:
+  `README.md` (toctree links + Unit column),
+  `blog/src/data/projects.ts` (slug, name, type, localReadme, categoryLabels
+  key — 33 entries),
+  `blog/src/types/index.ts` (`ProjectType` union: `'web_apps'` → `'web-apps'`),
+  `blog/src/pages/Projects.tsx` (types array),
+  `blog/src/components/ProjectsOverview.tsx` (types array),
+  `AGENTS.md` (naming convention text + 6 per-project path refs + 1 prose ref),
+  `projects/web-apps/event-registration-form/AGENTS.md` (stale
+  `otc_application_form` path → `event-registration-form`).
+- **Blog routing slugs** now use kebab-case (e.g. `/projects/web-apps/hk-wifi-map`
+  instead of `/projects/web_apps/hk_wifi_map`). Existing bookmarks with
+  snake_case slugs will 404.
+- `CHANGELOG.md` historical entries intentionally preserved with original
+  snake_case names (they describe what happened at that time).
+- Blog build verified (`tsc -b && vite build` — clean, 53 modules).
+
 ## [1.1.2] - 2026-09-28
 
 ### Added

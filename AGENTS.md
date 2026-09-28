@@ -35,25 +35,25 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
   study notes (CISSP, CompTIA). Inspect the project's own manifest first.
 - **Respect per-project instruction files** — they hold hard constraints that
   override anything generic. Read before editing that project:
-  - `projects/ai/crew_ai_orchestrator_mcp/AGENTS.md` — Python/uv, mcp 2.x (`MCPServer`, not
+  - `projects/ai/crew-ai-orchestrator-mcp/AGENTS.md` — Python/uv, mcp 2.x (`MCPServer`, not
     `FastMCP`), never write stdout under stdio, `dev-001` + per-commit
     CHANGELOG/version bump, never push `main`/`dev`.
-  - `projects/ai/hk_guided_tour/AGENTS.md` — Python/uv, `crewai==1.15.22`, musllinux stubs in
+  - `projects/ai/hk-guided-tour/AGENTS.md` — Python/uv, `crewai==1.15.22`, musllinux stubs in
     `_stubs/`, Traditional-Chinese output, needs `HKOAI_API_KEY` +
     `OPENCODE_API_KEY`, SSL-bypass + 180s LLM timeout.
-  - `projects/ai/sdlc_orchestration_mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
+  - `projects/ai/sdlc-orchestration-mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
     highest-numbered `PROMPT-V*.md`. (Product name is still `entrepreneur-mcp`;
     the GitHub repo remains `Mcc-Mak/entrepreneur-mcp`.)
-  - `projects/ai/opencode_docker_env/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
-  - `projects/web_apps/event_registration_form/AGENTS.md` — Traditional Chinese for all
+  - `projects/ai/opencode-docker-env/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
+  - `projects/web-apps/event-registration-form/AGENTS.md` — Traditional Chinese for all
     copy/docs/commits, `#registration` anchor + percent-encoded QR `data=`, GAS
     `Content-Type` must stay `text/plain` (CORS preflight kills `application/json`),
     form schema is the single source of truth for both UI order and Sheets columns,
     and the source is duplicated in a standalone repo that actually deploys Pages.
     (GitHub repo remains `Mcc-Mak/otc-application-form`; `vite.config.js` `base:
     '/otc-application-form/'` depends on the repo name staying put.)
-  - Some projects also ship `opencode.jsonc` (e.g. `projects/ai/sdlc_orchestration_mcp/`,
-    `projects/ai/opencode_docker_env/`) — honor it.
+  - Some projects also ship `opencode.jsonc` (e.g. `projects/ai/sdlc-orchestration-mcp/`,
+    `projects/ai/opencode-docker-env/`) — honor it.
 
 ## Projects that deploy from their own repo
 
@@ -68,7 +68,7 @@ places, in this order:
    `projects/<type>/<unit>/` and commit here on `dev-001`.
 
 Do **not** rename a GitHub repo that backs a Pages URL — GitHub does not redirect
-old Pages paths. `web_apps/event_registration_form` is the current example: its
+old Pages paths. `web-apps/event-registration-form` is the current example: its
   `auto_merge.yml` + `deploy_github_pages.yml` under its own
 `.github/workflows/` are **inert here** (GitHub Actions only reads workflows at a
 repo's root), and its `vite.config.js` `base: '/otc-application-form/'` depends
@@ -93,10 +93,10 @@ on the repo name staying put.
 - **Physical layout groups by `type`**; all subprojects live under one
   `projects/` umbrella. Root stays clean: `README.md`, `LICENSE`, `AGENTS.md`,
   `.gitignore`, `.github/workflows/`, `blog/`, `projects/`.
-- Naming charset (every dir): **Chinese chars or `[a-z0-9_.]`** — no uppercase,
-  no hyphens. Style: `snake_case` ASCII for dirs; Chinese preserved for
-  natively-Chinese *content* files (e.g. `hk_guided_tour` keeps `建築/`, `矩陣/`).
-- Eight types (owner-confirmed): `games`, `web_apps`, `templates`, `ai`,
+- Naming charset (every dir): **Chinese chars or `[0-9a-z-.]`** — no uppercase,
+  no underscores. Style: `kebab-case` ASCII for dirs; Chinese preserved for
+  natively-Chinese *content* files (e.g. `hk-guided-tour` keeps `建築/`, `矩陣/`).
+- Eight types (owner-confirmed): `games`, `web-apps`, `templates`, `ai`,
   `devops`, `tools`, `notes`, `personal`.
 - **Two-axis taxonomy:** every project has a `type` (primary navigation, 8
   categories) and `domains[]` (cross-cutting knowledge areas). Six domains:
@@ -172,7 +172,7 @@ on the repo name staying put.
   tracked **here** — add it here, then mirror into the project's own repo if it
   is a live site.
 - Per-project CHANGELOG/version mandates apply where that project's `AGENTS.md`
-  requires them (e.g. `web_apps/otc_application_form` bumps its own
+  requires them (e.g. `web-apps/event-registration-form` bumps its own
   `CHANGELOG.md` with every change, in Traditional Chinese).
 - Don't touch any `GIT_PUSH_TOKEN` or embedded remote credentials.
 
