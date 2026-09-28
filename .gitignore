@@ -1,6 +1,12 @@
-# # Nested project repositories (each is its own git repo)
-# projects/
+# `projects/` is intentionally NOT ignored — since v0.7.0 every
+# projects/<type>/<unit>/ is tracked by this root repo (they are no longer
+# nested git repos).
 
 # Blog (Vite + ReactJS build)
 blog/node_modules/
 blog/dist/
+
+# Per-project build artifacts and dependencies. Each project also carries its
+# own .gitignore, but keep these here so a project without one stays clean.
+projects/**/node_modules/
+projects/**/dist/
