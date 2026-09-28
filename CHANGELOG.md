@@ -4,6 +4,71 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [0.9.0] - 2026-09-28
+
+### Added
+- `projects/web_apps/otc_application_form/` — event registration web app,
+  migrated from a top-level `otc-application-form/` directory that was sitting
+  outside the `projects/` umbrella and still carried its own `.git`
+  - 32nd project; `Web Apps` category goes 6 → 7, portfolio total 31 → 32
+  - Stack: React 19 + Vite 7 + Tailwind CSS v4 frontend, Google Apps Script
+    backend appending rows to Google Sheets, deployed to GitHub Pages
+  - Live site: <https://mcc-mak.github.io/otc-application-form/> (repo
+    `Mcc-Mak/otc-application-form`, untouched by this move)
+  - One event per folder, now named `me_time_2026_09_26/` (was
+    `2026-09-26 - 📄 NEW PAGE - Me Time 充充電報名表/`)
+  - Nested `.git` removed, so the source is tracked by this root repo like all
+    31 other projects
+  - Its own `CHANGELOG.md` bumped to `0.4.0` and its `AGENTS.md` extended with
+    the dual-repo sync rule
+- README toctree: new `otc_application_form` row under **Web Apps** (field
+  `#web-dev`, industry `#—`, role `#developer`, year 2026, `live` link)
+- README "Projects" intro rewritten: it still claimed "Each project is its own
+  git repository. This root repo tracks only `README.md`, `LICENSE`, ..." —
+  untrue since v0.7.0. Now states the 32 projects are tracked by this
+  repository and lists what else the root repo tracks.
+- `blog/src/data/projects.ts`: matching manifest entry — slug
+  `otc_application_form`, so it resolves at
+  `/projects/web_apps/otc_application_form`
+- `AGENTS.md`: new "Projects that deploy from their own repo" section covering
+  the push-upstream-then-mirror order, and a bullet for the new project's
+  `AGENTS.md` in the per-project instruction list
+
+### Changed
+- Root `AGENTS.md` — **corrected a model that had been wrong since v0.7.0**:
+  - "What this repo is": states that `projects/` is tracked by the root repo and
+    that no project has a nested `.git`; adds the `find projects -maxdepth 3
+    -name .git` verification
+  - "How to work here": a project change is committed in the **root** repo via
+    `git add projects/<type>/<unit>`; removed the false "only `README.md` and
+    `LICENSE` belong to the root repo" rule
+  - "Per-project dates": the `Year` column is historical — it was harvested
+    before v0.7.0, and with per-project history gone, new projects must take
+    their year from the owner's own repo rather than root timestamps
+  - Root-tracked-files list and the "never `git add` anything under `projects/`"
+    prohibition replaced with the mirror rule
+  - Both owner gates ("README toctree", "blog + `.github/`") marked cleared;
+    `.github/workflows/` section now documents the real `deploy_reactjs_page.yml`
+    `working-directory` gap instead of a pre-approval instruction
+  - "Rename scope": no longer claims `mv` carries each project's `.git`/`origin`
+- `.gitignore`: dropped the commented-out `projects/` block (it is tracked here),
+  documented why `projects/` must not be ignored, and added
+  `projects/**/node_modules/` + `projects/**/dist/`
+- `projects/web_apps/otc_application_form/` — activity folder renamed
+  `2026-09-26 - 📄 NEW PAGE - Me Time 充充電報名表/` → `me_time_2026_09_26/`,
+  with every dependent path, doc link, Mermaid label and `cd` command updated
+  (`README.md`, `AGENTS.md`, `doc/README.md`, `doc/architecture.md`, and two
+  stale workflow comments). `deploy_github_pages.yml` needed **no** path change
+  — it locates the frontend with `find -maxdepth 4 -name package.json`, which
+  still resolves; verified after the rename. `vite.config.js` `base` is
+  unchanged, since it is tied to the GitHub repo name.
+
+### Verified
+- `blog`: `npm run build` (`tsc -b && vite build`) passes
+- `projects/web_apps/otc_application_form/me_time_2026_09_26/web`: `npm ci` +
+  `npm run build` passes; the deploy workflow's `Locate web app` step still
+  resolves to `./me_time_2026_09_26/web`
+
 ## [0.8.0] - 2026-09-25
 
 ### Added
