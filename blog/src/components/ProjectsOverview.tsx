@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { projects, categoryLabels, domainLabels } from '../data/projects'
 import type { ProjectType, ProjectDomain } from '../types'
 
-const types: ProjectType[] = ['games', 'web_apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
+const types: ProjectType[] = ['games', 'web-apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
 const domains: ProjectDomain[] = ['frontend', 'backend', 'devops', 'security', 'ai', 'creative']
 
 export default function ProjectsOverview() {
