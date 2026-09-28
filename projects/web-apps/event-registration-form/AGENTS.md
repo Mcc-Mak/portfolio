@@ -16,7 +16,7 @@
 | 位置 | 角色 | 誰部署線上網站 |
 | --- | --- | --- |
 | `github.com/Mcc-Mak/otc-application-form`（獨立 repo） | **線上來源**。`auto_merge.yml` + `deploy_github_pages.yml` 在此執行 | ✅ 是 |
-| `portfolio/projects/web_apps/otc_application_form/` | portfolio 內的展示副本，由 portfolio 根 repo 追蹤 | ❌ 否 |
+| `portfolio/projects/web-apps/event-registration-form/` | portfolio 內的展示副本，由 portfolio 根 repo 追蹤 | ❌ 否 |
 
 - portfolio 根 repo **不會**執行本目錄下的 `.github/workflows/`（GitHub Actions 只讀 repo 根目錄的 workflow），所以不會重複部署。
 - 線上站 `https://mcc-mak.github.io/otc-application-form/` 與 `web/vite.config.js` 的 `base: '/otc-application-form/'` 依賴 **repo 名稱**。**不要改 repo 名稱，也不要改 `base`**，否則線上網址會壞。

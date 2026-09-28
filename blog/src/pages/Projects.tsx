@@ -3,7 +3,7 @@ import { projects, domainLabels } from '../data/projects'
 import CategorySection from '../components/CategorySection'
 import type { ProjectType, ProjectDomain } from '../types'
 
-const types: ProjectType[] = ['games', 'web_apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
+const types: ProjectType[] = ['games', 'web-apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
 const domains: ProjectDomain[] = ['frontend', 'backend', 'devops', 'security', 'ai', 'creative']
 
 type LiveFilter = 'all' | 'live' | 'non-live'

@@ -1,6 +1,6 @@
 export type ProjectType =
   | 'games'
-  | 'web_apps'
+  | 'web-apps'
   | 'templates'
   | 'ai'
   | 'devops'
