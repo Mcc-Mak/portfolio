@@ -4,6 +4,13 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-09-28
+
+### Fixed
+
+- README.md contact line: phone number now split into clickable
+  `tel:` (Tel) and `sms:` (SMS) links.
+
 ## [1.1.0] - 2026-09-28
 
 ### Added — repo visibility labels, composing filters, SPA deep-link fix
