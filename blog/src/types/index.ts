@@ -4,13 +4,23 @@ export type ProjectType =
   | 'templates'
   | 'ai'
   | 'devops'
+  | 'tools'
   | 'notes'
   | 'personal'
+
+export type ProjectDomain =
+  | 'frontend'
+  | 'backend'
+  | 'devops'
+  | 'security'
+  | 'ai'
+  | 'creative'
 
 export interface Project {
   slug: string
   name: string
   type: ProjectType
+  domains: ProjectDomain[]
   stack: string[]
   field: string
   industry: string
