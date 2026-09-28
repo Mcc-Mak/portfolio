@@ -61,6 +61,12 @@ follows [Semantic Versioning](https://semver.org/).
   `qr-code-project`, `assistance-alert-system`)
 - `vite.config.js` `base: '/otc-application-form/'` unchanged
 
+### Fixed
+- `.github/workflows/deploy_reactjs_page.yml`: now builds the blog (not the
+  former holding page). Install/build run with `working-directory: blog`,
+  artifact path is `./blog/dist`, `cache-dependency-path` points to
+  `blog/package-lock.json`. Workflow renamed to "Deploy Blog to Pages".
+
 ## [0.9.0] - 2026-09-28
 
 ### Added

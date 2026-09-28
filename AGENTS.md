@@ -144,11 +144,10 @@ on the repo name staying put.
   **GitHub Pages**. It is tracked by the **root** repo (like `README.md` /
   `LICENSE`), not any subproject.
 - **Gate cleared:** `blog/` and `.github/workflows/` exist and are tracked.
-- **Known gap:** `deploy_reactjs_page.yml` still runs `npm ci` / `npm run build`
-  at the repo **root**, where there is no `package.json` or lockfile — it was
-  written for the former "holding page" app and never updated when `blog/` was
-  added in v0.8.0. It needs a `working-directory: blog` (and a root lockfile
-  glob) before it can build the blog. Do not assume the Pages deploy is green.
+- **Fixed in v1.0.0:** `deploy_reactjs_page.yml` now builds the blog (not the
+  former holding page) — install/build run with `working-directory: blog`, the
+  artifact path is `./blog/dist`, and `cache-dependency-path` points to
+  `blog/package-lock.json`. Renamed workflow to "Deploy Blog to Pages".
 - Only workflows at a repo's **root** run. The `.github/workflows/` directories
   inside some `projects/<type>/<unit>/` are inert here and are kept as
   reference copies of the upstream repos' workflows.
