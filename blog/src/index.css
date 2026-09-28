@@ -368,3 +368,45 @@ ul.bullets li::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* Domain filters */
+.domain-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.domain-btn {
+  background: var(--bg-card);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.domain-btn:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.domain-btn.active {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-color: var(--tag-bg);
+}
+
+/* Domain tags on cards */
+.domain-tags {
+  margin-top: 0.3rem;
+}
+
+.domain-tag {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.7rem;
+}

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { projects, categoryLabels } from '../data/projects'
-import type { ProjectType } from '../types'
+import { projects, categoryLabels, domainLabels } from '../data/projects'
+import type { ProjectType, ProjectDomain } from '../types'
 
-const types: ProjectType[] = ['games', 'web_apps', 'templates', 'ai', 'devops', 'notes', 'personal']
+const types: ProjectType[] = ['games', 'web_apps', 'templates', 'ai', 'devops', 'tools', 'notes', 'personal']
+const domains: ProjectDomain[] = ['frontend', 'backend', 'devops', 'security', 'ai', 'creative']
 
 export default function ProjectsOverview() {
   return (
@@ -25,6 +26,26 @@ export default function ProjectsOverview() {
           )
         })}
       </div>
+
+      <h3 style={{ marginTop: '2rem' }}>Knowledge domains</h3>
+      <p style={{ color: 'var(--text-dim)', marginBottom: '0.75rem' }}>
+        Cross-cutting domains span multiple categories — a single project often demonstrates several.
+      </p>
+      <div className="project-grid">
+        {domains.map((d) => {
+          const count = projects.filter((p) => p.domains.includes(d)).length
+          const span = new Set(
+            projects.filter((p) => p.domains.includes(d)).map((p) => p.type)
+          ).size
+          return (
+            <div key={d} className="project-card">
+              <h3>{domainLabels[d]}</h3>
+              <p className="description">{count} projects across {span} categor{span !== 1 ? 'ies' : 'y'}</p>
+            </div>
+          )
+        })}
+      </div>
+
       <p style={{ marginTop: '1rem' }}>
         <Link to="/projects">View all projects →</Link>
       </p>

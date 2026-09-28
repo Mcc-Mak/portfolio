@@ -1,5 +1,5 @@
 import type { Project } from '../types'
-import { fieldLabels, industryLabels, roleLabels } from '../data/projects'
+import { fieldLabels, industryLabels, roleLabels, domainLabels } from '../data/projects'
 
 interface Props {
   project: Project
@@ -16,6 +16,16 @@ export default function ProjectTable({ project }: Props) {
             <div className="tags">
               {project.stack.map((s) => (
                 <span key={s} className="tag">{s}</span>
+              ))}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Domains</th>
+          <td>
+            <div className="tags">
+              {project.domains.map((d) => (
+                <span key={d} className="tag">{domainLabels[d]}</span>
               ))}
             </div>
           </td>

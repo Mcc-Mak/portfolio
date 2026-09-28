@@ -87,23 +87,24 @@ documentation, and root cause analysis.
 
 ## Projects
 
-32 independent projects across 7 categories, each physically located at
-`projects/<type>/<unit>/` and tracked by this repository. `Local` links to the
+32 independent projects across 8 categories, each physically located at
+`projects/<type>/<unit>/` and tracked by this repository. Projects carry two axes:
+`type` (primary navigation, 8 categories) and `domains` (cross-cutting knowledge
+areas, 6 tags — a single project often spans several). `Local` links to the
 **internal README** (viewable within this portfolio); `GitHub` links to the
 **GitHub repository** (some are private). This root repo also tracks `LICENSE`,
 `AGENTS.md`, `CHANGELOG.md`, `.gitignore`, `blog/`, and `.github/workflows/`.
 
 <details>
-<summary><strong>Games</strong> — 6 projects</summary>
+<summary><strong>Games</strong> — 5 projects</summary>
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
-| chessboard | [local](projects/games/chessboard/README.md) · [GitHub](https://github.com/Mcc-Mak/Anonymous-Chessboard) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web chessboard game with blocks and traps |
-| calculator | [local](projects/games/calculator/) · [GitHub](https://github.com/Mcc-Mak/Calculator) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based calculator |
-| paint | [local](projects/games/paint/) · [GitHub](https://github.com/Mcc-Mak/Paint) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based paint drawing app |
-| rpg | [local](projects/games/rpg/README.md) · [GitHub](https://github.com/Mcc-Mak/RPG) | `#python` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Build a Python RPG with character animation and physics |
-| sudoku | [local](projects/games/sudoku/README.md) · [GitHub](https://github.com/Mcc-Mak/Sudoku) | `#python` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Build a Python Sudoku solver reading puzzle images |
-| tracer | [local](projects/games/tracer/) · [GitHub](https://github.com/Mcc-Mak/Tracer) | `#html` `#css` `#javascript` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based grid tracing game |
+| chess_blocks_traps | [local](projects/games/chess_blocks_traps/README.md) · [GitHub](https://github.com/Mcc-Mak/Anonymous-Chessboard) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web chessboard game with blocks and traps |
+| calculator | [local](projects/games/calculator/) · [GitHub](https://github.com/Mcc-Mak/Calculator) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a web-based calculator |
+| pixel_paint | [local](projects/games/pixel_paint/README.md) · [GitHub](https://github.com/Mcc-Mak/Paint) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a pixel painting app from mouse trails on a 64x64 grid |
+| digimon_rpg | [local](projects/games/digimon_rpg/README.md) · [GitHub](https://github.com/Mcc-Mak/RPG) | `#python` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Build a 2D side-scrolling action RPG with pygame |
+| grid_tracer | [local](projects/games/grid_tracer/README.md) · [GitHub](https://github.com/Mcc-Mak/Tracer) | `#html` `#css` `#javascript` | · Field: #game-dev<br/>· Industry: #—<br/>· Role: #developer | in 2022 | Build a pixel-grid hover tracer effect |
 
 </details>
 
@@ -113,12 +114,12 @@ documentation, and root cause analysis.
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
 | booking_appointment_system | [local](projects/web_apps/booking_appointment_system/README.md) · [GitHub](https://github.com/Mcc-Mak/Booking-Appointment-System-Dev-) | `#java` `#spring-boot` `#maven` `#mysql` | · Field: #web-dev<br/>· Industry: #enterprise<br/>· Role: #developer | in 2022 | Build a Spring Boot MVC booking system with auth |
-| google_form_generator | [local](projects/web_apps/google_form_generator/README.md) · [GitHub](https://github.com/Mcc-Mak/google-form-generator) | `#google-apps-script` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Generate Google Forms from text via Google Apps Script |
-| hko_timesheet | [local](projects/web_apps/hko_timesheet/README.md) · [GitHub](https://github.com/Mcc-Mak/hko-timesheet) | `#html` `#css` `#javascript` `#firebase` | · Field: #productivity<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Build a Firebase timesheet and leave management system · [live](https://mcc-mak.github.io/hko-timesheet/) |
+| google_form_generator | [local](projects/web_apps/google_form_generator/README.md) · [GitHub](https://github.com/Mcc-Mak/google-form-generator) | `#google-apps-script` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Generate Google Forms from text via Google Apps Script |
+| hko_timesheet_leave | [local](projects/web_apps/hko_timesheet_leave/README.md) · [GitHub](https://github.com/Mcc-Mak/hko-timesheet) | `#html` `#css` `#javascript` `#firebase` | · Field: #web-dev<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Build a Firebase timesheet and leave management system · [live](https://mcc-mak.github.io/hko-timesheet/) |
 | html_to_pdf | [local](projects/web_apps/html_to_pdf/README.md) · [GitHub](https://github.com/Mcc-Mak/html-to-pdf-converter) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a pure frontend HTML to PDF converter tool · [live](https://mcc-mak.github.io/html-to-pdf-converter/) |
-| otc_application_form | [local](projects/web_apps/otc_application_form/README.md) · [GitHub](https://github.com/Mcc-Mak/otc-application-form) | `#react` `#vite` `#tailwind-css` `#google-apps-script` `#github-actions` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a serverless event registration form writing to Google Sheets via Apps Script · [live](https://mcc-mak.github.io/otc-application-form/) |
-| qr_code | [local](projects/web_apps/qr_code/README.md) · [GitHub](https://github.com/Mcc-Mak/qr-code-project) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2023 | Build a QR code web generation tool |
-| wifi | [local](projects/web_apps/wifi/README.md) · [GitHub](https://github.com/Mcc-Mak/wifi) | `#html` `#css` `#javascript` `#jquery` `#leaflet` | · Field: #web-dev<br/>· Industry: #govt-public<br/>· Role: #developer | in 2023 | Build an HK Wi-Fi location distribution map viewer |
+| event_registration_form | [local](projects/web_apps/event_registration_form/README.md) · [GitHub](https://github.com/Mcc-Mak/otc-application-form) | `#react` `#vite` `#tailwind-css` `#google-apps-script` `#github-actions` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a serverless event registration form writing to Google Sheets via Apps Script · [live](https://mcc-mak.github.io/otc-application-form/) |
+| qr_code_management_system | [local](projects/web_apps/qr_code_management_system/README.md) · [GitHub](https://github.com/Mcc-Mak/qr-code-project) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2023 | Manage QR codes with login auth and a user/project admin dashboard |
+| hk_wifi_map | [local](projects/web_apps/hk_wifi_map/README.md) · [GitHub](https://github.com/Mcc-Mak/wifi) | `#html` `#css` `#javascript` `#jquery` `#leaflet` | · Field: #web-dev<br/>· Industry: #govt-public<br/>· Role: #developer | in 2023 | Map Hong Kong Wi-Fi hotspot locations on an interactive map |
 
 </details>
 
@@ -139,10 +140,10 @@ documentation, and root cause analysis.
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
-| ai_opencode | [local](projects/ai/ai_opencode/README.md) · [GitHub](https://github.com/Mcc-Mak/ai-opencode) | `#docker` `#node-js` `#opencode` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Bundle opencode and MCP servers in a Docker dev environment |
+| opencode_docker_env | [local](projects/ai/opencode_docker_env/README.md) · [GitHub](https://github.com/Mcc-Mak/ai-opencode) | `#docker` `#node-js` `#opencode` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Bundle opencode and MCP servers in a Docker dev environment |
 | crew_ai_orchestrator_mcp | [local](projects/ai/crew_ai_orchestrator_mcp/README.md) · [GitHub](https://github.com/Mcc-Mak/crew-ai-orchestrator-mcp) | `#python` `#crewai` `#uv` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Orchestrate CrewAI multi-agent workflows via an MCP server |
 | devsecops_mcp | [local](projects/ai/devsecops_mcp/README.md) · [GitHub](https://github.com/Mcc-Mak/devsecops-mcp) | `#opencode` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Run multi-agent MCP for DevSecOps with segregation of duties |
-| entrepreneur_mcp | [local](projects/ai/entrepreneur_mcp/) · [GitHub](https://github.com/Mcc-Mak/entrepreneur-mcp) | `#typescript` `#pnpm` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Orchestrate full SDLC with team synthesis via OpenCode MCP |
+| sdlc_orchestration_mcp | [local](projects/ai/sdlc_orchestration_mcp/) · [GitHub](https://github.com/Mcc-Mak/entrepreneur-mcp) | `#typescript` `#pnpm` `#mcp` | · Field: #ai-agents<br/>· Industry: #—<br/>· Role: #architect | in 2026 | Orchestrate the full SDLC with role agents and segregation of duties (the `entrepreneur-mcp` MCP) |
 | hk_guided_tour | [local](projects/ai/hk_guided_tour/README.md) · [GitHub](https://github.com/Mcc-Mak/hk-guided-tour) | `#python` `#crewai` `#uv` | · Field: #ai-agents<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Generate HK building tour handbooks via a CrewAI pipeline |
 
 </details>
@@ -152,10 +153,20 @@ documentation, and root cause analysis.
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
-| application_proxy_server | [local](projects/devops/application_proxy_server/README.md) · [GitHub](https://github.com/Mcc-Mak/application-proxy-server) | `#docker` `#apache` `#mysql` `#node-js` `#react` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devsecops-engineer | in 2026 | Deploy a Dockerized proxy server with GitLab CI auto-merge pipeline |
-| ass_ansible | [local](projects/devops/ass_ansible/README.md) · [GitHub](https://github.com/Mcc-Mak/ass-ansible) | `#ansible` | · Field: #devops<br/>· Industry: #—<br/>· Role: #devops-engineer | in 2026 | Automate infrastructure with Ansible |
-| assistance_alert_system | [local](projects/devops/assistance_alert_system/README.md) · [GitHub](https://github.com/Mcc-Mak/assistance-alert-system) | `#docker` `#telegram` `#smtp` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devops-engineer | in 2026 | Send monitoring alerts via Telegram and email |
+| apache_proxy_app_stack | [local](projects/devops/apache_proxy_app_stack/README.md) · [GitHub](https://github.com/Mcc-Mak/application-proxy-server) | `#docker` `#apache` `#mysql` `#node-js` `#react` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devsecops-engineer | in 2026 | Deploy a Dockerized Apache-proxy app stack with GitLab CI auto-merge |
+| ansible_automation | [local](projects/devops/ansible_automation/README.md) · [GitHub](https://github.com/Mcc-Mak/ass-ansible) | `#ansible` | · Field: #devops<br/>· Industry: #—<br/>· Role: #devops-engineer | in 2026 | Automate infrastructure with Ansible |
+| monitoring_alert_system | [local](projects/devops/monitoring_alert_system/README.md) · [GitHub](https://github.com/Mcc-Mak/assistance-alert-system) | `#docker` `#telegram` `#smtp` | · Field: #devops<br/>· Industry: #govt-public<br/>· Role: #devops-engineer | in 2026 | Send monitoring alerts via Telegram and email |
 | cicd_pipeline_config | [local](projects/devops/cicd_pipeline_config/README.md) · [GitHub](https://github.com/Mcc-Mak/cicd-pipeline-configuration) | `#gitlab-ci` `#github-actions` | · Field: #devops<br/>· Industry: #—<br/>· Role: #devsecops-engineer | in 2026 | Configure GitLab and GitHub CI/CD auto-merge pipelines |
+
+</details>
+
+<details>
+<summary><strong>Tools</strong> — 2 projects</summary>
+
+| Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
+|:-----|:------|:------|:------------------------|:----:|:------------|
+| sudoku_solver | [local](projects/tools/sudoku_solver/README.md) · [GitHub](https://github.com/Mcc-Mak/Sudoku) | `#python` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2021 | Solve Sudoku puzzles from photos with OpenCV template matching |
+| midi_music_generator | [local](projects/tools/midi_music_generator/README.md) · [GitHub](https://github.com/Mcc-Mak/python-music-studio-app) | `#python` `#midiutil` | · Field: #audio-music<br/>· Industry: #—<br/>· Role: #developer | in 2025 | Generate MIDI music from CSV melody sheets in Python |
 
 </details>
 
@@ -164,20 +175,52 @@ documentation, and root cause analysis.
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
-| cissp_practice_questions_2024 | [local](projects/notes/cissp_practice_questions_2024/README.md) · [GitHub](https://github.com/Mcc-Mak/isc-cissp-practice-questions-2024) | `#markdown` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Analyze CISSP practice question bank by domain |
-| cissp_practice_tests_4e | [local](projects/notes/cissp_practice_tests_4e/README.md) · [GitHub](https://github.com/Mcc-Mak/isc-cissp-official-practice-tests-4th-edition) | `#javascript` `#html` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Run CISSP practice tests with an MCQ platform |
+| cissp_question_bank_analysis | [local](projects/notes/cissp_question_bank_analysis/README.md) · [GitHub](https://github.com/Mcc-Mak/isc-cissp-practice-questions-2024) | `#markdown` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Analyze a CISSP practice question bank against its answer keys |
+| cissp_mcq_platform | [local](projects/notes/cissp_mcq_platform/README.md) · [GitHub](https://github.com/Mcc-Mak/isc-cissp-official-practice-tests-4th-edition) | `#javascript` `#html` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Run CISSP practice tests with an MCQ platform |
 | cissp_summary | [local](projects/notes/cissp_summary/README.md) · [GitHub](https://github.com/Mcc-Mak/isc-cissp-summary) | `#markdown` | · Field: #security<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Summarize CISSP course sessions for exam prep |
 | comptia_network_summary | [local](projects/notes/comptia_network_summary/README.md) · [GitHub](https://github.com/Mcc-Mak/comptia-network--summary) | `#markdown` | · Field: #networking<br/>· Industry: #education<br/>· Role: #student-exam-prep | in 2026 | Summarize CompTIA Network+ N10-009 course sessions |
 
 </details>
 
 <details>
-<summary><strong>Personal</strong> — 2 projects</summary>
+<summary><strong>Personal</strong> — 1 project</summary>
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
-| cv | [local](projects/personal/cv/README.md) · [GitHub](https://github.com/Mcc-Mak/cv) | `#html` `#css` `#javascript` | · Field: #—<br/>· Industry: #—<br/>· Role: #— | in 2026 | Showcase a personal CV website and certifications portfolio · [live](https://mcc-mak.github.io/cv/) |
-| music_studio | [local](projects/personal/music_studio/README.md) · [GitHub](https://github.com/Mcc-Mak/python-music-studio-app) | `#python` `#midiutil` | · Field: #audio-music<br/>· Industry: #—<br/>· Role: #developer | in 2025 | Generate MIDI music from CSV melody sheets in Python |
+| cv_portfolio | [local](projects/personal/cv_portfolio/README.md) · [GitHub](https://github.com/Mcc-Mak/cv) | `#html` `#css` `#javascript` | · Field: #—<br/>· Industry: #—<br/>· Role: #— | in 2026 | Showcase a personal CV website and certifications portfolio · [live](https://mcc-mak.github.io/cv/) |
+
+</details>
+
+---
+
+## Breadth & Coverage
+
+<details open>
+<summary><strong>Knowledge domains</strong> — cross-cutting axes that span multiple categories</summary>
+
+| Domain | Projects | Spans categories |
+|:-------|:--------:|:-----------------|
+| Frontend | 13 | Games, Web Apps, Templates, Personal |
+| Backend | 10 | Web Apps, Templates |
+| DevOps | 8 | Templates, AI, DevOps |
+| Security | 7 | Templates, AI, DevOps, Notes |
+| AI | 6 | Tools, AI |
+| Creative | 6 | Games, Tools |
+
+</details>
+
+<details>
+<summary><strong>Technology stack</strong> — 36 distinct tags</summary>
+
+| Category | Tags |
+|:---------|:-----|
+| Languages | `java` `javascript` `php` `python` `typescript` `markdown` |
+| Frontend | `html` `css` `jquery` `react` `tailwind-css` `jsp` `vite` `leaflet` |
+| Backend & Frameworks | `spring-boot` `maven` `express` `laravel` `google-apps-script` `node-js` |
+| Databases | `mysql` `mongodb` `firebase` |
+| DevOps & Infra | `docker` `ansible` `apache` `github-actions` `gitlab-ci` |
+| AI & Tooling | `crewai` `mcp` `opencode` `uv` `pnpm` |
+| Other | `midiutil` `smtp` `telegram` |
 
 </details>
 

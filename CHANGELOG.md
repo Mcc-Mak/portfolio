@@ -4,6 +4,63 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.0.0] - 2026-09-28
+
+### Changed — breaking: 18 directory renames + new `tools` type + two-axis taxonomy
+
+- **18 project directories renamed** to descriptive `snake_case` identifiers
+  (breaking: path changes). GitHub repo names are unchanged — renames are local
+  only. Renamed units span all 8 categories:
+  - `games`: `chess_blocks_traps`, `calculator`, `pixel_paint`, `digimon_rpg`,
+    `grid_tracer` (5 renames)
+  - `web_apps`: `booking_appointment_system`, `google_form_generator`,
+    `hko_timesheet_leave`, `event_registration_form` (was `otc_application_form`)
+    (4 renames)
+  - `templates`: `docker_laravel`, `dockerized_mern`, `secure_web_template`,
+    `springboot_mvc_template` (4 renames)
+  - `ai`: `sdlc_orchestration_mcp` (was `entrepreneur_mcp`),
+    `opencode_docker_env` (was `ai_opencode`) (2 renames)
+  - `devops`: `apache_proxy_app_stack`, `ansible_automation`,
+    `monitoring_alert_system`, `cicd_pipeline_config` (4 renames — all were
+    `ass_*` / `assistance_*` / `application_*` names)
+  - `notes`: `cissp_question_bank_analysis`, `cissp_mcq_platform` (2 renames)
+  - `personal`→`tools`: `midi_music_generator` moved from `personal` to new
+    `tools` category; `sudoku_solver` moved from `games` to `tools`
+- **New `tools` type** (8th category): `sudoku_solver` + `midi_music_generator`.
+  Portfolio now has 32 projects across 8 categories (games 5, web_apps 7,
+  templates 4, ai 5, devops 4, tools 2, notes 4, personal 1).
+- **Two-axis taxonomy:** every project now carries `domains[]` (cross-cutting
+  knowledge areas) in addition to `type`. Six domains: `frontend` (14),
+  `backend` (10), `devops` (8), `security` (7), `ai` (6), `creative` (6).
+- **Field tag cleanup:** `calculator`, `pixel_paint`, `grid_tracer` retagged
+  `#game-dev` (was `#productivity`); `google_form_generator`,
+  `hko_timesheet_leave` retagged `#web-dev` (was `#productivity`).
+  `sudoku_solver` keeps `#productivity` as the sole genuine productivity tool.
+
+### Added
+- `blog/src/types/index.ts`: `ProjectDomain` union type; `domains: ProjectDomain[]`
+  on `Project` interface; `'tools'` added to `ProjectType`
+- `blog/src/pages/Projects.tsx`: domain filter buttons (compose with type-grouped
+  display, `useState`-driven)
+- `blog/src/components/ProjectsOverview.tsx`: domain coverage section showing
+  how each domain spans categories
+- `blog/src/components/ProjectTable.tsx`: Domains row
+- `blog/src/components/ProjectCard.tsx`: domain badges
+- `blog/src/index.css`: `.domain-filters`, `.domain-btn`, `.domain-tag` styles
+- `blog/src/data/projects.ts`: `domains[]` on all 32 entries; `domainLabels`
+  export; `tools` in `categoryLabels`
+- `README.md`: Tools toctree section; breadth & coverage matrix (6 domains ×
+  categories + 36-tag stack breakdown); regenerated toctree from manifest
+- `AGENTS.md`: eight types, two-axis taxonomy docs, path refs updated for all
+  18 renames, manifest field list updated
+
+### Renames — semantic identifiers preserved
+- MySQL DB name `booking_appointment_system` unchanged
+- Docker network `ai_opencode` in `.env.example` unchanged
+- GitHub repo names unchanged (e.g. `entrepreneur-mcp`, `otc-application-form`,
+  `qr-code-project`, `assistance-alert-system`)
+- `vite.config.js` `base: '/otc-application-form/'` unchanged
+
 ## [0.9.0] - 2026-09-28
 
 ### Added
