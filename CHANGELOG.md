@@ -4,6 +4,16 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.1.2] - 2026-09-28
+
+### Added
+
+- Blog Hero (`blog/src/components/Hero.tsx`): phone number is now a
+  clickable `tel:` (Tel) and `sms:` (SMS) link. GitHub's markdown renderer
+  strips `tel:`/`sms:` URL schemes (verified via the GitHub markdown API), so
+  the README cannot host clickable phone links — the web app is the canonical
+  place for them.
+
 ## [1.1.1] - 2026-09-28
 
 ### Fixed
