@@ -245,6 +245,34 @@ th {
   font-size: 0.85rem;
 }
 
+.project-card .meta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.visibility-badge {
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid;
+}
+
+.visibility-badge.public {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.4);
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.visibility-badge.private {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+  background: rgba(251, 191, 36, 0.1);
+}
+
 /* Category section */
 .category-section {
   margin-bottom: 2.5rem;
@@ -373,8 +401,18 @@ ul.bullets li::before {
 .domain-filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.filter-label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--mono);
+  margin-right: 0.25rem;
 }
 
 .domain-btn {

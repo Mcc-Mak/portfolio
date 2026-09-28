@@ -150,6 +150,7 @@ export const projects: Project[] = [
     year: '2022',
     description: 'Build a web chessboard game with blocks and traps',
     repo: 'https://github.com/Mcc-Mak/Anonymous-Chessboard',
+    repoVisibility: 'private',
     localReadme: 'projects/games/chess_blocks_traps/README.md',
   },
   {
@@ -164,6 +165,7 @@ export const projects: Project[] = [
     year: '2022',
     description: 'Build a web-based calculator',
     repo: 'https://github.com/Mcc-Mak/Calculator',
+    repoVisibility: 'private',
     localReadme: 'projects/games/calculator/',
   },
   {
@@ -179,6 +181,7 @@ export const projects: Project[] = [
     description:
       'Build a pixel painting app from mouse trails on a 64x64 grid',
     repo: 'https://github.com/Mcc-Mak/Paint',
+    repoVisibility: 'private',
     localReadme: 'projects/games/pixel_paint/README.md',
   },
   {
@@ -194,6 +197,7 @@ export const projects: Project[] = [
     description:
       'Build a 2D side-scrolling action RPG with pygame',
     repo: 'https://github.com/Mcc-Mak/RPG',
+    repoVisibility: 'private',
     localReadme: 'projects/games/digimon_rpg/README.md',
   },
   {
@@ -209,6 +213,7 @@ export const projects: Project[] = [
     description:
       'Solve Sudoku puzzles from photos with OpenCV template matching',
     repo: 'https://github.com/Mcc-Mak/Sudoku',
+    repoVisibility: 'private',
     localReadme: 'projects/tools/sudoku_solver/README.md',
   },
   {
@@ -224,6 +229,7 @@ export const projects: Project[] = [
     description:
       'Build a pixel-grid hover tracer effect',
     repo: 'https://github.com/Mcc-Mak/Tracer',
+    repoVisibility: 'private',
     localReadme: 'projects/games/grid_tracer/README.md',
   },
   {
@@ -238,6 +244,7 @@ export const projects: Project[] = [
     year: '2022',
     description: 'Build a Spring Boot MVC booking system with auth',
     repo: 'https://github.com/Mcc-Mak/Booking-Appointment-System-Dev-',
+    repoVisibility: 'private',
     localReadme: 'projects/web_apps/booking_appointment_system/README.md',
   },
   {
@@ -252,6 +259,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Generate Google Forms from text via Google Apps Script',
     repo: 'https://github.com/Mcc-Mak/google-form-generator',
+    repoVisibility: 'private',
     localReadme: 'projects/web_apps/google_form_generator/README.md',
   },
   {
@@ -267,6 +275,7 @@ export const projects: Project[] = [
     description: 'Build a Firebase timesheet and leave management system',
     repo: 'https://github.com/Mcc-Mak/hko-timesheet',
     pagesUrl: 'https://mcc-mak.github.io/hko-timesheet/',
+    repoVisibility: 'public',
     localReadme: 'projects/web_apps/hko_timesheet_leave/README.md',
   },
   {
@@ -282,6 +291,7 @@ export const projects: Project[] = [
     description: 'Build a pure frontend HTML to PDF converter tool',
     repo: 'https://github.com/Mcc-Mak/html-to-pdf-converter',
     pagesUrl: 'https://mcc-mak.github.io/html-to-pdf-converter/',
+    repoVisibility: 'public',
     localReadme: 'projects/web_apps/html_to_pdf/README.md',
   },
   {
@@ -297,6 +307,7 @@ export const projects: Project[] = [
     description: 'Build a serverless event registration form writing to Google Sheets via Apps Script',
     repo: 'https://github.com/Mcc-Mak/otc-application-form',
     pagesUrl: 'https://mcc-mak.github.io/otc-application-form/',
+    repoVisibility: 'public',
     localReadme: 'projects/web_apps/event_registration_form/README.md',
   },
   {
@@ -312,6 +323,7 @@ export const projects: Project[] = [
     description:
       'Manage QR codes with login auth and a user/project admin dashboard',
     repo: 'https://github.com/Mcc-Mak/qr-code-project',
+    repoVisibility: 'private',
     localReadme: 'projects/web_apps/qr_code_management_system/README.md',
   },
   {
@@ -327,6 +339,8 @@ export const projects: Project[] = [
     description:
       'Map Hong Kong Wi-Fi hotspot locations on an interactive map',
     repo: 'https://github.com/Mcc-Mak/wifi',
+    pagesUrl: 'https://mcc-mak.github.io/wifi/',
+    repoVisibility: 'public',
     localReadme: 'projects/web_apps/hk_wifi_map/README.md',
   },
   {
@@ -341,6 +355,7 @@ export const projects: Project[] = [
     year: '2024',
     description: 'Scaffold a Dockerized Laravel boilerplate template',
     repo: 'https://github.com/Mcc-Mak/docker-laravel',
+    repoVisibility: 'private',
     localReadme: 'projects/templates/docker_laravel/README.md',
   },
   {
@@ -355,6 +370,7 @@ export const projects: Project[] = [
     year: '2024',
     description: 'Scaffold a Dockerized MERN stack boilerplate template',
     repo: 'https://github.com/Mcc-Mak/dockerized-mern',
+    repoVisibility: 'private',
     localReadme: 'projects/templates/dockerized_mern/README.md',
   },
   {
@@ -369,6 +385,7 @@ export const projects: Project[] = [
     year: '2022',
     description: 'Scaffold a Spring Boot secure web starter template',
     repo: 'https://github.com/Mcc-Mak/secure-web-template',
+    repoVisibility: 'private',
     localReadme: 'projects/templates/secure_web_template/README.md',
   },
   {
@@ -383,6 +400,7 @@ export const projects: Project[] = [
     year: '2022',
     description: 'Scaffold a Spring Boot MVC starter template',
     repo: 'https://github.com/Mcc-Mak/springboot-mvc-template',
+    repoVisibility: 'private',
     localReadme: 'projects/templates/springboot_mvc_template/README.md',
   },
   {
@@ -397,6 +415,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Bundle opencode and MCP servers in a Docker dev environment',
     repo: 'https://github.com/Mcc-Mak/ai-opencode',
+    repoVisibility: 'private',
     localReadme: 'projects/ai/opencode_docker_env/README.md',
   },
   {
@@ -411,6 +430,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Orchestrate CrewAI multi-agent workflows via an MCP server',
     repo: 'https://github.com/Mcc-Mak/crew-ai-orchestrator-mcp',
+    repoVisibility: 'private',
     localReadme: 'projects/ai/crew_ai_orchestrator_mcp/README.md',
   },
   {
@@ -425,6 +445,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Run multi-agent MCP for DevSecOps with segregation of duties',
     repo: 'https://github.com/Mcc-Mak/devsecops-mcp',
+    repoVisibility: 'private',
     localReadme: 'projects/ai/devsecops_mcp/README.md',
   },
   {
@@ -440,6 +461,7 @@ export const projects: Project[] = [
     description:
       'Orchestrate the full SDLC with role agents and segregation of duties (the `entrepreneur-mcp` MCP)',
     repo: 'https://github.com/Mcc-Mak/entrepreneur-mcp',
+    repoVisibility: 'private',
     localReadme: 'projects/ai/sdlc_orchestration_mcp/',
   },
   {
@@ -454,6 +476,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Generate HK building tour handbooks via a CrewAI pipeline',
     repo: 'https://github.com/Mcc-Mak/hk-guided-tour',
+    repoVisibility: 'public',
     localReadme: 'projects/ai/hk_guided_tour/README.md',
   },
   {
@@ -469,6 +492,7 @@ export const projects: Project[] = [
     description:
       'Deploy a Dockerized Apache-proxy app stack with GitLab CI auto-merge',
     repo: 'https://github.com/Mcc-Mak/application-proxy-server',
+    repoVisibility: 'public',
     localReadme: 'projects/devops/apache_proxy_app_stack/README.md',
   },
   {
@@ -483,6 +507,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Automate infrastructure with Ansible',
     repo: 'https://github.com/Mcc-Mak/ass-ansible',
+    repoVisibility: 'private',
     localReadme: 'projects/devops/ansible_automation/README.md',
   },
   {
@@ -497,6 +522,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Send monitoring alerts via Telegram and email',
     repo: 'https://github.com/Mcc-Mak/assistance-alert-system',
+    repoVisibility: 'private',
     localReadme: 'projects/devops/monitoring_alert_system/README.md',
   },
   {
@@ -511,6 +537,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Configure GitLab and GitHub CI/CD auto-merge pipelines',
     repo: 'https://github.com/Mcc-Mak/cicd-pipeline-configuration',
+    repoVisibility: 'private',
     localReadme: 'projects/devops/cicd_pipeline_config/README.md',
   },
   {
@@ -526,6 +553,7 @@ export const projects: Project[] = [
     description:
       'Analyze a CISSP practice question bank against its answer keys',
     repo: 'https://github.com/Mcc-Mak/isc-cissp-practice-questions-2024',
+    repoVisibility: 'private',
     localReadme: 'projects/notes/cissp_question_bank_analysis/README.md',
   },
   {
@@ -540,6 +568,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Run CISSP practice tests with an MCQ platform',
     repo: 'https://github.com/Mcc-Mak/isc-cissp-official-practice-tests-4th-edition',
+    repoVisibility: 'public',
     localReadme: 'projects/notes/cissp_mcq_platform/README.md',
   },
   {
@@ -554,6 +583,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Summarize CISSP course sessions for exam prep',
     repo: 'https://github.com/Mcc-Mak/isc-cissp-summary',
+    repoVisibility: 'public',
     localReadme: 'projects/notes/cissp_summary/README.md',
   },
   {
@@ -568,6 +598,7 @@ export const projects: Project[] = [
     year: '2026',
     description: 'Summarize CompTIA Network+ N10-009 course sessions',
     repo: 'https://github.com/Mcc-Mak/comptia-network--summary',
+    repoVisibility: 'public',
     localReadme: 'projects/notes/comptia_network_summary/README.md',
   },
   {
@@ -583,6 +614,7 @@ export const projects: Project[] = [
     description: 'Showcase a personal CV website and certifications portfolio',
     repo: 'https://github.com/Mcc-Mak/cv',
     pagesUrl: 'https://mcc-mak.github.io/cv/',
+    repoVisibility: 'public',
     localReadme: 'projects/personal/cv_portfolio/README.md',
   },
   {
@@ -597,6 +629,7 @@ export const projects: Project[] = [
     year: '2025',
     description: 'Generate MIDI music from CSV melody sheets in Python',
     repo: 'https://github.com/Mcc-Mak/python-music-studio-app',
+    repoVisibility: 'public',
     localReadme: 'projects/tools/midi_music_generator/README.md',
   },
 
