@@ -87,11 +87,11 @@ documentation, and root cause analysis.
 
 ## Projects
 
-31 independent projects across 7 categories. Each project is its own git
-repository. `Local` links to the **internal README** (viewable within this
-portfolio); `GitHub` links to the **GitHub repository** (some are private).
-This root repo tracks only `README.md`, `LICENSE`, `AGENTS.md`, `.gitignore`,
-and `CHANGELOG.md`.
+32 independent projects across 7 categories, each physically located at
+`projects/<type>/<unit>/` and tracked by this repository. `Local` links to the
+**internal README** (viewable within this portfolio); `GitHub` links to the
+**GitHub repository** (some are private). This root repo also tracks `LICENSE`,
+`AGENTS.md`, `CHANGELOG.md`, `.gitignore`, `blog/`, and `.github/workflows/`.
 
 <details>
 <summary><strong>Games</strong> — 6 projects</summary>
@@ -108,7 +108,7 @@ and `CHANGELOG.md`.
 </details>
 
 <details>
-<summary><strong>Web Apps</strong> — 6 projects</summary>
+<summary><strong>Web Apps</strong> — 7 projects</summary>
 
 | Unit | Local · GitHub | Stack | Field · Industry · Role | Year | Description |
 |:-----|:------|:------|:------------------------|:----:|:------------|
@@ -116,6 +116,7 @@ and `CHANGELOG.md`.
 | google_form_generator | [local](projects/web_apps/google_form_generator/README.md) · [GitHub](https://github.com/Mcc-Mak/google-form-generator) | `#google-apps-script` | · Field: #productivity<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Generate Google Forms from text via Google Apps Script |
 | hko_timesheet | [local](projects/web_apps/hko_timesheet/README.md) · [GitHub](https://github.com/Mcc-Mak/hko-timesheet) | `#html` `#css` `#javascript` `#firebase` | · Field: #productivity<br/>· Industry: #govt-public<br/>· Role: #developer | in 2026 | Build a Firebase timesheet and leave management system · [live](https://mcc-mak.github.io/hko-timesheet/) |
 | html_to_pdf | [local](projects/web_apps/html_to_pdf/README.md) · [GitHub](https://github.com/Mcc-Mak/html-to-pdf-converter) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a pure frontend HTML to PDF converter tool · [live](https://mcc-mak.github.io/html-to-pdf-converter/) |
+| otc_application_form | [local](projects/web_apps/otc_application_form/README.md) · [GitHub](https://github.com/Mcc-Mak/otc-application-form) | `#react` `#vite` `#tailwind-css` `#google-apps-script` `#github-actions` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2026 | Build a serverless event registration form writing to Google Sheets via Apps Script · [live](https://mcc-mak.github.io/otc-application-form/) |
 | qr_code | [local](projects/web_apps/qr_code/README.md) · [GitHub](https://github.com/Mcc-Mak/qr-code-project) | `#html` `#css` `#javascript` | · Field: #web-dev<br/>· Industry: #—<br/>· Role: #developer | in 2023 | Build a QR code web generation tool |
 | wifi | [local](projects/web_apps/wifi/README.md) · [GitHub](https://github.com/Mcc-Mak/wifi) | `#html` `#css` `#javascript` `#jquery` `#leaflet` | · Field: #web-dev<br/>· Industry: #govt-public<br/>· Role: #developer | in 2023 | Build an HK Wi-Fi location distribution map viewer |
 
