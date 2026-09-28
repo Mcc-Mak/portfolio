@@ -4,6 +4,12 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-09-28
+
+### Added
+- README.md: web access entry point `https://mcc-mak.github.io/portfolio/`
+  in the header contact block.
+
 ## [1.0.0] - 2026-09-28
 
 ### Changed — breaking: 18 directory renames + new `tools` type + two-axis taxonomy
