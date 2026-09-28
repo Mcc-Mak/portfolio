@@ -29,6 +29,7 @@ export interface Project {
   description: string
   repo: string
   pagesUrl?: string
+  repoVisibility?: 'public' | 'private'
   localReadme: string
 }
 

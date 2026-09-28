@@ -4,6 +4,27 @@ All notable changes to this portfolio root repository are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/), versioning
 follows [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-09-28
+
+### Added — repo visibility labels, composing filters, SPA deep-link fix
+
+- **`repoVisibility` field** on `Project` type (`'public' | 'private'`), with a
+  color-coded badge on `ProjectCard` (green = public, amber = private). All 32
+  projects assessed against their upstream GitHub repos and labelled: 11 public,
+  21 private.
+- **Two composing filter rows** on the Projects page:
+  - Live: All / Live (5) / Non-live (27)
+  - Repo: All / Public (11) / Private (21)
+  Both compose with the existing domain filter.
+- **SPA 404 fallback** for GitHub Pages: `postbuild` copies `dist/index.html` →
+  `dist/404.html`, so refreshing a deep link (e.g.
+  `/projects/games/pixel_paint`) loads the app shell instead of GitHub's 404.
+
+### Fixed
+
+- `hk_wifi_map` was missing its `pagesUrl` despite having live GitHub Pages at
+  `https://mcc-mak.github.io/wifi/` — now marked `live`.
+
 ## [1.0.1] - 2026-09-28
 
 ### Added

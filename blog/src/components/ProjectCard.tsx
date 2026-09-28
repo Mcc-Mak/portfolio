@@ -7,6 +7,7 @@ interface Props {
 }
 
 export default function ProjectCard({ project }: Props) {
+  const visibility = project.repoVisibility ?? 'private'
   return (
     <Link
       to={`/projects/${project.type}/${project.slug}`}
@@ -26,7 +27,10 @@ export default function ProjectCard({ project }: Props) {
           ))}
         </div>
         <div className="meta">
-          <span>in {project.year}</span>
+          <span className="meta-left">
+            <span>in {project.year}</span>
+            <span className={`visibility-badge ${visibility}`}>{visibility}</span>
+          </span>
           {project.pagesUrl && <span><a href={project.pagesUrl} onClick={(e) => e.stopPropagation()}>live</a></span>}
         </div>
       </div>
