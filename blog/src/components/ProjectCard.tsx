@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Project } from '../types'
+import { domainLabels } from '../data/projects'
 
 interface Props {
   project: Project
@@ -17,6 +18,11 @@ export default function ProjectCard({ project }: Props) {
         <div className="tags">
           {project.stack.map((s) => (
             <span key={s} className="tag">{s}</span>
+          ))}
+        </div>
+        <div className="tags domain-tags">
+          {project.domains.map((d) => (
+            <span key={d} className="tag domain-tag">{domainLabels[d]}</span>
           ))}
         </div>
         <div className="meta">

@@ -41,16 +41,19 @@ Guidance for OpenCode sessions in this **portfolio aggregator** workspace:
   - `projects/ai/hk_guided_tour/AGENTS.md` — Python/uv, `crewai==1.15.22`, musllinux stubs in
     `_stubs/`, Traditional-Chinese output, needs `HKOAI_API_KEY` +
     `OPENCODE_API_KEY`, SSL-bypass + 180s LLM timeout.
-  - `projects/ai/entrepreneur_mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
-    highest-numbered `PROMPT-V*.md`.
-  - `projects/ai/ai_opencode/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
-  - `projects/web_apps/otc_application_form/AGENTS.md` — Traditional Chinese for all
+  - `projects/ai/sdlc_orchestration_mcp/AGENTS.md` — **pnpm only** (never npm/yarn), ESM, spec is
+    highest-numbered `PROMPT-V*.md`. (Product name is still `entrepreneur-mcp`;
+    the GitHub repo remains `Mcc-Mak/entrepreneur-mcp`.)
+  - `projects/ai/opencode_docker_env/mcp/software-development-pipeline/{Linux,Windows}/AGENTS.md`
+  - `projects/web_apps/event_registration_form/AGENTS.md` — Traditional Chinese for all
     copy/docs/commits, `#registration` anchor + percent-encoded QR `data=`, GAS
     `Content-Type` must stay `text/plain` (CORS preflight kills `application/json`),
     form schema is the single source of truth for both UI order and Sheets columns,
     and the source is duplicated in a standalone repo that actually deploys Pages.
-  - Some projects also ship `opencode.jsonc` (e.g. `projects/ai/entrepreneur_mcp/`,
-    `projects/ai/ai_opencode/`) — honor it.
+    (GitHub repo remains `Mcc-Mak/otc-application-form`; `vite.config.js` `base:
+    '/otc-application-form/'` depends on the repo name staying put.)
+  - Some projects also ship `opencode.jsonc` (e.g. `projects/ai/sdlc_orchestration_mcp/`,
+    `projects/ai/opencode_docker_env/`) — honor it.
 
 ## Projects that deploy from their own repo
 
@@ -65,8 +68,8 @@ places, in this order:
    `projects/<type>/<unit>/` and commit here on `dev-001`.
 
 Do **not** rename a GitHub repo that backs a Pages URL — GitHub does not redirect
-old Pages paths. `web_apps/otc_application_form` is the current example: its
-`auto_merge.yml` + `deploy_github_pages.yml` under its own
+old Pages paths. `web_apps/event_registration_form` is the current example: its
+  `auto_merge.yml` + `deploy_github_pages.yml` under its own
 `.github/workflows/` are **inert here** (GitHub Actions only reads workflows at a
 repo's root), and its `vite.config.js` `base: '/otc-application-form/'` depends
 on the repo name staying put.
@@ -93,14 +96,21 @@ on the repo name staying put.
 - Naming charset (every dir): **Chinese chars or `[a-z0-9_.]`** — no uppercase,
   no hyphens. Style: `snake_case` ASCII for dirs; Chinese preserved for
   natively-Chinese *content* files (e.g. `hk_guided_tour` keeps `建築/`, `矩陣/`).
-- Seven types (owner-confirmed): `games`, `web_apps`, `templates`, `ai`,
-  `devops`, `notes`, `personal`.
+- Eight types (owner-confirmed): `games`, `web_apps`, `templates`, `ai`,
+  `devops`, `tools`, `notes`, `personal`.
+- **Two-axis taxonomy:** every project has a `type` (primary navigation, 8
+  categories) and `domains[]` (cross-cutting knowledge areas). Six domains:
+  `frontend`, `backend`, `devops`, `security`, `ai`, `creative`. A project
+  typically carries 1–3 domains. The blog's Projects page filters by domain
+  (composing with type grouping); the README breadth matrix shows domain
+  coverage across categories.
 - `blog/` is the **Vite + ReactJS** app, tracked by the **root** repo; its source
   is the only thing the Pages workflow builds. Project source lives **outside**
   `blog/src/` (never in the Vite build graph); the blog consumes projects through
-  a manifest at `blog/src/data/projects.ts` (slug, name, type, stack, field,
-  years, repo, pages_url). `projects/<type>/` maps to a React Router segment;
-  `<unit>` dir name → route slug. Renames touch only the manifest + README.
+  a manifest at `blog/src/data/projects.ts` (slug, name, type, domains, stack,
+  field, industry, role, year, repo, pagesUrl, localReadme, description).
+  `projects/<type>/` maps to a React Router segment; `<unit>` dir name → route
+  slug. Renames touch only the manifest + README.
 - **README toctree groups by `type`, then tags each `{type}/{unit}`** with
   field/industry/role. Year (creation + latest update) is historical — see
   "Per-project dates".
@@ -114,12 +124,16 @@ on the repo name staying put.
   per-project `node_modules/` / `dist/` so `git status` at root stays clean.
   Do **not** ignore `projects/` — it is tracked here.
 
-## Current task: README as toctree
+## Current task: README as toctree + two-axis taxonomy
 
 - The root `README.md` has been restructured into a **table-of-contents tree**:
-  top level = the seven `type` groups; under each, one entry per
+  top level = the eight `type` groups; under each, one entry per
   `{type}/{unit}` carrying **tags** (field/industry/role) and **year (creation +
   latest update)**. Projects are physically located at `projects/<type>/<unit>/`.
+- A **breadth & coverage matrix** follows the toctree, showing how the six
+  knowledge domains span categories, plus a 36-tag technology-stack breakdown.
+- The blog's Projects page has **domain filter buttons** that compose with the
+  type-grouped display, letting visitors filter by cross-cutting knowledge area.
 - **Owner gate (cleared):** the README toctree was approved; `blog/` and
   `.github/workflows/` now exist and are tracked by the root repo.
 
@@ -130,11 +144,10 @@ on the repo name staying put.
   **GitHub Pages**. It is tracked by the **root** repo (like `README.md` /
   `LICENSE`), not any subproject.
 - **Gate cleared:** `blog/` and `.github/workflows/` exist and are tracked.
-- **Known gap:** `deploy_reactjs_page.yml` still runs `npm ci` / `npm run build`
-  at the repo **root**, where there is no `package.json` or lockfile — it was
-  written for the former "holding page" app and never updated when `blog/` was
-  added in v0.8.0. It needs a `working-directory: blog` (and a root lockfile
-  glob) before it can build the blog. Do not assume the Pages deploy is green.
+- **Fixed in v1.0.0:** `deploy_reactjs_page.yml` now builds the blog (not the
+  former holding page) — install/build run with `working-directory: blog`, the
+  artifact path is `./blog/dist`, and `cache-dependency-path` points to
+  `blog/package-lock.json`. Renamed workflow to "Deploy Blog to Pages".
 - Only workflows at a repo's **root** run. The `.github/workflows/` directories
   inside some `projects/<type>/<unit>/` are inert here and are kept as
   reference copies of the upstream repos' workflows.
